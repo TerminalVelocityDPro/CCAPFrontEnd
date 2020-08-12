@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="style_bubble.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+    <title>CCAP</title>
+  </head>
+  <body class="bg-dark">
+
+  <nav class="navbar navbar-dark bg-danger">
+    <a class="navbar-brand font-weight-bold" href="#">CCAP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+    <div class="container" id = "mainContainer">
+      <div class="row" id = "containerFiller">
+      	<div class="col-12 container" style="height:20px">
+      	</div>
+      </div>
+	  <div class="row" id = "rowContainingSurveyInfoButtons">
+	    <div class="col-6 overflow-auto container border border-dark text-center bg-secondary text-white" id="survey" style="height: 550px">
+	    Survey
+	    <div class="row">
+			<div class = "col-12 bg-secondary" style = "height:10px"></div>
+	    </div>
+	    <div class="row">
+	    	<div class = "col-12 bg-white" style = "height:10px"></div>
+	    </div>
+	    <div class="row">
+	    	<div class = "col-12 bg-secondary" style = "height:15px"></div>
+	    </div>
+	    <div class="row">
+	    	<div class = "col-1" style="height:40px"></div>
+			<div class = "col-3 speech-bubble" style="height:40px">Welcome!</div>
+			<div class = "col-3" style="height:40px"></div>
+			<div class = "col-3" style="height:40px"></div>
+	    </div>
+	    <div class="row">
+			    	<div class = "col-12 bg-secondary" style = "height:10px"></div>
+	    </div>
+	    <div class="row">
+	    	<div class = "col-1" style="height:40px"></div>
+			<div class = "col-3 speech-bubble" style="height:50px">This is the CCAP survey.</div>
+			<div class = "col-3" style="height:40px"></div>
+			<div class = "col-3" style="height:40px"></div>
+	    </div>
+	    <div class="row">
+			<div class = "col-12 bg-secondary" style = "height:10px"></div>
+	    </div>
+	    <div class="row">
+	    	<div class = "col-1" style="height:40px"></div>
+			<div class = "col-3 speech-bubble" style="height:50px">Would you like to begin?</div>
+			<div class = "col-3" style="height:40px"></div>
+			<div class = "col-3" style="height:40px"></div>
+	    </div>
+	    <div class="row">
+			    	<div class = "col-12 bg-secondary" style = "height:10px"></div>
+	    </div>
+	    <div class="row" id="answerChoicesDiv">
+			<div class = "col-3" style="height:40px"></div>
+			<div class = "col-5" style="height:40px"></div>
+			<div class = "col-3 user-bubble" style="height:50px" id="bubbleAnswer">
+			<div class="row">
+					<div class = "col-12" style = "height:5px"></div>
+	    	</div>
+	    	<button class= "btn btn-light" id="yesButton" onclick="appendStuff(0)">Yes</button>
+			<button class= "btn btn-light" id="noButton" onclick="appendStuff(1)">No</button>
+			</div>
+			<div class = "col-1" style="height:40px"></div>
+	    </div>
+	    <div class="row">
+			<div class = "col-12 bg-secondary" style = "height:10px"></div>
+	    </div>
+
+
+
+
+
+
+
+	    </div>
+
+
+
+
+
+
+
+	    <div class="col-6 overflow-auto container border border-dark text-center bg-white" style="height: 550px">
+	    Information Page
+	    <div class="row">
+					<div class = "col-12 bg-white" style = "height:10px"></div>
+			    </div>
+			    <div class="row">
+			    	<div class = "col-12 bg-dark" style = "height:10px"></div>
+			    </div>
+			    <div class="row">
+			    	<div class = "col-12 bg-white" style = "height:15px"></div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-6 container" style="height:100px">
+	    	<div class="row">
+				<div class="col-2"></div>
+	    		<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+	    		<div class="col-2"></div>
+	    	</div>
+	    	</div>
+	    	<div class="col-6 container" style="height:100px">
+	    	<div class="row">
+	    		<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+	    	</div>
+	    </div>
+
+	    <div class="row">
+	    	<div class="col-6 container" style="height:100px">
+	    	<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+	    	</div>
+
+			<div class="col-6 container" style="height:100px">
+			<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+			</div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-6 container" style="height:100px">
+	    	<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+	    	</div>
+
+			<div class="col-6 container" style="height:100px">
+			<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+			</div>
+
+	    </div>
+	    <div class="row">
+	    	<div class="col-6 container" style="height:100px">
+	    	<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+	    	</div>
+
+			<div class="col-6 container" style="height:100px">
+			<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+	    	</div>
+			</div>
+
+	    </div>
+	    <div class="row">
+			<div class="col-6 container" style="height:100px">
+	    	<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+			</div>
+			</div>
+
+			<div class="col-6 container" style="height:100px">
+			<div class="row">
+				<div class="col-2"></div>
+				<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+				<div class="col-2"></div>
+			</div>
+			</div>
+
+	    </div>
+
+	    <div class="row">
+					<div class="col-6 container" style="height:100px">
+			    	<div class="row">
+						<div class="col-2"></div>
+						<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+						<div class="col-2"></div>
+					</div>
+					</div>
+
+					<div class="col-6 container" style="height:100px">
+					<div class="row">
+						<div class="col-2"></div>
+						<button class="col-8 btn btn-outline-primary" style="height:80px">Link</button>
+						<div class="col-2"></div>
+					</div>
+					</div>
+
+	    </div>
+
+
+
+
+
+
+
+
+
+
+
+	    </div>
+	  </div>
+	</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="buttonMoves.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+  </body>
+</html>
