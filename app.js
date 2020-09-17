@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const router = express.Router();
@@ -31,8 +32,26 @@ transporter.sendMail(mailOptions, function(error, info){
 
 app.use(express.static('public'));
 
+app.use(bodyParser.urlencoded({extended:false}));
+
+app.use(bodyParser.json());
+
+
 
 app.use('/', router);
+
+app.post('/', function(req, res){
+	var post_body = req.body;
+	res.send(post_body);
+	console.log(post_body);
+	console.log(post_body.stress);
+	//console.log(JSON.stringify(post_body));
+	//res.end(JSON.stringify(response));
+	//console.log("Got a POST request for the homepage");
+	//res.send('Hello POST');
+});
+
+
 app.listen(3000, () => console.log('listening at 3000'));
 
 
