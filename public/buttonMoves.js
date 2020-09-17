@@ -1,8 +1,16 @@
-
-
-
 var firstRoundChoice ="<div class = 'col-3' style='height:270px'></div><div class = 'col-5' style='height:270px'></div><div class = 'col-3 user-bubble' style='height:270px' id='bubbleAnswer'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(0)'>COVID-19</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(1)'>Family</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(2)'>Friends</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(3)'>Online School</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(4)'>Other</button></div><div class = 'col-1' style='height:270px'></div>";
 var secondRoundChoice = "<div class = 'col-2' style='height:430px'></div><div class = 'col-5' style='height:430px'></div><div class = 'col-4 user-bubble' style='height:430px' id='bubbleCheckBox'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='checkBox0' onclick='appendNo(0)'>Fear of contracting it</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light'  id='checkBox2'  onclick='appendNo(2)'>Scared for a family member/friend</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light'  id='checkBox4'  onclick='appendNo(4)'>Worried about dying</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light'  id='checkBox1'  onclick='appendNo(1)'>Parent/caregiver has lost a job</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='checkBox3'  onclick='appendNo(3)'>Not knowing how we are going to pay bills</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='submitBtn' onclick='appendStuff()'>Submit.</button></div><div class = 'col-1' style='height:430px'></div>";
+
+axios({
+  method: 'post',
+  url: '/',
+  data: {
+      firstName: 'Finn',
+      lastName: 'Williams',
+      id: '150023232',
+      stress: '10'
+  }
+});
 
 
 
@@ -555,6 +563,7 @@ d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButto
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#answerChoicesDiv").select("#yesButton").attr("onclick"," ");
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#answerChoicesDiv").select("#noButton").attr("onclick"," ");
+
 }
 
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").selectAll(".speech-bubble").transition().duration(2000).style("opacity", "1");
