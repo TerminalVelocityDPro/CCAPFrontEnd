@@ -38,6 +38,7 @@ app.use(bodyParser.json());
 
 
 
+
 app.use('/', router);
 
 app.post('/', function(req, res){
@@ -49,6 +50,10 @@ app.post('/', function(req, res){
 	//res.end(JSON.stringify(response));
 	//console.log("Got a POST request for the homepage");
 	//res.send('Hello POST');
+});
+
+app.get('/about',function(req,res){
+  res.sendFile('/public/about_us.html',{ root: __dirname });
 });
 
 
