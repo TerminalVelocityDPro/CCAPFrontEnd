@@ -170,398 +170,398 @@ d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButto
 if(ques.length > 3){
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#submitBtn").attr("onclick"," ");
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html("<div class = 'col-1' style='height:40px'></div> <div class = 'col-3 speech-bubble' style='height:30px'>Thank you.</div> <div class = 'col-3' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>");
-	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html("<div class = 'col-1' style='height:40px'></div> <div class = 'col-3 speech-bubble' style='height:150px'>Here are some resources that may help.</div> <div class = 'col-3' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>");
-	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 	if(ques.length ==4){
 		if(ques[1] == 0 && ques[2] == 0){
 			//append COVID Resource Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_Resource);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 0 && ques[2] == 1){
 			//append CARES Act
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 0 && ques[2] == 2){
 			//append COVID House Cleaning
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_House_Clean);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 0 && ques[2] == 3){
 			//append SBA.gov
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(SBA_gov);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 0 && ques[2] == 4){
 			//append Worldometer.info
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Worldometer);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 1 && ques[2] == 0){
 			//append CSI Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 1 && ques[2] == 1){
 			//append School Transition Program Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 1 && ques[2] == 2){
 			//append CSI Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 1 && ques[2] == 3){
 			//append CARES Act Website
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 2 && ques[2] == 0){
 			//append Peer Counseling
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 2 && ques[2] == 1){
 			//append Peer Counseling
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 2 && ques[2] == 2){
 			//append School Transition Program Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 2 && ques[2] == 3){
 			//append Staying in Touch with Friends Tips Website
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Staying_in_Touch);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 3 && ques[2] == 0){
 			//append CUSD Tech Support Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CUSD_Tech_Support);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 3 && ques[2] == 1){
 			//append Free Online Tutoring Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 3 && ques[2] == 2){
 			//append Free Online Tutoring Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 		if(ques[1] == 3 && ques[2] == 3){
 			//append CSI Page
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 	}
 	if(ques.length ==5){
 		if(ques[1] == 0 && (ques[2] == 0 || ques[3] == 0)){
 					//append COVID Resource Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_Resource);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 0 && (ques[2] == 1 || ques[3] == 1)){
 					//append CARES Act
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 0 && (ques[2] == 2 || ques[3] == 2)){
 					//append COVID House Cleaning
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_House_Clean);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 0 && (ques[2] == 3 || ques[3] == 3)){
 					//append SBA.gov
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(SBA_gov);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 0 && (ques[2] == 4 || ques[3] == 4)){
 					//append Worldometer.info
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Worldometer);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 1 && (ques[2] == 0 || ques[3] == 0)){
 					//append CSI Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 1 && (ques[2] == 1 || ques[3] == 1)){
 					//append School Transition Program Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 1 && (ques[2] == 2 || ques[3] == 2)){
 					//append CSI Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 1 && (ques[2] == 3 || ques[3] == 3)){
 					//append CARES Act Website
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 2 && (ques[2] == 0 || ques[3] == 0)){
 					//append Peer Counseling
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 2 && (ques[2] == 1 || ques[3] == 1)){
 					//append Peer Counseling
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 2 && (ques[2] == 2 || ques[3] == 2)){
 					//append School Transition Program Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 2 && (ques[2] == 3 || ques[3] == 3)){
 					//append Staying in Touch with Friends Tips Website
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Staying_in_Touch);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 3 && (ques[2] == 0 || ques[3] == 0)){
 					//append CUSD Tech Support Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CUSD_Tech_Support);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 3 && (ques[2] == 1 || ques[3] == 1)){
 					//append Free Online Tutoring Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 3 && (ques[2] == 2 || ques[3] == 2)){
 					//append Free Online Tutoring Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 				}
 				if(ques[1] == 3 && (ques[2] == 3 || ques[3] == 3)){
 					//append CSI Page
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 	}
 	if(ques.length ==6){
 		if(ques[1] == 0 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0)){
 							//append COVID Resource Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_Resource);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 0 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1)){
 							//append CARES Act
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 0 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2)){
 							//append COVID House Cleaning
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_House_Clean);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 0 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3)){
 							//append SBA.gov
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(SBA_gov);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 0 && (ques[2] == 4 || ques[3] == 4 || ques[4] == 4)){
 							//append Worldometer.info
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Worldometer);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 1 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0)){
 							//append CSI Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 1 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1)){
 							//append School Transition Program Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 1 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2)){
 							//append CSI Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 1 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3)){
 							//append CARES Act Website
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 2 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0)){
 							//append Peer Counseling
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 2 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1)){
 							//append Peer Counseling
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 2 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2)){
 							//append School Transition Program Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 2 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3)){
 							//append Staying in Touch with Friends Tips Website
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Staying_in_Touch);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 3 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0)){
 							//append CUSD Tech Support Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CUSD_Tech_Support);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 3 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1)){
 							//append Free Online Tutoring Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 3 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2)){
 							//append Free Online Tutoring Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						}
 						if(ques[1] == 3 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3)){
 							//append CSI Page
 							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+							d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 	}
 	if(ques.length ==7){
 		if(ques[1] == 0 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0 || ques[5] == 0)){
 									//append COVID Resource Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_Resource);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 0 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1 || ques[5] == 1)){
 									//append CARES Act
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 0 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2 || ques[5] == 2)){
 									//append COVID House Cleaning
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_House_Clean);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 0 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3 || ques[5] == 3)){
 									//append SBA.gov
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(SBA_gov);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 0 && (ques[2] == 4 || ques[3] == 4 || ques[4] == 4 || ques[5] == 4)){
 									//append Worldometer.info
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Worldometer);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 1 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0 || ques[5] == 0)){
 									//append CSI Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 1 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1 || ques[5] == 1)){
 									//append School Transition Program Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 1 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2 || ques[5] == 2)){
 									//append CSI Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 1 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3 || ques[5] == 3)){
 									//append CARES Act Website
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 2 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0 || ques[5] == 0)){
 									//append Peer Counseling
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 2 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1 || ques[5] == 1)){
 									//append Peer Counseling
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 2 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2 || ques[5] == 2)){
 									//append School Transition Program Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 2 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3 || ques[5] == 3)){
 									//append Staying in Touch with Friends Tips Website
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Staying_in_Touch);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 3 && (ques[2] == 0 || ques[3] == 0 || ques[4] == 0 || ques[5] == 0)){
 									//append CUSD Tech Support Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CUSD_Tech_Support);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 3 && (ques[2] == 1 || ques[3] == 1 || ques[4] == 1 || ques[5] == 1)){
 									//append Free Online Tutoring Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 3 && (ques[2] == 2 || ques[3] == 2 || ques[4] == 2 || ques[5] == 2)){
 									//append Free Online Tutoring Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 								}
 								if(ques[1] == 3 && (ques[2] == 3 || ques[3] == 3 || ques[4] == 3 || ques[5] == 3)){
 									//append CSI Page
 									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+									d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		}
 	}
 	if(ques.length ==8){
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_Resource);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CARES_Act_Website);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(COVID_House_Clean);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append SBA.gov
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(SBA_gov);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append Worldometer.info
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Worldometer);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append CSI Page
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CSI_Page);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append School Transition
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(School_Transition_Program);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append Peer Counseling
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Peer_Counseling);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append Staying in Touch
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Staying_in_Touch);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append CUSD Tech Support
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(CUSD_Tech_Support);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 		//append Free Online Tutoring
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(Online_Tutoring);
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-secondary").style("height", "10px");
+		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 
 	}
 
