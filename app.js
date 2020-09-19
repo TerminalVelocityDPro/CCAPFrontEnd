@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const router = express.Router();
+const Datastore = require('nedb');
+
+const database = new Datastore('database.db');
+database.loadDatabase();
 
 const transporter = nodemailer.createTransport({
 	name: "ethereal.email",
@@ -37,7 +41,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
-
+app.post('/api', (req,res) => {
+  console.log(req);
+})
 
 app.use('/', router);
 
@@ -46,6 +52,7 @@ app.post('/', function(req, res){
 	res.send(post_body);
 	console.log(post_body);
 	console.log(post_body.stress);
+	database.insert(post_body);
 	//console.log(JSON.stringify(post_body));
 	//res.end(JSON.stringify(response));
 	//console.log("Got a POST request for the homepage");
