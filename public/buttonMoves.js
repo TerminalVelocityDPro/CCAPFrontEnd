@@ -131,6 +131,9 @@ d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButto
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").selectAll(".user-bubble").transition().duration(2000).style("opacity", "1");
 //d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").selectAll(".speech-bubble:after").transition().duration(2000).style("opacity", "1");
 
+ 
+
+
 
 function appendStuff(num){
 
@@ -155,7 +158,7 @@ d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButto
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html("<div class = 'col-1' style='height:40px'></div> <div class = 'col-3 speech-bubble' style=''>What is the source of your stress? Please select one.</div> <div class = 'col-3' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>");
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").attr("id", "firstSpecial").html(firstRoundChoice);
-
+console.log("First Round Choices!")
 }
 
 if(ques.length == 2){

@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const router = express.Router();
+const Datastore = require('nedb');
+
+const database = new Datastore('database.db');
+database.loadDatabase();
 
 const transporter = nodemailer.createTransport({
 	name: "ethereal.email",
@@ -37,7 +41,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
-
+app.post('/api', (req,res) => {
+  console.log(req);
+})
 
 app.use('/', router);
 
