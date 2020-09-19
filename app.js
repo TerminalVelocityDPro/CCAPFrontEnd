@@ -1,10 +1,13 @@
 const nodemailer = require('nodemailer');
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs
 const app = express();
 const path = require('path');
 const router = express.Router();
 const Datastore = require('nedb');
+const { response } = require('express');
+
 
 const database = new Datastore('database.db');
 database.loadDatabase();
@@ -35,15 +38,19 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 app.use(express.static('public'));
+app.use(express.json({limit: '1 mb'}));
+
+app.post('/api', (req,res) => {
+  console.log('I got a request!');
+  const data = req.body;
+  database.insert(data);
+  console.log(database);
+})
 
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(bodyParser.json());
 
-
-app.post('/api', (req,res) => {
-  console.log(req);
-})
 
 app.use('/', router);
 

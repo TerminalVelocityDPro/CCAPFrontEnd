@@ -1,4 +1,4 @@
-var firstRoundChoice ="<div class = 'col-2' style=''></div><div class = 'col-4' style=''></div><div class = 'col-5 user-bubble' style='' id='bubbleAnswer'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(0)'>COVID-19</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(1)'>Family</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(2)'>Friends</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(3)'>Online School</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' onclick='appendStuff(4)'>Other</button></div><div class = 'col-1' style=''></div>";
+var firstRoundChoice ="<div class = 'col-2' style=''></div><div class = 'col-4' style=''></div><div class = 'col-5 user-bubble' style='' id='bubbleAnswer'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button0' onclick='appendStuff(0)'>COVID-19</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(1)'>Family</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button2' onclick='appendStuff(2)'>Friends</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button3' onclick='appendStuff(3)'>Online School</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button4' onclick='appendStuff(4)'>Other</button></div><div class = 'col-1' style=''></div>";
 var secondRoundChoice = "<div class = 'col-2' style=''></div><div class = 'col-3' style=''></div><div class = 'col-6 user-bubble' style='' id='bubbleCheckBox'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='checkBox0' onclick='appendNo(0)'>Fear of contracting it</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light'  id='checkBox2'  onclick='appendNo(2)'>Scared for a family member/friend</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light'  id='checkBox4'  onclick='appendNo(4)'>Worried about dying</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light'  id='checkBox1'  onclick='appendNo(1)'>Parent/caregiver has lost a job</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='checkBox3'  onclick='appendNo(3)'>Not knowing how we are going to pay bills</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='submitBtn' onclick='appendStuff()'>Submit.</button></div><div class = 'col-1' style=''></div>";
 
 //Resources
@@ -98,12 +98,20 @@ var smooth_scroll_to = function(element, target, duration) {
     });
 }
 
-
+/*function storeData(data){
+	var dataBase = [];
+	dataBase.push({data});
+	//Checks that database stores inputted data
+	console.log(data);
+	console.log(dataBase);
+};*/
 
 function appendNo(num){
 
 	console.log("pushed me " + num);
 	ques.push(num);
+	//storeData(num);
+
 	if(num == 0){
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#checkBox0").attr("class","btn btn-light border border-danger");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#checkBox0").attr("onclick"," ");
@@ -144,7 +152,7 @@ console.log("----------------");
 console.log(num);
 console.log("----------------");
 
-
+//storeData(num);
 
 
 var ques0 = [0];
@@ -168,8 +176,10 @@ if(ques.length == 2){
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html("<div class = 'col-1' style='height:40px'></div> <div class = 'col-3 speech-bubble' style=''>In relation to COVID-19, what is causing you the most stress? Check all that apply.</div> <div class = 'col-3' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>");
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").attr("id","special").html(secondRoundChoice);
+console.log("Second Round Choices!")
 }
 
+//Recommends Resources to Students
 if(ques.length > 3){
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#submitBtn").attr("onclick"," ");
 	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html("<div class = 'col-1' style='height:40px'></div> <div class = 'col-3 speech-bubble' style='height:30px'>Thank you.</div> <div class = 'col-3' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>");
