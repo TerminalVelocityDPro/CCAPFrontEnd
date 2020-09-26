@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const express = require('express');
 const bodyParser = require('body-parser');
