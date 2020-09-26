@@ -12,10 +12,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+    body{
+    	background-image: url("/CUSD-Logo-750w.png");
+    	background-position: center;
+    	background-repeat: no-repeat;
+    	background-attachment: fixed;
+    	background-size: 95%;
+    }
+    </style>
+
 
     <title>CCAP</title>
   </head>
-  <body class="bg-light">
+  <body class="bg-light" style='background-image: url("https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png");'>
+
+
 
   <nav class="navbar navbar-light bg-white shadow border-bottom border-danger rounded-bottom sticky-top col-12">
     <a class="navbar-brand" href="#">CCAP</a>
@@ -41,7 +53,7 @@
       </div>
       <div class="container", id="secondaryContainer">
 	  <div class="row" id = "rowContainingSurveyInfoButtons">
-	    <div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-white text-white rounded" id="survey" style="height: 550px">
+	    <div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-white text-white rounded" id="survey" style="height: 550px;opacity:0.95;">
 	    <div class="row">
 			<div class = "col-12 bg-white" style = "height:10px"></div>
 	    </div>
@@ -75,7 +87,7 @@
 	    <div class="row">
 			    	<div class = "col-12 bg-white" style = "height:10px"></div>
 	    </div>
-		
+
 		<!--Yes/No Buttons-->
 		<div class="row" id="answerChoicesDiv">
 			<div class = "col-3" style="height:40px"></div>
@@ -95,11 +107,11 @@
 			</div>
 			<div class = "col-1" style="height:40px"></div>
 		</div>
-		
+
 		<!--Script to listen if buttons are pressed-->
 		<script>
 		//document.getElementById('bubbleCheckBox').addEventListener('click', event => {
-			
+
 		//});
 		</script>
 
@@ -118,7 +130,7 @@
 
 
 
-	    <div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-dark rounded text-light" style="height: 550px">
+	    <div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-dark rounded text-light" style="height: 550px;opacity:0.95;">
 
 	    <div class="row">
 					<div class = "col-12 bg-dark" style = "height:10px"></div>
@@ -134,8 +146,8 @@
 	    	<div class="col-6 container" style="height:100px">
 	    	<div class="row">
 				<div class="col-2"></div>
-				<a href='https://cnec.cusd.com' class="col-8 btn btn-primary shadow border-light" style="height:80px" target="_blank">
-	    		Clovis North
+				<a href='https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html' class="col-8 btn btn-primary shadow border-light" style="height:80px" target="_blank">
+	    		Symptoms
 	    		</a>
 	    		<div class="col-2"></div>
 	    	</div>
@@ -143,7 +155,7 @@
 	    	<div class="col-6 container" style="height:100px">
 	    	<div class="row">
 	    		<div class="col-2"></div>
-				<a class="col-8 btn btn-primary shadow border-light" style="height:80px" href='https://cdc.gov' target="_blank">CDC</a>
+				<a href='https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/disinfecting-your-home.html' class="col-8 btn btn-primary shadow border-light" style="height:80px" target="_blank">Clean and Safe</a>
 				<div class="col-2"></div>
 	    	</div>
 	    	</div>
@@ -153,7 +165,7 @@
 	    	<div class="col-6 container" style="height:100px">
 	    	<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.cusd.com/TechnologyHelpforStudents.aspx#additionalAssistance' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">CUSD Tech Support</a>
 				<div class="col-2"></div>
 	    	</div>
 	    	</div>
@@ -161,7 +173,7 @@
 			<div class="col-6 container" style="height:100px">
 			<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.worldometers.info/coronavirus/' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Coronavirus Statistics</a>
 				<div class="col-2"></div>
 	    	</div>
 			</div>
@@ -170,7 +182,7 @@
 	    	<div class="col-6 container" style="height:100px">
 	    	<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.cdc.gov/handwashing/index.html' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Handwashing</a>
 				<div class="col-2"></div>
 	    	</div>
 	    	</div>
@@ -178,7 +190,7 @@
 			<div class="col-6 container" style="height:100px">
 			<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.cdc.gov/coronavirus/2019-nCoV/index.html ' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">CDC COVID</a>
 				<div class="col-2"></div>
 	    	</div>
 			</div>
@@ -188,7 +200,7 @@
 	    	<div class="col-6 container" style="height:100px">
 	    	<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/diy-cloth-face-coverings.html ' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Wearing Masks</a>
 				<div class="col-2"></div>
 	    	</div>
 	    	</div>
@@ -196,7 +208,7 @@
 			<div class="col-6 container" style="height:100px">
 			<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/managing-stress-anxiety.html' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Mental Health and Coping</a>
 				<div class="col-2"></div>
 	    	</div>
 			</div>
@@ -206,7 +218,7 @@
 			<div class="col-6 container" style="height:100px">
 	    	<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://home.treasury.gov/policy-issues/cares/assistance-for-american-workers-and-families' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Financial Support</a>
 				<div class="col-2"></div>
 			</div>
 			</div>
@@ -214,7 +226,7 @@
 			<div class="col-6 container" style="height:100px">
 			<div class="row">
 				<div class="col-2"></div>
-				<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+				<a href='https://www.tutornirvana.com' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Tutoring</a>
 				<div class="col-2"></div>
 			</div>
 			</div>
@@ -225,7 +237,7 @@
 					<div class="col-6 container" style="height:100px">
 			    	<div class="row">
 						<div class="col-2"></div>
-						<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+						<a href='https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/personal-social-activities.html' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Social Help</a>
 						<div class="col-2"></div>
 					</div>
 					</div>
@@ -233,10 +245,20 @@
 					<div class="col-6 container" style="height:100px">
 					<div class="row">
 						<div class="col-2"></div>
-						<button class="col-8 btn btn-primary shadow border-light" style="height:80px">Link</button>
+						<a href='tel:1-800-273-8255' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Suicide Prevention Hotline</a>
 						<div class="col-2"></div>
 					</div>
 					</div>
+
+	    </div>
+	    <div class="row">
+							<div class="col-6 container" style="height:100px">
+					    	<div class="row">
+								<div class="col-2"></div>
+								<a href='tel:1-800-448-4663' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:80px">Youth Crisis Hotline</a>
+								<div class="col-2"></div>
+							</div>
+							</div>
 
 	    </div>
 
