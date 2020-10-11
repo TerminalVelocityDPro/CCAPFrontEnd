@@ -1,18 +1,21 @@
 const nodemailer = require('nodemailer');
 const express = require('express');
+const bcrypt = require("bcryptjs");
 const bodyParser = require('body-parser');
+const escapeHTML = require('escape-html');
 const app = express();
 const path = require('path');
 const router = express.Router();
 const Datastore = require('nedb');
 const { response } = require('express');
 const { getHeapCodeStatistics } = require('v8');
+const crypt = require('crypto');
 
 
 const database = new Datastore('database.db');
 database.loadDatabase();
 
-//Function that gets data and shows it on html 
+//Function that gets data and shows it on html
 async function getData(){
   const response = await fetch('/api');
   const data = await response.json;
@@ -28,7 +31,28 @@ async function getData(){
   }
 }
 
+
 //Querying Database based on stress levels
+database.find({$not: {stress: '1'}}, (err,docs) => {
+  if(err){
+    response.end();
+    return;
+  }
+  console.log("Stress hashes :" + docs);
+  var stressLevel = docs[0].var4;
+  //console.log(bcrypt.compareSync('10', stressLevel));
+  console.log(docs[0].var4);
+  console.log(bcrypt.compareSync('10', stressLevel));
+  console.log(docs[0].var4);
+
+});
+
+
+
+
+
+
+
 database.find({stress: "10"}, (err,docs) => {
   if(err){
     response.end();
@@ -86,7 +110,7 @@ transporter.sendMail(mailOptions, function(error, info){
 app.use(express.static('public'));
 app.use(express.json({limit: '1 mb'}));
 
-  
+
 
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -97,11 +121,46 @@ app.use('/', router);
 
 app.post('/', function(req, res){
   console.log('I got a request!');
-	var post_body = req.body;
-  res.send(post_body);
-  database.insert(post_body);
-	console.log(post_body);
-	console.log(post_body.stress);
+	var post_body = (req.body);
+    res.send(post_body);
+    //console.log(typeof post_body);
+    //database.insert(json);
+	//console.log(escapeHTML(post_body.stress));
+	//console.log(escapeHTML(post_body.id));
+	var saltRounds = 10;
+	var eFirstName = escapeHTML(post_body.firstName);
+	//var eFirstNameHash = bcrypt.hashSync(eFirstName, 10);
+	var eLastName = escapeHTML(post_body.lastName);
+	//var eLastNameHash = bcrypt.hashSync(eLastName, 10);
+	var eID = escapeHTML(post_body.id);
+	//var eIDHash = bcrypt.hashSync(eID.toString(), 10);
+	var eStress = escapeHTML(post_body.stress);
+	var eStressHash = bcrypt.hashSync(eStress.toString(), 10);
+	var encryptingKey = crypt.createCipher('aes-128-cbc', 'password_key');
+	var eFirstName = encryptingKey.update(eFirstName, 'utf8', 'hex');
+	eFirstName += encryptingKey.final('hex');
+
+	console.log("Encrypted");
+	console.log(eFirstName);
+
+	var deKey = crypt.createDecipher('aes-128-cbc', 'password_key');
+	var decrypted_str = deKey.update(eFirstName, 'hex', 'utf8');
+	decrypted_str += deKey.final('utf8');
+	console.log("Decrypted");
+	console.log(decrypted_str);
+
+
+	var userData = {
+			var1: eFirstName,
+			var2: eLastName,
+			var3: eID,
+			var4: eStressHash
+	};
+	console.log(userData);
+	console.log("Stress");
+	console.log(userData.var3);
+	console.log(bcrypt.compareSync("10", userData.var4));
+	database.insert(userData);
 	//console.log(JSON.stringify(post_body));
 	//res.end(JSON.stringify(response));
 	//console.log("Got a POST request for the homepage");
