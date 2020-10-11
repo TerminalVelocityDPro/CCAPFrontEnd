@@ -9,7 +9,11 @@ const router = express.Router();
 const Datastore = require('nedb');
 const { response } = require('express');
 const { getHeapCodeStatistics } = require('v8');
-const crypt = require('crypto');
+const crypto = require('crypto');
+
+const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa",{
+	modulusLength: 2048,
+});
 
 
 const database = new Datastore('database.db');
@@ -44,6 +48,20 @@ database.find({$not: {stress: '1'}}, (err,docs) => {
   console.log(docs[0].var4);
   console.log(bcrypt.compareSync('10', stressLevel));
   console.log(docs[0].var4);
+  //
+  //const decryptedFirst = crypto.privateDecrypt(
+  //		{
+  //			key: privateKey,
+  //			padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+  //			oaepHash: "sha256",
+  //		},
+  //		encryptedFirst
+  //	);
+
+//	console.log("decrypted data: ", decryptedFirst.toString());
+  //
+
+
 
 });
 
@@ -136,18 +154,34 @@ app.post('/', function(req, res){
 	//var eIDHash = bcrypt.hashSync(eID.toString(), 10);
 	var eStress = escapeHTML(post_body.stress);
 	var eStressHash = bcrypt.hashSync(eStress.toString(), 10);
-	var encryptingKey = crypt.createCipher('aes-128-cbc', 'password_key');
-	var eFirstName = encryptingKey.update(eFirstName, 'utf8', 'hex');
-	eFirstName += encryptingKey.final('hex');
 
-	console.log("Encrypted");
-	console.log(eFirstName);
 
-	var deKey = crypt.createDecipher('aes-128-cbc', 'password_key');
-	var decrypted_str = deKey.update(eFirstName, 'hex', 'utf8');
-	decrypted_str += deKey.final('utf8');
-	console.log("Decrypted");
-	console.log(decrypted_str);
+
+	const encryptedFirst = crypto.publicEncrypt(
+		{
+			key: publicKey,
+			padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+			oaepHash: "sha256",
+		},
+		Buffer.from(eFirstName)
+	);
+
+	//console.log("encrypted data: ", encryptedData.toString("base64"));
+
+
+
+	//var encryptingKey = crypt.createCipher('aes-128-cbc', 'password_key');
+	//var eFirstName = encryptingKey.update(eFirstName, 'utf8', 'hex');
+	//eFirstName += encryptingKey.final('hex');
+
+	//console.log("Encrypted");
+	//console.log(eFirstName);
+
+	//var deKey = crypt.createDecipher('aes-128-cbc', 'password_key');
+	//var decrypted_str = deKey.update(eFirstName, 'hex', 'utf8');
+	//decrypted_str += deKey.final('utf8');
+	//console.log("Decrypted");
+	//console.log(decrypted_str);
 
 
 	var userData = {
