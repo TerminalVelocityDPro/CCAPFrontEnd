@@ -42,18 +42,38 @@ app.use(function(err, req, res, next) {
 //app.use(helmet.dnsPrefetchControl());
 //app.use(helmet.expectCt());
 
-//app.use(
-//  helmet.contentSecurityPolicy({
-//    directives: {
-//      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
       //defaultSrc: [`*`],
-//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js", '*', "filesystem:"],
-//      imgSrc: ["'self'", "data:", "https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png"],
-//      upgradeInsecureRequests: [],
-//    },
+      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js", '*', "filesystem:"],
+      imgSrc: ["'self'", "data:", "https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
+
+
+//app.use(
+//  helmet({
+//    contentSecurityPolicy: false,
 //  })
 //);
 
+
+
+
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.expectCt());
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
 
 
 // var publicKeyString = "3082010b0282010100d2a309b160402c711bab2324f0a09eb9265078315fdc501da4f94518b9cbc5072bb487a348896b1a09a955851048b3e1e846592c7152cd6011d6d76b7923fd8e55120b5b121c3de2b569793bc442e42af05883c545473a93acfaa353627ac0200fa247cbc8ddc5496e6ed1d82b247912008a0b237d9ab017b6b9c409a6b49a797ccd66b105a112c83682fee6bfe4423d2baa633db758b052839eaa6b864035c6ee8008af9d856504a636ab7cb2176fe29733fba02f79a7f9843b2d166cb83dca58a4ac6df00926f59fe96ccc00d2ec05ec5e1f2b9e8e3d0b6e464abf16ccc4eee8c19377882e20bf4eaeb7a4167d083400da91c6a3a2d39021731b537e2c110f020401010101";
