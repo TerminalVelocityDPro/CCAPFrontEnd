@@ -48,6 +48,7 @@ app.use(
       defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
       //defaultSrc: [`*`],
       scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js", '*', "filesystem:"],
+      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css", 'r@nd0m'],
       imgSrc: ["'self'", "data:", "https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png"],
       upgradeInsecureRequests: [],
     },
