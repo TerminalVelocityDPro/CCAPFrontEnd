@@ -16,7 +16,7 @@ const fs = require('fs');
 const RateLimit = require('express-rate-limit');
 const options = {
   inflate: true,
-  limit: 1000000000000, //yay it's working
+  limit: 100, //yay it's working
 
 };
 app.use(bodyParser.json(options));
@@ -42,18 +42,18 @@ app.use(function(err, req, res, next) {
 //app.use(helmet.dnsPrefetchControl());
 //app.use(helmet.expectCt());
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//app.use(
+  //helmet.contentSecurityPolicy({
+    //directives: {
+      //defaultSrc: ["'self'", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
       //defaultSrc: [`*`],
-      scriptSrc: ["'self'", `'nonce-buttonMoves'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js", "filesystem:"],
-      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-      imgSrc: ["'self'", "data:", "https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png"],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
+      //scriptSrc: ["'self'", `'nonce-buttonMoves'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js", "filesystem:"],
+      //styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+      //imgSrc: ["'self'", "data:", "https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png"],
+      //upgradeInsecureRequests: [],
+    //},
+  //})
+//);
 
 
 //app.use(
