@@ -222,20 +222,12 @@ transporter.sendMail(mailOptions, function(error, info) {
     console.log('Email sent: ' + info.response);
   }
 });
-
 app.use(express.static('public'));
 app.use(express.json({limit: '1 mb'}));
-
-
 app.use(bodyParser.urlencoded({extended: false}));
-
 app.use(bodyParser.json());
-
-
 app.use('/', router);
-
 app.post('/', function(req, res) {
-
   const schema = Joi.object().keys({
     firstName: Joi.string().alphanum().required(),
     lastName: Joi.string().alphanum().required(),
@@ -251,67 +243,17 @@ app.post('/', function(req, res) {
 	  const post_body = (req.body);
 	    res.send(post_body);
 	    console.log(post_body);
-	    // database.insert(json);
-	    // console.log(escapeHTML(post_body.stress));
-	    // console.log(escapeHTML(post_body.id));
-	    // var saltRounds = 10;
 	    const eFirstName = escapeHTML(post_body.firstName);
-	    // var eFirstNameHash = bcrypt.hashSync(eFirstName, 10);
 	    const eLastName = escapeHTML(post_body.lastName);
-	    // var eLastNameHash = bcrypt.hashSync(eLastName, 10);
 	    const eID = escapeHTML(post_body.id);
-	    // var eIDHash = bcrypt.hashSync(eID.toString(), 10);
 	    const eStress = escapeHTML(post_body.stress);
 	    const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
-
-	    // function encryptString (plaintext, publicKeyFile) {
-	    //    const publicKey = fs.readFileSync(publicKeyFile, "utf8");
-
-	  	    // publicEncrypt() method with its parameters
-	    //    const encrypted = crypto.publicEncrypt(
-	    //         publicKey, Buffer.from(plaintext));
-	    //    return encrypted.toString("base64");
-	    // }
-
-	    // const encrypted = encryptString(eFirstName, "./public_key");
 	    console.log('First name is ' + eFirstName);
-
 	    const publicKey = fs.readFileSync('./public_key', 'utf8');
 	    const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
 	    const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
 	    const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
 	    const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
-	    // console.log("First name is: "+ encryptedFirst.toString("utf8"));
-
-	    // var privateKey = fs.readFileSync("./private_key", "utf8");
-	    // const decryptedFirst = crypto.privateDecrypt({
-	    //	key:privateKey,
-	    //	passphrase:'ccapprotection'
-	    //	}, encryptedFirst);
-	    // console.log("First name really is: " + decryptedFirst.toString("utf8"));
-
-
-	    // console.log("Encrypted first name");
-
-	    // console.log(encryptedFirst);
-
-	    // console.log("encrypted data: ", encryptedData.toString("base64"));
-
-
-	    // var encryptingKey = crypt.createCipher('aes-128-cbc', 'password_key');
-	    // var eFirstName = encryptingKey.update(eFirstName, 'utf8', 'hex');
-	    // eFirstName += encryptingKey.final('hex');
-
-	    // console.log("Encrypted");
-	    // console.log(eFirstName);
-
-	    // var deKey = crypt.createDecipher('aes-128-cbc', 'password_key');
-	    // var decrypted_str = deKey.update(eFirstName, 'hex', 'utf8');
-	    // decrypted_str += deKey.final('utf8');
-	    // console.log("Decrypted");
-	    // console.log(decrypted_str);
-
-
 	    const userData = {
 	      var1: encryptedFirst,
 	      var2: encryptedLast,
@@ -321,25 +263,11 @@ app.post('/', function(req, res) {
 	    console.log(userData);
 	    console.log('Stress');
 	    console.log(userData.var3);
-	    // console.log(bcrypt.compareSync("10", userData.var4));
 	    database.insert(userData);
-	    // console.log(JSON.stringify(post_body));
-	    // res.end(JSON.stringify(response));
-	    // console.log("Got a POST request for the homepage");
-  		// res.send('Hello POST');
   }
 });
 
 app.get('/about', function(req, res) {
   res.sendFile('/public/about_us.html', {root: __dirname});
 });
-
-
 app.listen(3000, () => console.log('listening at 3000'));
-
-
-/* function sayHello(name){
-    console.log("Hello " + name);
-}
-
-sayHello("Daniel");*/

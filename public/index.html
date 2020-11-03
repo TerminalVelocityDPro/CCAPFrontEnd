@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -13,24 +13,13 @@
     <style nonce="bubble">
 		.mainframe {
 			text-decoration: underline;
-
-
 		}
-
 		.speech-bubble {
 			position: relative;
 			background: #ff4d76;
 			border-radius: .4em;
-
-
 			opacity: 0;
-
-
-
-
-
 		}
-
 		.speech-bubble:after {
 			content: '';
 			position: absolute;
@@ -42,18 +31,11 @@
 			border-right-color: #ff4d76;
 			border-left: 0;
 			border-top: 0;
-
 			margin-top: -9.5px;
 			margin-left: -19px;
 			text-align:center;
 			vertical-align:middle;
-
-
-
-
 		}
-
-
 		.user-bubble {
 			position: relative;
 			background: #4dafff;
@@ -61,7 +43,6 @@
 			opacity: 0;
 
 		}
-
 		.user-bubble:after {
 			content: '';
 			position: absolute;
@@ -77,40 +58,26 @@
 			margin-right: -19px;
 			text-align:center;
 			vertical-align:middle;
-
-
-}
+		}
     </style>
-
-
-
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style nonce="body">
     body{
-    	background-image: url("https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png");
-    	background-position: center;
+    	background-image: url("background.png");
+    	background-position: top;
     	background-repeat: no-repeat;
     	background-attachment: fixed;
-    	background-size: 95%;
+    	background-size: 100%;
     }
-
-
-
-
-
-
     </style>
-
-
     <title>CCAP</title>
   </head>
-  <body class="bg-light">
-
-
-
+  <body class="bg-white">
   <nav class="navbar navbar-light bg-white shadow border-bottom border-danger rounded-bottom sticky-top col-12">
-    <a class="navbar-brand" href="#">CCAP</a>
+    <a class="navbar-brand" href="">
+    <img src="taskbar logo.jpg" width="75" height="40" alt=""></alt>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -142,7 +109,7 @@
 	    </div>
 	    <div class="row">
 	    	<div class = "col-1" style="height:40px"></div>
-			<div class = "col-4 speech-bubble" style="">Welcome!</div>
+			<div class = "col-4 speech-bubble" style="">Welcome to CCAP!</div>
 			<div class = "col-3" style="height:40px"></div>
 			<div class = "col-2" style="height:40px"></div>
 	    </div>
@@ -151,8 +118,8 @@
 	    </div>
 	    <div class="row">
 	    	<div class = "col-1" style="height:40px"></div>
-			<div class = "col-4 speech-bubble" style="">This is the CCAP survey.</div>
-			<div class = "col-2" style="height:40px"></div>
+			<div class = "col-6 speech-bubble" style="">This light section is a survey. The dark section is a place where you can access COVID-19 information.</div>
+
 			<div class = "col-3" style="height:40px"></div>
 	    </div>
 	    <div class="row">
