@@ -12,7 +12,8 @@ CCAP's purpose is to recommend resources tailored to the specific needs of stude
 <br /> 
 There was desire for the user interface of CCAP to distinct itself from the mundane and gloomy style of a "Google Form". 
 <br />
-Taking inspiration from mobile apps like K Health, CCAP was developed with the thought of creating an engaging and interactive survey via a social messaging style survey. <br />
+Taking inspiration from mobile apps like K Health, CCAP was developed with the thought of creating an engaging and interactive survey via a social messaging style survey. 
+<br /><br />
 
 *Below is a picture of the style of which the CCAP survey would be based on*
 ![Image](https://khealth.ai/wp-content/uploads/2020/10/nasal-header.png)
