@@ -29,6 +29,7 @@ const apiLimiter = new RateLimit({
 
 // only apply to requests that begin with /user/
 app.use(apiLimiter);
+//app.use(express.static(__dirname + '/public/Imgs'));
 
 //app.use(function(err, req, res, next) {
 //    res.status(err.status || 500);
@@ -325,12 +326,12 @@ app.post('/', function(req, res) {
 	    //const eStress = escapeHTML(post_body.stress);
 	    //const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
 	    //console.log('First name is ' + eFirstName);
-	    
+
 	    //const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
 	    //const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
 	    //const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
 	    //const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
-	    
+
 	    console.log(userData);
 	    //console.log('Stress');
 	    //console.log(userData.var3);
