@@ -10,7 +10,7 @@ CCAP's purpose is to recommend resources tailored to the specific needs of stude
 
 ## User Interface
 >   We don't need another Google Form - Deepro Pasha
-<br /><br />
+<br />
 There was desire for the user interface of CCAP to distinct itself from the mundane and gloomy style of a "Google Form". 
 <br />
 Taking inspiration from mobile apps like K Health, CCAP was developed with the thought of creating an engaging and interactive survey. <br /> The User Interface was designed with a user's perspective mind, and a social messaging-like style of survey was adopted. 
