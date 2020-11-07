@@ -10,7 +10,7 @@ CCAP's purpose is to recommend resources tailored to the specific needs of stude
 
 ## User Interface
 >   We don't need another Google Form 
-- Deepro Pasha
+-Deepro Pasha
 <br />
 There was desire for the user interface of CCAP to distinct itself from the mundane and gloomy style of a "Google Form". 
 <br />
