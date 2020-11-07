@@ -16,7 +16,7 @@ const fs = require('fs');
 const RateLimit = require('express-rate-limit');
 const options = {
   inflate: true,
-  limit: 100, //yay it's working
+  limit: 10000000000, //yay it's working
 
 };
 app.use(bodyParser.json(options));
@@ -30,13 +30,13 @@ const apiLimiter = new RateLimit({
 // only apply to requests that begin with /user/
 app.use(apiLimiter);
 
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+//app.use(function(err, req, res, next) {
+//    res.status(err.status || 500);
+//    res.render('error', {
+//        message: err.message,
+//        error: {}
+//    });
+//});
 
 //app.use(helmet());
 //app.use(helmet.dnsPrefetchControl());
@@ -53,6 +53,19 @@ app.use(function(err, req, res, next) {
       //upgradeInsecureRequests: [],
     //},
   //})
+//);
+
+
+//app.use(
+ // helmet.contentSecurityPolicy({
+ //   directives: {
+//      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
+//      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//      imgSrc: ["'self'", "data:", 'public/background.png'],
+//      upgradeInsecureRequests: [],
+//    },
+//  })
 //);
 
 
@@ -143,17 +156,17 @@ database.loadDatabase();
 
 
 // Querying Database based on stress levels
-database.find({$not: {stress: '1'}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress hashes :' + docs);
-  const stressLevel = docs[0].var4;
+//database.find({$not: {stress: '1'}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress hashes :' + docs);
+//  const stressLevel = docs[0].var4;
   // console.log(bcrypt.compareSync('10', stressLevel));
-  console.log(docs[0].var4);
-  console.log(bcrypt.compareSync('10', stressLevel));
-  console.log(docs[0].var4);
+//  console.log(docs[0].var4);
+//  console.log(bcrypt.compareSync('10', stressLevel));
+//  console.log(docs[0].var4);
   //
   // const decryptedFirst = crypto.privateDecrypt(
   //		{
@@ -166,37 +179,37 @@ database.find({$not: {stress: '1'}}, (err, docs) => {
 
   //	console.log("decrypted data: ", decryptedFirst.toString());
   //
-});
+//});
 
 
-database.find({stress: '10'}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 10 :' + docs);
-});
-database.find({stress: {$in: ['7', '8', '9']}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 7 to 9 :' + docs);
-});
-database.find({stress: {$in: ['4', '5', '6']}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 4 to 6 :' + docs);
-});
-database.find({stress: {$in: ['1', '2', '3']}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 1 to 3 :' + docs);
-});
+//database.find({stress: '10'}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 10 :' + docs);
+//});
+//database.find({stress: {$in: ['7', '8', '9']}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 7 to 9 :' + docs);
+//});
+//database.find({stress: {$in: ['4', '5', '6']}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 4 to 6 :' + docs);
+//});
+//database.find({stress: {$in: ['1', '2', '3']}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 1 to 3 :' + docs);
+//});
 
 const transporter = nodemailer.createTransport({
   name: 'ethereal.email',
@@ -223,18 +236,20 @@ transporter.sendMail(mailOptions, function(error, info) {
   }
 });
 app.use(express.static('public'));
-app.use(express.json({limit: '1 mb'}));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+//sapp.use(express.json({limit: '5 mb'}));
+//app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
 app.use('/', router);
+//app.use(bodyParser.json({ limit: '1000000000000mb' }));
+//app.use(bodyParser.urlencoded({ extended: true, limit: '1000000000000mb' }));
 app.post('/', function(req, res) {
-  const schema = Joi.object().keys({
-    firstName: Joi.string().alphanum().required(),
-    lastName: Joi.string().alphanum().required(),
-    id: Joi.number().integer().required(),
-    stress: Joi.number().integer().min(0).max(10).required()
-  });
-  const {error,value} = schema.validate(req.body);
+  //const schema = Joi.object().keys({
+  //  firstName: Joi.string().alphanum().required(),
+  //  lastName: Joi.string().alphanum().required(),
+  //  id: Joi.number().integer().required(),
+  //  stress: Joi.number().integer().min(0).max(10).required()
+  //});
+  //const {error,value} = schema.validate(req.body);
   //console.log(error);
   if(typeof(error) != "undefined"){
 	  console.log("WHOOP");
@@ -243,26 +258,82 @@ app.post('/', function(req, res) {
 	  const post_body = (req.body);
 	    res.send(post_body);
 	    console.log(post_body);
-	    const eFirstName = escapeHTML(post_body.firstName);
-	    const eLastName = escapeHTML(post_body.lastName);
-	    const eID = escapeHTML(post_body.id);
-	    const eStress = escapeHTML(post_body.stress);
-	    const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
-	    console.log('First name is ' + eFirstName);
-	    const publicKey = fs.readFileSync('./public_key', 'utf8');
-	    const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
-	    const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
-	    const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
-	    const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
-	    const userData = {
-	      var1: encryptedFirst,
-	      var2: encryptedLast,
-	      var3: encryptedID,
-	      var4: encryptedStressHash,
+        const publicKey = fs.readFileSync('./public_key', 'utf8');
+        const eFirstName = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.firstNameAns)));
+        const eLastName = crypto.publicEncrypt(publicKey,Buffer.from(escapeHTML(post_body.lastNameAns)) );
+        const eID = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.idAns)));
+        const eStress = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.stressAns)));
+        const eStruggle = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.struggleAns)));
+        const eCovid = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.covidAns)));
+        const eFamily = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.familyAns)) );
+        const eFriend = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.friendAns)) );
+        const eSchool = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.schoolAns)));
+        const eInterestProtect =crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.interestProtectAns))) ;
+        const eHouseholdClean = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.householdCleanAns)));
+        const eStats = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.statsAns)));
+        const eCSI = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.csiAns)));
+        const ePeer = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.peerAns)));
+        const eSocialHelp = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.socialHelpAns)));
+        const eTechSupport = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.techSupportAns)));
+        const eTutor = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.tutorAns)));
+        const eDistance = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.distanceFocusAns)));
+        const eStressHash =bcrypt.hashSync(eStress.toString(), 10);
+        const eStruggleHash =bcrypt.hashSync(eStruggle.toString(), 10);
+        const eCovidHash =bcrypt.hashSync(eCovid.toString(), 10);
+        const eFamilyHash =bcrypt.hashSync(eFamily.toString(), 10);
+        const eFriendHash =bcrypt.hashSync(eFriend.toString(), 10);
+        const eSchoolHash =bcrypt.hashSync(eSchool.toString(), 10);
+        const eInterestProtectHash =bcrypt.hashSync(eInterestProtect.toString(), 10);
+        const eHouseholdCleanHash =bcrypt.hashSync(eHouseholdClean.toString(), 10);
+        const eStatsHash =bcrypt.hashSync(eStats.toString(), 10);
+        const eCSIHash =bcrypt.hashSync(eCSI.toString(), 10);
+        const ePeerHash =bcrypt.hashSync(ePeer.toString(), 10);
+        const eSocialHelpHash =bcrypt.hashSync(eSocialHelp.toString(), 10);
+        const eTechSupportHash =bcrypt.hashSync(eTechSupport.toString(), 10);
+        const eTutorHash =bcrypt.hashSync(eTutor.toString(), 10);
+        const eDistanceHash =bcrypt.hashSync(eDistance.toString(), 10);
+        const userData = {
+	      var1: eFirstName,
+	      var2: eLastName,
+	      var3: eID,
+	      var4: eStressHash,
+          var5: eStruggleHash,
+          var6: eCovidHash,
+          var7: eFamilyHash,
+          var8: eFriendHash,
+          var9: eSchoolHash,
+          var10: eInterestProtectHash,
+          var11: eHouseholdCleanHash,
+          var12: eStatsHash,
+          var13: eCSIHash,
+          var14: ePeerHash,
+          var15: eSocialHelpHash,
+          var16: eTechSupportHash,
+          var17: eTutorHash,
+          var18: eDistanceHash
 	    };
+
+
+
+
+
+
+
+	    //const eFirstName = escapeHTML(post_body.firstName);
+	    //const eLastName = escapeHTML(post_body.lastName);
+	    //const eID = escapeHTML(post_body.id);
+	    //const eStress = escapeHTML(post_body.stress);
+	    //const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
+	    //console.log('First name is ' + eFirstName);
+	    
+	    //const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
+	    //const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
+	    //const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
+	    //const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
+	    
 	    console.log(userData);
-	    console.log('Stress');
-	    console.log(userData.var3);
+	    //console.log('Stress');
+	    //console.log(userData.var3);
 	    database.insert(userData);
   }
 });

@@ -51,6 +51,65 @@ var thirteenthResource = "<div class = 'col-1' style='height:40px'></div> <div c
 var fourteenthResource= "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 speech-bubble' style=''>Here is a hyperlink to contact <a href='https://google.com' target='_blank'>CUSD Tech Support.</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var fifteenthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 speech-bubble' style=''>Here is a hyperlink to get <a href='https://google.com' target='_blank'>tutoring.</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var sixteenthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 speech-bubble' style=''>Here is a hyperlink to learn about <a href='https://google.com' target='_blank'>distance focusing</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
+var generalTips = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 speech-bubble' style=''>Here is a hyperlink to learn about some <a href='https://google.com' target='_blank'>general tips for coping with stress.</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
+
+var firstName;
+var lastName;
+var id;
+var stress;
+var struggle;
+var covid;
+var family;
+var friend;
+var school;
+var interestProtect;
+var householdClean;
+var stats;
+var csi;
+var trans;
+var peer;
+var socialHelp;
+var techSupport;
+var tutor;
+var distanceFocus;
+
+
+
+function postingMethod(){
+	axios({
+  method: 'post',
+  url: '/',
+  data: {
+      firstNameAns: firstName,
+      lastNameAns: lastName,
+      idAns: id,
+      stressAns: stress,
+	  struggleAns: struggle,
+	  covidAns: covid,
+	  familyAns: family,
+	  friendAns: friend,
+	  schoolAns: school,
+	  interestProtectAns: interestProtect,
+	  householdCleanAns: householdClean,
+	  statsAns: stats,
+	  csiAns: csi,
+	  transAns: trans,
+	  peerAns: peer,
+	  socialHelpAns: socialHelp,
+	  techSupportAns: techSupport,
+	  tutorAns: tutor,
+	  distanceFocusAns: distanceFocus  
+  }
+});
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -143,89 +202,114 @@ function appendNo(num){
 
 function appendLast(num){
 	ques2.push(num);
+	interestProtect = "nothing";
+	householdClean = "nothing";
+	stats = "nothing";
+	csi = "nothing";
+	transition = "nothing";
+	peer = "nothing";
+	socialHelp = "nothing";
+	techSupport = "nothing";
+	tutor = "nothing";
+	distanceFocus = "nothing";
 	if(num == 71){
-		
+		interestProtect = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(seventhResource);
 		appendStuff();
 	}
 	if(num == 72){
+		interestProtect = "No";
 		appendStuff();
 	}
 	if(num == 81){
+		householdClean = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eighthResource);
 		appendStuff();
 	}
 	if(num == 82){
-		
+		householdClean = "No";
 		appendStuff();
 	}
 	if(num == 91){
+		stats = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(ninthResource);
 		appendStuff();
 	}
 	if(num == 92){
-		
+		stats = "No";
 		appendStuff();
 	}
 	if(num == 101){
+		csi = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(tenthResource);
 		appendStuff();
 	}
 	if(num == 102){
-		
+		csi = "No";
 		appendStuff();
 	}
 	if(num == 111){	
+		trans = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eleventhResource);
 		appendStuff();
 	}
 	if(num == 112){
-		
+		trans = "No";
 		appendStuff();
 	}
 	if(num == 121){
+		peer = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(twelfthResource);
 		appendStuff();
 	}
 	if(num == 122){
+		peer = "No";
 		appendStuff();
 	}
 	if(num == 131){
+		socialHelp = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thirteenthResource);
 		appendStuff();
 	}
 	if(num == 132){
+		socialHelp = "No";
 		appendStuff();
 	}
 	if(num == 141){
+		techSupport = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(fourteenthResource);
 		appendStuff();
 	}
 	if(num == 142){
+		techSupport = "No";
 		appendStuff();
 	}
 	if(num == 151){
+		tutor = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(fifteenthResource);
 		appendStuff();
 	}
 	if(num == 152){
+		tutor = "No";
 		appendStuff();
 	}
 	if(num == 161){
+		distanceFocus = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(sixteenthResource);
 		appendStuff();
 	}
 	if(num == 162){
+		distanceFocus = "No";
 		appendStuff();
 	}
 	
@@ -267,8 +351,11 @@ function appendStuff(num){
 	if(ques.length == 2){
 		//get names and id
 		var input = document.getElementById("idInput").value;
+		id = input;
 		var firstNameInput = document.getElementById("firstNameInput").value;
+		firstName = firstNameInput;
 		var lastNameInput = document.getElementById("lastNameInput").value;
+		lastName = lastNameInput;
 		console.log(firstNameInput);
 		console.log(lastNameInput);
 		console.log(input);
@@ -288,6 +375,7 @@ function appendStuff(num){
 	}
 
 	if(ques.length == 3){
+		stress = ques[2];
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(stressGenResponse);
 		if(ques[2] == 1 || ques[2] == 2){
@@ -317,6 +405,7 @@ function appendStuff(num){
 	}
 
 	if(ques.length == 4){
+		struggle = ques[3];
 		if(ques[3] == 0){
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -353,15 +442,36 @@ function appendStuff(num){
 		    d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
-			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html();
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(generalTips);
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+			covid = "nothing";
+			family = "nothing";
+			friend = "nothing";
+			school = "nothing";
+			interestProtect = "nothing";
+			householdClean = "nothing";
+			stats = "nothing";
+			csi = "nothing";
+			transition = "nothing";
+			peer = "nothing";
+			socialHelp = "nothing";
+			techSupport = "nothing";
+			tutor = "nothing";
+			distanceFocus = "nothing";
+			postingMethod();
 		}
 	}
 
 	if(ques.length > 4){
 		if(ques[3] == 0){
 			console.log("COVID-19 QUESTIONS");
+			family = "nothing";
+			friend = "nothing";
+			school = "nothing";
 			if((ques.length) == 8){
 				if(ques2.length == 0){
+					covid = "0123";
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
@@ -397,6 +507,7 @@ function appendStuff(num){
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+					postingMethod();
 				}
 			}
 			if(ques.length == 7){
@@ -419,6 +530,7 @@ function appendStuff(num){
 					}	
 				}
 				if(!flag0){
+					covid = "123";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -447,9 +559,11 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				if(!flag1){
+					covid = "023";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -478,9 +592,11 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				if(!flag2){
+					covid = "013";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -509,10 +625,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
 				if(!flag3){
+					covid = "012";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -541,6 +659,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
@@ -565,6 +684,7 @@ function appendStuff(num){
 					}	
 				}
 				if(!flag0 && !flag1){
+					covid = "23";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -585,10 +705,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
 				if(!flag0 && !flag2){
+					covid = "13";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -609,10 +731,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
 				if(!flag0 && !flag3){
+					covid = "12";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -633,10 +757,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
 				if(!flag1 && !flag2){
+					covid = "03";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -657,10 +783,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
 				if(!flag1 && !flag3){
+					covid = "02";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -681,10 +809,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				
 				}
 				if(!flag2 && !flag3){
+					covid = "01";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -705,6 +835,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -728,6 +859,7 @@ function appendStuff(num){
 					}	
 				}
 				if(flag0){
+					covid = "0";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -740,9 +872,11 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				if(flag1){
+					covid = "1";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -755,9 +889,11 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				if(flag2){
+					covid = "2";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -770,9 +906,11 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				if(flag3){
+					covid = "3";
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -785,13 +923,18 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
 		}
 		if(ques[3] == 1){
+			covid = "nothing";
+			friend = "nothing";
+			school = "nothing";
 			console.log("FAMILY QUESTIONS");
 			if((ques.length) == 8){
+				family = "0123";
 				if(ques2.length == 0){
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -813,9 +956,40 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 			}
 			if(ques.length == 7){
+				var flag0 = false;
+				var flag1 = false;
+				var flag2 = false;
+				var flag3 = false;
+				for(i = 4; i < 5; i++){
+					if(ques[i] == 0){
+						flag0 = true;
+					}
+					if(ques[i] == 1){
+						flag1 = true;
+					}
+					if(ques[i] == 2){
+						flag2 = true;
+					}
+					if(ques[i] == 3){
+						flag3 = true;
+					}	
+				}
+				if(!flag0){
+					family = "123";
+				}
+				if(!flag1){
+					family = "023";
+				}
+				if(!flag2){
+					family = "013";
+				}
+				if(!flag3){
+					family = "012";
+				}
 				if(ques2.length == 0){
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -836,6 +1010,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 			}
 			if(ques.length == 6){
@@ -857,6 +1032,24 @@ function appendStuff(num){
 						flag3 = true;
 					}	
 				}
+				if(!flag0 && !flag1){
+					family = "23";
+				}
+				else if(!flag0 && !flag2){
+					family = "13";
+				}
+				else if(!flag0 && !flag3){
+					family = "12";
+				}
+				else if(!flag1 && !flag2){
+					family = "03";
+				}
+				else if(!flag1 && !flag3){
+					family = "02";
+				}
+				else{
+					family = "01";
+				}
 				if((!flag0 && !flag2)){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
@@ -865,6 +1058,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eleventhQuestionText);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eleventhQuestionChoices);
+					}else{
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}	
 				}else if(!flag1 && !flag3){
 					if(ques2.length == 0){
@@ -874,6 +1073,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(twelfthQuestionText);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(twelfthQuestionChoices);
+					}else{
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else{
 					if(ques2.length == 0){
@@ -891,6 +1096,12 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eleventhQuestionText);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eleventhQuestionChoices);
+					}else{
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
+						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -913,6 +1124,18 @@ function appendStuff(num){
 						flag3 = true;
 					}	
 				}
+				if(flag0){
+					family = "0";
+				}
+				if(flag1){
+					family = "1";
+				}
+				if(flag2){
+					family = "2";
+				}
+				if(flag3){
+					family = "3";
+				}
 				if(flag0 || flag2){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
@@ -926,6 +1149,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else{
 					if(ques2.length == 0){
@@ -940,13 +1164,18 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
 		}
 		if(ques[3] == 2){
+			covid = "nothing";
+			family = "nothing";
+			school = "nothing";
 			console.log("FRIENDS QUESTIONS");
 			if((ques.length) == 8){
+				friend = "0123";
 				if(ques2.length == 0){
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -975,6 +1204,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 			}
 			if(ques.length == 7){
@@ -997,6 +1227,22 @@ function appendStuff(num){
 					}	
 				}
 				if(!flag0){
+					friend = "123";
+				}
+				if(!flag1){
+					friend = "023";
+				}
+				if(!flag2){
+					friend = "013";
+				}
+				if(!flag3){
+					friend = "012";
+				}
+
+
+
+
+				if(!flag0){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -1017,6 +1263,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				else if(!flag2){
@@ -1040,6 +1287,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else{
 					if(ques2.length == 0){
@@ -1070,6 +1318,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -1092,6 +1341,29 @@ function appendStuff(num){
 						flag3 = true;
 					}	
 				}
+				if(!flag0 && !flag1){
+					friend = "23";
+				}
+				else if(!flag0 && !flag2){
+					friend = "13";
+				}
+				else if(!flag0 && !flag3){
+					friend = "12";
+				}
+				else if(!flag1 && !flag2){
+					friend = "03";
+				}
+				else if(!flag1 && !flag3){
+					friend = "02";
+				}
+				else{
+					friend = "01";
+				}
+
+
+
+
+
 				if(!flag1 && !flag3){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
@@ -1113,6 +1385,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 				else if(!flag0 && !flag2){
@@ -1128,6 +1401,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if((!flag0 && !flag1) || (!flag0 && !flag3)){
 					if(ques2.length == 0){
@@ -1150,6 +1424,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if((!flag1 && flag2) || (!flag2 && !flag3)){
 					if(ques2.length == 0){
@@ -1172,6 +1447,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -1195,6 +1471,24 @@ function appendStuff(num){
 					}	
 				}
 				if(flag0){
+					friend = "0";
+				}
+				if(flag1){
+					friend = "1";
+				}
+				if(flag2){
+					friend = "2";
+				}
+				if(flag3){
+					friend = "3";
+				}
+
+
+
+
+
+
+				if(flag0){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -1208,6 +1502,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if(flag2){
 					if(ques2.length == 0){
@@ -1222,6 +1517,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else{
 					if(ques2.length == 0){
@@ -1236,13 +1532,18 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
 		}
 		if(ques[3] == 3){
+			covid = "nothing";
+			friend = "nothing";
+			family = "nothing";
 			console.log("ONLINE SCHOOL QUESTIONS");
 			if((ques.length) == 8){
+				school = "0123";
 				if(ques2.length == 0){
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 					d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -1271,6 +1572,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 			}
 			if(ques.length == 7){
@@ -1293,6 +1595,24 @@ function appendStuff(num){
 					}	
 				}
 				if(!flag0){
+					school = "123";
+				}
+				if(!flag1){
+					school = "023";
+				}
+				if(!flag2){
+					school = "013";
+				}
+				if(!flag3){
+					school = "012";
+				}
+
+
+
+
+
+
+				if(!flag0){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -1313,6 +1633,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if(!flag3){
 					if(ques2.length == 0){
@@ -1335,6 +1656,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else{
 					if(ques2.length == 0){
@@ -1365,6 +1687,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -1387,6 +1710,25 @@ function appendStuff(num){
 						flag3 = true;
 					}	
 				}
+				if(!flag0 && !flag1){
+					school = "23";
+				}
+				else if(!flag0 && !flag2){
+					school = "13";
+				}
+				else if(!flag0 && !flag3){
+					school = "12";
+				}
+				else if(!flag1 && !flag2){
+					school = "03";
+				}
+				else if(!flag1 && !flag3){
+					school = "02";
+				}
+				else{
+					school = "01";
+				}
+
 				if(!flag1 && !flag2){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
@@ -1408,6 +1750,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if(!flag0 && !flag3){
 					if(ques2.length == 0){
@@ -1422,6 +1765,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if((!flag0 && !flag1) || (!flag0 && !flag2)){
 					if(ques2.length == 0){
@@ -1444,6 +1788,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if((!flag1 && !flag3) || (!flag2 && !flag3)){
 					if(ques2.length == 0){
@@ -1466,6 +1811,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -1489,6 +1835,25 @@ function appendStuff(num){
 					}	
 				}
 				if(flag0){
+					school = "0";
+				}
+				if(flag1){
+					school = "1";
+				}
+				if(flag2){
+					school = "2";
+				}
+				if(flag3){
+					school = "3";
+				
+				}
+
+
+
+
+
+
+				if(flag0){
 					if(ques2.length == 0){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
@@ -1501,6 +1866,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else if(flag3){
 					if(ques2.length == 0){
@@ -1515,6 +1881,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}else{
 					if(ques2.length == 0){
@@ -1529,6 +1896,7 @@ function appendStuff(num){
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 						d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(endingText);
+						postingMethod();
 					}
 				}
 			}
@@ -1565,5 +1933,6 @@ smooth_scroll_to(element, (element.scrollHeight - element.clientHeight), 3000);
 
 
 }
+
 
 
