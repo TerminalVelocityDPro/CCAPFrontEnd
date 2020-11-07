@@ -11,5 +11,5 @@ There was desire for the user interface of CCAP to distinct itself from the mund
 Taking inspiration from mobile apps like K Health, CCAP was developed with the thought of creating an engaging and interactive survey via a social messaging style survey. <br />
 
 *Below is a picture of the style of which the CCAP survey would be based on*
-![Image](https://khealth.ai/wp-content/uploads/2020/10/nasal-header.png =100x100)
+![Image](https://khealth.ai/wp-content/uploads/2020/10/nasal-header.png)
 <br />
