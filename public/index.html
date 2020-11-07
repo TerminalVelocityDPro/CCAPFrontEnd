@@ -8,9 +8,71 @@
 	<meta name="HandheldFriendly" content="true">
 
     <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" type="text/css" href="style_bubble.css"  />-->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <style nonce="bubble">
+        @keyframes spin{
+            100%{
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes antispin{
+            100%{
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+
+        .pep{
+            position: fixed;
+            display: block;
+            margin-left: 27.5%;
+            margin-right: 27.5%;
+            margin-top: 4%;
+            margin-bottom: -4%;
+            z-index: -3;
+            width: 45%;
+        }
+        .ring {
+            position: fixed;
+            display: block;
+            margin-left: 27.5%;
+            margin-right: 27.5%;
+            margin-top: 4%;
+            margin-bottom: -4%;
+            z-index: -2;
+            width: 45%;
+            animation: spin 60s infinite;
+        }
+
+        .o_ring{
+            position: fixed;
+            display: block;
+            margin-left: 27.5%;
+            margin-right: 27.5%;
+            margin-top: 4%;
+            margin-bottom: -4%;
+            width: 45%;
+            z-index: -1;
+            animation: antispin 60s infinite;
+        }
+
+        .o1_ring{
+            position: fixed;
+            display: block;
+            margin-left: 15.25%;
+            margin-right: 15.25%;
+            margin-top: -8%;
+            margin-bottom: -16%;
+            width: 70%;
+            z-index: -1;
+            animation: spin 60s infinite;
+
+        }
+
+
+
 		.mainframe {
 			text-decoration: underline;
 		}
@@ -20,29 +82,29 @@
 			border-radius: .4em;
 			opacity: 0;
 		}
-		.speech-bubble:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 50%;
-			width: 0;
-			height: 0;
-			border: 19px solid transparent;
-			border-right-color: #ff4d76;
-			border-left: 0;
-			border-top: 0;
-			margin-top: -9.5px;
-			margin-left: -19px;
-			text-align:center;
-			vertical-align:middle;
-		}
-		.user-bubble {
-			position: relative;
-			background: #4dafff;
-			border-radius: .4em;
-			opacity: 0;
+            .speech-bubble:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 0;
+                height: 0;
+                border: 19px solid transparent;
+                border-right-color: #ff4d76;
+                border-left: 0;
+                border-top: 0;
+                margin-top: -9.5px;
+                margin-left: -19px;
+                text-align: center;
+                vertical-align: middle;
+            }
 
-		}
+        .user-bubble {
+            position: relative;
+            background: #4dafff;
+            border-radius: .4em;
+            opacity: 0;
+        }
 		.user-bubble:after {
 			content: '';
 			position: absolute;
@@ -63,187 +125,115 @@
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style nonce="body">
-    body{
-    	background-image: url("background.png");
-    	background-position: top;
-    	background-repeat: no-repeat;
-    	background-attachment: fixed;
-    	background-size: 100%;
-    }
+    
     </style>
     <title>CCAP</title>
   </head>
   <body class="bg-white">
-  <nav class="navbar navbar-light bg-white shadow border-bottom border-danger rounded-bottom sticky-top col-12">
-    <a class="navbar-brand" href="">
-    <img src="taskbar logo.jpg" width="75" height="40" alt=""></alt>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/about/">About Us</a>
-        </li>
-      </ul>
-    </div>
-</nav>
-
-    <div class="container" id = "mainContainer">
-      <div class="row">
-      	<div class="col-12" id="no1" style="height:20px">
-      	</div>
-      </div>
-      <div class="container", id="secondaryContainer">
-	  <div class="row" id = "rowContainingSurveyInfoButtons">
-	    <div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-white text-white rounded" id="survey" style="height: 550px;opacity:0.95;">
-	    <div class="row">
-			<div class = "col-12 bg-white" style = "height:10px"></div>
-	    </div>
-	    <div class="row">
-	    	<div class = "col-12 bg-white" style = "height:15px"></div>
-	    </div>
-	    <div class="row">
-	    	<div class = "col-1" style="height:40px"></div>
-			<div class = "col-4 speech-bubble" style="">Welcome to CCAP!</div>
-			<div class = "col-3" style="height:40px"></div>
-			<div class = "col-2" style="height:40px"></div>
-	    </div>
-	    <div class="row">
-			    	<div class = "col-12 bg-white" style = "height:10px"></div>
-	    </div>
-	    <div class="row">
-	    	<div class = "col-1" style="height:40px"></div>
-			<div class = "col-6 speech-bubble" style="">This light section is a survey. The dark section is a place where you can access COVID-19 information.</div>
-
-			<div class = "col-3" style="height:40px"></div>
-	    </div>
-	    <div class="row">
-			<div class = "col-12 bg-white" style = "height:10px"></div>
-	    </div>
-	    <div class="row">
-	    	<div class = "col-1" style="height:40px"></div>
-			<div class = "col-4 speech-bubble" style="">Would you like to begin?</div>
-			<div class = "col-2" style="height:40px"></div>
-			<div class = "col-3" style="height:40px"></div>
-	    </div>
-	    <div class="row">
-			    	<div class = "col-12 bg-white" style = "height:10px"></div>
-	    </div>
-
-		<!--Yes/No Buttons-->
-		<div class="row" id="answerChoicesDiv">
-			<div class = "col-3" style="height:40px"></div>
-			<div class = "col-5" style="height:40px"></div>
-			<div class = "col-3 user-bubble" style="" id="bubbleAnswer">
-			<div class="row">
-					<div class = "col-12" style = "height:5px"></div>
-	    	</div>
-	    	<button class= "btn btn-light" id="yesButton" onclick="appendStuff(0)">Yes</button>
-	    	<div class="row">
-											<div class = "col-12" style = "height:5px"></div>
-	    	</div>
-			<button class= "btn btn-light" id="noButton" onclick="appendStuff(1)">No</button>
-			<div class="row">
-								<div class = "col-12" style = "height:5px"></div>
-	    	</div>
-			</div>
-			<div class = "col-1" style="height:40px"></div>
-		</div>
-
-		<!--Script to listen if buttons are pressed-->
-		<script>
-		//document.getElementById('bubbleCheckBox').addEventListener('click', event => {
-
-		//});
-		</script>
-
-	    <div class="row">
-			<div class = "col-12 bg-white" style = "height:10px"></div>
-	    </div>
-	    </div>
-
-	    <div class = "col-lg-0"></div>
+  	<img class="pep" src="Imgs/Wo_ring.png" alt="people">
+  	<img class="ring" src="Imgs/straight.png" alt="main ring">
+  	<img class="o_ring" src="Imgs/triple.png" alt="outer details">
+  	<img class="o1_ring" src="Imgs/triple.png" alt="outer1 details">
 
 
 
 
 
 
+  	<nav class="navbar navbar-light bg-white shadow border-bottom border-danger rounded-bottom sticky-top col-12">
+  		<a class="navbar-brand" href="">
+  			<img src="taskbar logo.jpg" width="75" height="40" alt=""></alt>
+  		</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  			<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  			<ul class="navbar-nav mr-auto">
+  				<li class="nav-item active">
+  					<a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+  				</li>
+  				<li class="nav-item active">
+  					<a class="nav-link" href="/about/">About Us</a>
+  				</li>
+  			</ul>
+  		</div>
+  	</nav>
 
+  	<div class="container" id="mainContainer">
+  		<div class="row">
+  			<div class="col-12" id="no1" style="height:20px">
+  			</div>
+  		</div>
+  		<div class="container" , id="secondaryContainer">
+  			<div class="row" id="rowContainingSurveyInfoButtons">
+  				<div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-white text-white rounded" id="survey" style="height: 550px;opacity:0.95;">
+  					<div class="row">
+  						<div class="col-12 bg-white" style="height:10px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-12 bg-white" style="height:15px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-1" style="height:40px"></div>
+  						<div class="col-4 speech-bubble" style="">Welcome to CCAP!</div>
+  						<div class="col-3" style="height:40px"></div>
+  						<div class="col-2" style="height:40px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-12 bg-white" style="height:10px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-1" style="height:40px"></div>
+  						<div class="col-6 speech-bubble" style="">This light section is a survey. The dark section is a place where you can access COVID-19 information.</div>
 
+  						<div class="col-3" style="height:40px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-12 bg-white" style="height:10px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-1" style="height:40px"></div>
+  						<div class="col-4 speech-bubble" style="">Would you like to begin?</div>
+  						<div class="col-2" style="height:40px"></div>
+  						<div class="col-3" style="height:40px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-12 bg-white" style="height:10px"></div>
+  					</div>
 
-	    <div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-dark rounded text-light" style="height: 550px;opacity:0.95;">
+  					<!--Yes/No Buttons-->
+  					<div class="row" id="answerChoicesDiv">
+  						<div class="col-3" style="height:40px"></div>
+  						<div class="col-5" style="height:40px"></div>
+  						<div class="col-3 user-bubble" style="" id="bubbleAnswer">
+  							<div class="row">
+  								<div class="col-12" style="height:5px"></div>
+  							</div>
+  							<button class="btn btn-light" id="yesButton" onclick="appendStuff(0)">Yes</button>
+  							<div class="row">
+  								<div class="col-12" style="height:5px"></div>
+  							</div>
+  							<button class="btn btn-light" id="noButton" onclick="appendStuff(1)">No</button>
+  							<div class="row">
+  								<div class="col-12" style="height:5px"></div>
+  							</div>
+  						</div>
+  						<div class="col-1" style="height:40px"></div>
+  					</div>
 
-	    <div class="row">
-					<div class = "col-12 bg-dark" style = "height:10px"></div>
-			    </div>
-			    <div class="row">
-							    	<div class = "col-12 bg-dark" style = "height:40px">Information Page</div>
-	    </div>
+  					<!--Script to listen if buttons are pressed-->
+  					<script>
+						  //document.getElementById('bubbleCheckBox').addEventListener('click', event => {
 
-			    <div class="row">
-			    	<div class = "col-12 bg-dark" style = "height:15px"></div>
-	    </div>
-	    <div class="row">
-	    	<div class="col-6 container" style="height:150px">
-	    	<div class="row">
-				<div class="col-2"></div>
-				<a href='https://www.cdc.gov/coronavirus/2019-nCoV/index.html' class="col-8 btn btn-primary shadow border-light" style="height:120px" target="_blank">
-	    		CDC COVID
-	    		</a>
-	    		<div class="col-2"></div>
-	    	</div>
-	    	</div>
-	    	<div class="col-6 container" style="height:150px">
-	    	<div class="row">
-	    		<div class="col-2"></div>
-				<a href='https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html' class="col-8 btn btn-primary shadow border-light" style="height:120px" target="_blank">Symptoms</a>
-				<div class="col-2"></div>
-	    	</div>
-	    	</div>
-	    </div>
+						  //});
+  					</script>
 
-	    <div class="row">
-	    	<div class="col-6 container" style="height:150px">
-	    	<div class="row">
-				<div class="col-2"></div>
-				<a href='https://www.who.int/emergencies/diseases/novel-coronavirus-2019' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:120px">WHO COVID</a>
-				<div class="col-2"></div>
-	    	</div>
-	    	</div>
+  					<div class="row">
+  						<div class="col-12 bg-white" style="height:10px"></div>
+  					</div>
+  				</div>
 
-			<div class="col-6 container" style="height:150px">
-			<div class="row">
-				<div class="col-2"></div>
-				<a href='https://covid19.ca.gov' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:120px">CA. COVID</a>
-				<div class="col-2"></div>
-	    	</div>
-			</div>
-	    </div>
-	    <div class="row">
-	    	<div class="col-6 container" style="height:150px">
-	    	<div class="row">
-				<div class="col-2"></div>
-				<a class="col-8 btn btn-primary shadow border-light" style="height:140px">Suicide Prevention Hotline: <br/> 1-800-273-8255</a>
-				<div class="col-2"></div>
-	    	</div>
-	    	</div>
-
-			<div class="col-6 container" style="height:150px">
-			<div class="row">
-				<div class="col-2"></div>
-				<a class="col-8 btn btn-primary shadow border-light" style="height:140px">Youth <br/> Crisis <br/> Hotline: <br/> 1-800-448-4663</a>
-				<div class="col-2"></div>
-	    	</div>
-			</div>
-
-	    </div>
-	    </div>
+  				<div class="col-lg-0"></div>
 
 
 
@@ -253,37 +243,114 @@
 
 
 
+  				<div class="col-sm-12 col-lg-5 overflow-auto container border border-primary text-center bg-dark rounded text-light" style="height: 550px;opacity:0.95;">
+
+  					<div class="row">
+  						<div class="col-12 bg-dark" style="height:10px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-12 bg-dark" style="height:40px">Information Page</div>
+  					</div>
+
+  					<div class="row">
+  						<div class="col-12 bg-dark" style="height:15px"></div>
+  					</div>
+  					<div class="row">
+  						<div class="col-6 container" style="height:150px">
+  							<div class="row">
+  								<div class="col-2"></div>
+  								<a href='https://www.cdc.gov/coronavirus/2019-nCoV/index.html' class="col-8 btn btn-primary shadow border-light" style="height:120px" target="_blank">
+  									CDC COVID
+  								</a>
+  								<div class="col-2"></div>
+  							</div>
+  						</div>
+  						<div class="col-6 container" style="height:150px">
+  							<div class="row">
+  								<div class="col-2"></div>
+  								<a href='https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html' class="col-8 btn btn-primary shadow border-light" style="height:120px" target="_blank">Symptoms</a>
+  								<div class="col-2"></div>
+  							</div>
+  						</div>
+  					</div>
+
+  					<div class="row">
+  						<div class="col-6 container" style="height:150px">
+  							<div class="row">
+  								<div class="col-2"></div>
+  								<a href='https://www.who.int/emergencies/diseases/novel-coronavirus-2019' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:120px">WHO COVID</a>
+  								<div class="col-2"></div>
+  							</div>
+  						</div>
+
+  						<div class="col-6 container" style="height:150px">
+  							<div class="row">
+  								<div class="col-2"></div>
+  								<a href='https://covid19.ca.gov' target="_blank" class="col-8 btn btn-primary shadow border-light" style="height:120px">CA. COVID</a>
+  								<div class="col-2"></div>
+  							</div>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-6 container" style="height:150px">
+  							<div class="row">
+  								<div class="col-2"></div>
+  								<a class="col-8 btn btn-primary shadow border-light" style="height:140px">Suicide Prevention Hotline: <br /> 1-800-273-8255</a>
+  								<div class="col-2"></div>
+  							</div>
+  						</div>
+
+  						<div class="col-6 container" style="height:150px">
+  							<div class="row">
+  								<div class="col-2"></div>
+  								<a class="col-8 btn btn-primary shadow border-light" style="height:140px">Youth <br /> Crisis <br /> Hotline: <br /> 1-800-448-4663</a>
+  								<div class="col-2"></div>
+  							</div>
+  						</div>
+
+  					</div>
+  				</div>
 
 
 
-	    </div>
-
-	  </div>
-
-	</div>
-	<div class="row">
-
-		      	<div class="col-12 text-center text-justify" style="height:10px">
-		      	</div>
-
-     </div>
-	<div class="row">
-
-	      	<div class="col-12 text-center text-justify blockquote-footer" style=""> Clovis COVID-19 Awareness Program (CCAP) - please see the ABOUT US page for further info
-	      	</div>
-
-     </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="buttonTemp.js" nonce="buttonMoves"></script>
-    </script>
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+
+
+
+
+
+  			</div>
+
+  		</div>
+
+  	</div>
+  	<div class="row">
+
+  		<div class="col-12 text-center text-justify" style="height:10px">
+  		</div>
+
+  	</div>
+  	<div class="row">
+
+  		<div class="col-12 text-center text-justify blockquote-footer" style="">
+  			Clovis COVID-19 Awareness Program (CCAP) - please see the ABOUT US page for further info
+  		</div>
+
+  	</div>
+
+  	<!-- Optional JavaScript -->
+  	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  	<script type="text/javascript" src="buttonTemp.js" nonce="buttonMoves"></script>
+  	</script>
+
+
+
+
+  	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
   </body>
 </html>
