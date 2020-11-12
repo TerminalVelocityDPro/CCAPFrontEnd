@@ -31,13 +31,13 @@ const apiLimiter = new RateLimit({
 app.use(apiLimiter);
 //app.use(express.static(__dirname + '/public/Imgs'));
 
-//app.use(function(err, req, res, next) {
-//    res.status(err.status || 500);
-//    res.render('error', {
-//        message: err.message,
-//        error: {}
-//    });
-//});
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
 
 //app.use(helmet());
 //app.use(helmet.dnsPrefetchControl());
@@ -370,56 +370,54 @@ app.post('/', function(req, res) {
         const eFirstName = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.firstNameAns)));
         const eLastName = crypto.publicEncrypt(publicKey,Buffer.from(escapeHTML(post_body.lastNameAns)) );
         const eID = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.idAns)));
-        const eStress = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.stressAns)));
-        const eStruggle = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.struggleAns)));
-        const eCovid = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.covidAns)));
-        const eFamily = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.familyAns)) );
-        const eFriend = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.friendAns)) );
-        const eSchool = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.schoolAns)));
-        const eInterestProtect =crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.interestProtectAns))) ;
-        const eHouseholdClean = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.householdCleanAns)));
-        const eStats = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.statsAns)));
-        const eCSI = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.csiAns)));
-        const ePeer = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.peerAns)));
-        const eSocialHelp = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.socialHelpAns)));
-        const eTechSupport = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.techSupportAns)));
-        const eTutor = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.tutorAns)));
-        const eDistance = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.distanceFocusAns)));
-        const eStressHash =bcrypt.hashSync(eStress.toString(), 10);
-        const eStruggleHash =bcrypt.hashSync(eStruggle.toString(), 10);
-        const eCovidHash =bcrypt.hashSync(eCovid.toString(), 10);
-        const eFamilyHash =bcrypt.hashSync(eFamily.toString(), 10);
-        const eFriendHash =bcrypt.hashSync(eFriend.toString(), 10);
-        const eSchoolHash =bcrypt.hashSync(eSchool.toString(), 10);
-        const eInterestProtectHash =bcrypt.hashSync(eInterestProtect.toString(), 10);
-        const eHouseholdCleanHash =bcrypt.hashSync(eHouseholdClean.toString(), 10);
-        const eStatsHash =bcrypt.hashSync(eStats.toString(), 10);
-        const eCSIHash =bcrypt.hashSync(eCSI.toString(), 10);
-        const ePeerHash =bcrypt.hashSync(ePeer.toString(), 10);
-        const eSocialHelpHash =bcrypt.hashSync(eSocialHelp.toString(), 10);
-        const eTechSupportHash =bcrypt.hashSync(eTechSupport.toString(), 10);
-        const eTutorHash =bcrypt.hashSync(eTutor.toString(), 10);
-        const eDistanceHash =bcrypt.hashSync(eDistance.toString(), 10);
+        const eStress = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.stressAns)), 10));
+        const eStruggle = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.struggleAns)), 10));
+        const eCovid = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.covidAns)), 10));
+        const eFamily = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.familyAns)), 10));
+        const eFriend = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.friendAns)),10));
+        const eSchool = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.schoolAns)),10));
+        const eInterestProtect =crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.interestProtectAns)),10)) ;
+        const eHouseholdClean = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.householdCleanAns)), 10));
+        const eStats = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.statsAns)), 10));
+        const eCSI = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.csiAns)), 10));
+        const ePeer = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.peerAns)), 10));
+        const eSocialHelp = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.socialHelpAns)), 10));
+        const eTechSupport = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.techSupportAns)),10));
+        const eTutor = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.tutorAns)), 10));
+        const eDistance = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.distanceFocusAns)), 10));
+
         const userData = {
 	      var1: eFirstName,
 	      var2: eLastName,
 	      var3: eID,
-	      var4: eStressHash,
-          var5: eStruggleHash,
-          var6: eCovidHash,
-          var7: eFamilyHash,
-          var8: eFriendHash,
-          var9: eSchoolHash,
-          var10: eInterestProtectHash,
-          var11: eHouseholdCleanHash,
-          var12: eStatsHash,
-          var13: eCSIHash,
-          var14: ePeerHash,
-          var15: eSocialHelpHash,
-          var16: eTechSupportHash,
-          var17: eTutorHash,
-          var18: eDistanceHash
+	      var4: eStress,
+          var5: eStruggle,
+          var6: eCovid,
+          var7: eFamily,
+          var8: eFriend,
+          var9: eSchool,
+          var10: eInterestProtect,
+          var11: eHouseholdClean,
+          var12: eStats,
+          var13: eCSI,
+          var14: ePeer,
+          var15: eSocialHelp,
+          var16: eTechSupport,
+          var17: eTutor,
+          var18: eDistance
 	    };
+
+	    const privateKey = fs.readFileSync('./private_key','utf8');
+
+		const decryptedFirst = crypto.privateDecrypt(
+		            {
+		        key: privateKey,
+				passphrase: 'ccapprotection',
+		   },
+		   Buffer.from(eFirstName, "base64")
+		);
+
+console.log("decrypted data: ", decryptedFirst.toString());
 
 
 
