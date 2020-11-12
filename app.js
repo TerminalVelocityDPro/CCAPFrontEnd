@@ -243,17 +243,124 @@ app.use(express.static('public'));
 app.use('/', router);
 //app.use(bodyParser.json({ limit: '1000000000000mb' }));
 //app.use(bodyParser.urlencoded({ extended: true, limit: '1000000000000mb' }));
+
+//Joi Schema Validation
 app.post('/', function(req, res) {
-  //const schema = Joi.object().keys({
-  //  firstName: Joi.string().alphanum().required(),
-  //  lastName: Joi.string().alphanum().required(),
-  //  id: Joi.number().integer().required(),
-  //  stress: Joi.number().integer().min(0).max(10).required()
-  //});
-  //const {error,value} = schema.validate(req.body);
-  //console.log(error);
+  const schema = Joi.object().keys({
+    firstNameAns: Joi.string()
+      .alphanum()
+      .min(1)
+      .max(10)
+      .required(),
+
+    lastNameAns: Joi.string()
+      .alphanum()
+      .min(1)
+      .max(10)
+      .required(),
+
+    idAns: Joi.number()
+      .integer()
+      .min(0)
+      .max(1000000000)
+      .required(),
+    
+    stressAns: Joi.number()
+      .integer()
+      .min(0)
+      .max(10)
+      .required(),
+
+    struggleAns: Joi.number()
+      .integer()
+      .min(0)
+      .max(3)
+      .required(),
+
+    covidAns: Joi.string()
+      .alphanum()
+      .required(),
+
+    familyAns: Joi.string()
+      .alphanum()
+      .required(),
+
+    schoolAns: Joi.string()
+      .alphanum()
+      .required(),
+
+    friendAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    schoolAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    interestProtectAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    householdCleanAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    statsAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    interestProtectAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    householdCleanAns: Joi.string()
+    .alphanum()
+    .required(),
+
+    csiAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    transAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    peerAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    socialHelpAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    techSupportAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    tutorAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    distanceFocusAns:  Joi.string()
+    .alphanum()
+    .required()
+
+  })
+    .with('firstName',['lastName','id']);
+
+  /*Validation of Schema Inputs
+  try{
+    const value = await schmea.validateAsync(req.body);
+  }
+  catch(error){
+    console.log(error);
+  }
+  const {error,value} = schema.validate(req.body);
+  */
+  
+
   if(typeof(error) != "undefined"){
-	  console.log("WHOOP");
+	  console.log("RIP");
   }else{
 	  console.log('I got a useable request!');
 	  const post_body = (req.body);
