@@ -18,5 +18,5 @@ Taking inspiration from mobile apps like K Health, CCAP was developed with the t
 <br /><br />
 
 *Below is a picture of the style of which the CCAP survey would be based on. (Photo Credits: K Health)*
-![Image](C:\Users\danie\Pictures\CCAP_Screenshot)
+![Image](https://khealth.ai/wp-content/uploads/2020/09/anxiety-depression-1.png)
 <br />
