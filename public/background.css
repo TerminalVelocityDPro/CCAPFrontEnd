@@ -1,0 +1,81 @@
+
+     @keyframes spin {
+          100 %
+
+{
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+          
+}
+
+ 
+    
+}
+
+ 
+     @keyframes antispin {
+          100 %
+
+{
+            -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          
+}
+
+    
+}
+
+
+     .pep {
+          position: fixed;
+          display: block;
+          margin-left: 27.5%;
+          margin-right: 27.5%;
+          margin-top: -4%;
+          margin-bottom: -4%;
+          z-index: -3;
+          width: 45%;
+        
+}
+
+ 
+     .ring {
+          position: fixed;
+          display: block;
+          margin-left: 27.5%;
+          margin-right: 27.5%;
+          margin-top: -4%;
+          margin-bottom: -4%;
+          z-index: -2;
+          width: 45%;
+          animation: spin 60s infinite;
+        
+}
+
+ 
+     .o_ring {
+          position: fixed;
+          display: block;
+          margin-left: 27.5%;
+          margin-right: 27.5%;
+          margin-top: -4%;
+          margin-bottom: -4%;
+          width: 45%;
+          z-index: -1;
+          animation: antispin 60s infinite;
+        
+}
+
+ 
+     .o1_ring {
+          position: fixed;
+          display: block;
+          margin-left: 15.25%;
+          margin-right: 15.25%;
+          margin-top: -16%;
+          margin-bottom: -16%;
+          width: 70%;
+          z-index: -1;
+         animation: spin 60s infinite;
+               
+}

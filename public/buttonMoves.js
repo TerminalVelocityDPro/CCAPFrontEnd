@@ -111,9 +111,11 @@ function appendNo(num){
 	console.log("pushed me " + num);
 	ques.push(num);
 	//storeData(num);
-
+	//d3.select("body").select("#mainContainer").select("#checkBox0").attr("class","btn btn-light border border-danger");
+	d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#checkBox1").attr("class","btn btn-light border border-danger");
 	if(num == 0){
-		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#checkBox0").attr("class","btn btn-light border border-danger");
+		console.log("Gonna make 0 red");
+		
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").select("#special").select("#bubbleCheckBox").select("#checkBox0").attr("onclick"," ");
 	}
 	if(num == 1){
