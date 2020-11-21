@@ -244,7 +244,7 @@ app.use('/', router);
 //app.use(bodyParser.json({ limit: '1000000000000mb' }));
 //app.use(bodyParser.urlencoded({ extended: true, limit: '1000000000000mb' }));
 
-//Joi Schema Validation
+//Joi Schema Validation for inputted data
 app.post('/', function(req, res) {
   const schema = Joi.object().keys({
     firstNameAns: Joi.string()
