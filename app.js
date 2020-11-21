@@ -16,7 +16,7 @@ const fs = require('fs');
 const RateLimit = require('express-rate-limit');
 const options = {
   inflate: true,
-  limit: 1000000000000, //yay it's working
+  limit: 10000000000, //yay it's working
 
 };
 app.use(bodyParser.json(options));
@@ -29,6 +29,7 @@ const apiLimiter = new RateLimit({
 
 // only apply to requests that begin with /user/
 app.use(apiLimiter);
+//app.use(express.static(__dirname + '/public/Imgs'));
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -42,29 +43,42 @@ app.use(function(err, req, res, next) {
 //app.use(helmet.dnsPrefetchControl());
 //app.use(helmet.expectCt());
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-      //defaultSrc: [`*`],
-      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js", '*', "filesystem:"],
-      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css", 'r@nd0m'],
-      imgSrc: ["'self'", "data:", "https://www.cvrobotics.org/wp-content/uploads/2013/06/CUSD-Logo-750w.png"],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
-
-
 //app.use(
-//  helmet({
-//    contentSecurityPolicy: false,
+//  helmet.contentSecurityPolicy({
+//    directives: {
+//      defaultSrc: ["'self'", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//      //defaultSrc: [`*`],
+//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
+//      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//      imgSrc: ["'self'", "data:"],
+//      upgradeInsecureRequests: [],
+//    },
 //  })
 //);
 
 
+//app.use(
+// helmet.contentSecurityPolicy({
+//   directives: {
+//      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
+//      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+//      imgSrc: ["'self'", "data:"],
+//      upgradeInsecureRequests: [],
+//    },
+//  })
+//);
 
 
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
+
+
+//app.use(helmet.contentSecurityPolicy());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
@@ -143,17 +157,17 @@ database.loadDatabase();
 
 
 // Querying Database based on stress levels
-database.find({$not: {stress: '1'}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress hashes :' + docs);
-  const stressLevel = docs[0].var4;
+//database.find({$not: {stress: '1'}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress hashes :' + docs);
+//  const stressLevel = docs[0].var4;
   // console.log(bcrypt.compareSync('10', stressLevel));
-  console.log(docs[0].var4);
-  console.log(bcrypt.compareSync('10', stressLevel));
-  console.log(docs[0].var4);
+//  console.log(docs[0].var4);
+//  console.log(bcrypt.compareSync('10', stressLevel));
+//  console.log(docs[0].var4);
   //
   // const decryptedFirst = crypto.privateDecrypt(
   //		{
@@ -166,37 +180,37 @@ database.find({$not: {stress: '1'}}, (err, docs) => {
 
   //	console.log("decrypted data: ", decryptedFirst.toString());
   //
-});
+//});
 
 
-database.find({stress: '10'}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 10 :' + docs);
-});
-database.find({stress: {$in: ['7', '8', '9']}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 7 to 9 :' + docs);
-});
-database.find({stress: {$in: ['4', '5', '6']}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 4 to 6 :' + docs);
-});
-database.find({stress: {$in: ['1', '2', '3']}}, (err, docs) => {
-  if (err) {
-    response.end();
-    return;
-  }
-  console.log('Stress 1 to 3 :' + docs);
-});
+//database.find({stress: '10'}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 10 :' + docs);
+//});
+//database.find({stress: {$in: ['7', '8', '9']}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 7 to 9 :' + docs);
+//});
+//database.find({stress: {$in: ['4', '5', '6']}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 4 to 6 :' + docs);
+//});
+//database.find({stress: {$in: ['1', '2', '3']}}, (err, docs) => {
+//  if (err) {
+//    response.end();
+//    return;
+//  }
+//  console.log('Stress 1 to 3 :' + docs);
+//});
 
 const transporter = nodemailer.createTransport({
   name: 'ethereal.email',
@@ -222,124 +236,240 @@ transporter.sendMail(mailOptions, function(error, info) {
     console.log('Email sent: ' + info.response);
   }
 });
-
 app.use(express.static('public'));
-app.use(express.json({limit: '1 mb'}));
-
-
-app.use(bodyParser.urlencoded({extended: false}));
-
-app.use(bodyParser.json());
-
-
+//sapp.use(express.json({limit: '5 mb'}));
+//app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
 app.use('/', router);
+//app.use(bodyParser.json({ limit: '1000000000000mb' }));
+//app.use(bodyParser.urlencoded({ extended: true, limit: '1000000000000mb' }));
 
+//Joi Schema Validation
 app.post('/', function(req, res) {
-
   const schema = Joi.object().keys({
-    firstName: Joi.string().alphanum().required(),
-    lastName: Joi.string().alphanum().required(),
-    id: Joi.number().integer().required(),
-    stress: Joi.number().integer().min(0).max(10).required()
-  });
+    firstNameAns: Joi.string()
+      .alphanum()
+      .min(1)
+      .max(10)
+      .required(),
+
+    lastNameAns: Joi.string()
+      .alphanum()
+      .min(1)
+      .max(10)
+      .required(),
+
+    idAns: Joi.number()
+      .integer()
+      .min(0)
+      .max(1000000000)
+      .required(),
+    
+    stressAns: Joi.number()
+      .integer()
+      .min(0)
+      .max(10)
+      .required(),
+
+    struggleAns: Joi.number()
+      .integer()
+      .min(0)
+      .max(3)
+      .required(),
+
+    covidAns: Joi.string()
+      .alphanum()
+      .required(),
+
+    familyAns: Joi.string()
+      .alphanum()
+      .required(),
+
+    schoolAns: Joi.string()
+      .alphanum()
+      .required(),
+
+    friendAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    schoolAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    interestProtectAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    householdCleanAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    statsAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    interestProtectAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    householdCleanAns: Joi.string()
+    .alphanum()
+    .required(),
+
+    csiAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    transAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    peerAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    socialHelpAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    techSupportAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    tutorAns:  Joi.string()
+    .alphanum()
+    .required(),
+
+    distanceFocusAns:  Joi.string()
+    .alphanum()
+    .required()
+
+  })
+    .with('firstName',['lastName','id']);
+
+  /*Validation of Schema Inputs
+  try{
+    const value = await schmea.validateAsync(req.body);
+  }
+  catch(error){
+    console.log(error);
+  }
   const {error,value} = schema.validate(req.body);
-  //console.log(error);
+  */
+  
+
   if(typeof(error) != "undefined"){
-	  console.log("WHOOP");
+	  console.log("RIP");
   }else{
 	  console.log('I got a useable request!');
 	  const post_body = (req.body);
 	    res.send(post_body);
 	    console.log(post_body);
-	    // database.insert(json);
-	    // console.log(escapeHTML(post_body.stress));
-	    // console.log(escapeHTML(post_body.id));
-	    // var saltRounds = 10;
-	    const eFirstName = escapeHTML(post_body.firstName);
-	    // var eFirstNameHash = bcrypt.hashSync(eFirstName, 10);
-	    const eLastName = escapeHTML(post_body.lastName);
-	    // var eLastNameHash = bcrypt.hashSync(eLastName, 10);
-	    const eID = escapeHTML(post_body.id);
-	    // var eIDHash = bcrypt.hashSync(eID.toString(), 10);
-	    const eStress = escapeHTML(post_body.stress);
-	    const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
+        const publicKey = fs.readFileSync('./public_key', 'utf8');
+        var eFirstName = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.firstNameAns)));
+        var eLastName = crypto.publicEncrypt(publicKey,Buffer.from(escapeHTML(post_body.lastNameAns)) );
+        var eID = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.idAns)));
+        var eStress = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.stressAns)), 10));
+        var eStruggle = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.struggleAns)), 10));
+        var eCovid = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.covidAns)), 10));
+        var eFamily = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.familyAns)), 10));
+        var eFriend = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.friendAns)),10));
+        var eSchool = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.schoolAns)),10));
+        var eInterestProtect =crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.interestProtectAns)),10)) ;
+        var eHouseholdClean = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.householdCleanAns)), 10));
+        var eStats = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.statsAns)), 10));
+        var eCSI = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.csiAns)), 10));
+        var ePeer = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.peerAns)), 10));
+        var eSocialHelp = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.socialHelpAns)), 10));
+        var eTechSupport = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.techSupportAns)),10));
+        var eTutor = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.tutorAns)), 10));
 
-	    // function encryptString (plaintext, publicKeyFile) {
-	    //    const publicKey = fs.readFileSync(publicKeyFile, "utf8");
+        var eDistance = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.distanceFocusAns)), 10));
+	console.log("raw encrypted: " + eFirstName);
+	console.log("type: " + typeof(eFirstName));
+	eFirstName = JSON.stringify(eFirstName);
+	eLastName = JSON.stringify(eLastName);
+	eID = JSON.stringify(eID);
+	eStress = JSON.stringify(eStress);
+	eStruggle = JSON.stringify(eStruggle);
+	eCovid = JSON.stringify(eCovid);
+	eFamily = JSON.stringify(eFamily);
+	eFriend = JSON.stringify(eFriend);
+	eSchool = JSON.stringify(eSchool);
+	eInterestProtect = JSON.stringify(eInterestProtect);
+	eHouseholdClean = JSON.stringify(eHouseholdClean);
+	eStats = JSON.stringify(eStats);
+	eCSI = JSON.stringify(eCSI);
+	ePeer = JSON.stringify(ePeer);
+	eSocialHelp = JSON.stringify(eSocialHelp);
+	eTechSupport = JSON.stringify(eTechSupport);
+	eTutor = JSON.stringify(eTutor);
+	eDistance = JSON.stringify(eDistance);
 
-	  	    // publicEncrypt() method with its parameters
-	    //    const encrypted = crypto.publicEncrypt(
-	    //         publicKey, Buffer.from(plaintext));
-	    //    return encrypted.toString("base64");
-	    // }
-
-	    // const encrypted = encryptString(eFirstName, "./public_key");
-	    console.log('First name is ' + eFirstName);
-
-	    const publicKey = fs.readFileSync('./public_key', 'utf8');
-	    const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
-	    const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
-	    const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
-	    const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
-	    // console.log("First name is: "+ encryptedFirst.toString("utf8"));
-
-	    // var privateKey = fs.readFileSync("./private_key", "utf8");
-	    // const decryptedFirst = crypto.privateDecrypt({
-	    //	key:privateKey,
-	    //	passphrase:'ccapprotection'
-	    //	}, encryptedFirst);
-	    // console.log("First name really is: " + decryptedFirst.toString("utf8"));
-
-
-	    // console.log("Encrypted first name");
-
-	    // console.log(encryptedFirst);
-
-	    // console.log("encrypted data: ", encryptedData.toString("base64"));
-
-
-	    // var encryptingKey = crypt.createCipher('aes-128-cbc', 'password_key');
-	    // var eFirstName = encryptingKey.update(eFirstName, 'utf8', 'hex');
-	    // eFirstName += encryptingKey.final('hex');
-
-	    // console.log("Encrypted");
-	    // console.log(eFirstName);
-
-	    // var deKey = crypt.createDecipher('aes-128-cbc', 'password_key');
-	    // var decrypted_str = deKey.update(eFirstName, 'hex', 'utf8');
-	    // decrypted_str += deKey.final('utf8');
-	    // console.log("Decrypted");
-	    // console.log(decrypted_str);
-
-
-	    const userData = {
-	      var1: encryptedFirst,
-	      var2: encryptedLast,
-	      var3: encryptedID,
-	      var4: encryptedStressHash,
+        const userData = {
+	      var1: eFirstName,
+	      var2: eLastName,
+	      var3: eID,
+	      var4: eStress,
+          	var5: eStruggle,
+          var6: eCovid,
+          var7: eFamily,
+          var8: eFriend,
+          var9: eSchool,
+          var10: eInterestProtect,
+          var11: eHouseholdClean,
+          var12: eStats,
+          var13: eCSI,
+          var14: ePeer,
+          var15: eSocialHelp,
+          var16: eTechSupport,
+          var17: eTutor,
+          var18: eDistance
 	    };
+
+
+	console.log("Encrypted data " + eFirstName);
+	eFirstName = JSON.parse(eFirstName);
+
+	    const privateKey = fs.readFileSync('./private_key','utf8');
+
+		const decryptedFirst = crypto.privateDecrypt(
+		            {
+		        key: privateKey,
+				passphrase: 'ccapprotection',
+		   },
+		   Buffer.from(eFirstName, "base64")
+		);
+
+console.log("decrypted data: ", decryptedFirst.toString());
+
+
+
+
+
+
+
+	    //const eFirstName = escapeHTML(post_body.firstName);
+	    //const eLastName = escapeHTML(post_body.lastName);
+	    //const eID = escapeHTML(post_body.id);
+	    //const eStress = escapeHTML(post_body.stress);
+	    //const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
+	    //console.log('First name is ' + eFirstName);
+
+	    //const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
+	    //const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
+	    //const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
+	    //const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
+
 	    console.log(userData);
-	    console.log('Stress');
-	    console.log(userData.var3);
-	    // console.log(bcrypt.compareSync("10", userData.var4));
+	    //console.log('Stress');
+	    //console.log(userData.var3);
 	    database.insert(userData);
-	    // console.log(JSON.stringify(post_body));
-	    // res.end(JSON.stringify(response));
-	    // console.log("Got a POST request for the homepage");
-  		// res.send('Hello POST');
   }
 });
 
 app.get('/about', function(req, res) {
   res.sendFile('/public/about_us.html', {root: __dirname});
 });
-
-
 app.listen(3000, () => console.log('listening at 3000'));
-
-
-/* function sayHello(name){
-    console.log("Hello " + name);
-}
-
-sayHello("Daniel");*/
