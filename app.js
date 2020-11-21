@@ -1,173 +1,600 @@
-const nodemailer = require('nodemailer');
-const Joi = require('joi');
-const express = require('express');
 const bcrypt = require('bcryptjs');
-const bodyParser = require('body-parser');
-const escapeHTML = require('escape-html');
-const app = express();
-// const path = require("path");
-const router = express.Router();
-const Datastore = require('nedb');
-const {response} = require('express');
-// const { getHeapCodeStatistics } = require("v8");
-const helmet = require('helmet');
 const crypto = require('crypto');
-const fs = require('fs');
-const RateLimit = require('express-rate-limit');
-const options = {
-  inflate: true,
-  limit: 10000000000, //yay it's working
-
-};
-app.use(bodyParser.json(options));
-app.enable('trust proxy');
-const apiLimiter = new RateLimit({
-  windowMs: 15*60*1000, // 15 minutes
-  max: 100,
-  delayMs: 0, // disabled
-});
-
-// only apply to requests that begin with /user/
-app.use(apiLimiter);
-//app.use(express.static(__dirname + '/public/Imgs'));
-
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
-//app.use(helmet());
-//app.use(helmet.dnsPrefetchControl());
-//app.use(helmet.expectCt());
-
-//app.use(
-//  helmet.contentSecurityPolicy({
-//    directives: {
-//      defaultSrc: ["'self'", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-//      //defaultSrc: [`*`],
-//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
-//      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-//      imgSrc: ["'self'", "data:"],
-//      upgradeInsecureRequests: [],
-//    },
-//  })
-//);
-
-
-//app.use(
-// helmet.contentSecurityPolicy({
-//   directives: {
-//      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
-//      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-//      imgSrc: ["'self'", "data:"],
-//      upgradeInsecureRequests: [],
-//    },
-//  })
-//);
-
-
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
-
-
-
-//app.use(helmet.contentSecurityPolicy());
-app.use(helmet.dnsPrefetchControl());
-app.use(helmet.expectCt());
-app.use(helmet.frameguard());
-app.use(helmet.hidePoweredBy());
-app.use(helmet.hsts());
-app.use(helmet.ieNoOpen());
-app.use(helmet.noSniff());
-app.use(helmet.permittedCrossDomainPolicies());
-app.use(helmet.referrerPolicy());
-app.use(helmet.xssFilter());
-
-
-// var publicKeyString = "3082010b0282010100d2a309b160402c711bab2324f0a09eb9265078315fdc501da4f94518b9cbc5072bb487a348896b1a09a955851048b3e1e846592c7152cd6011d6d76b7923fd8e55120b5b121c3de2b569793bc442e42af05883c545473a93acfaa353627ac0200fa247cbc8ddc5496e6ed1d82b247912008a0b237d9ab017b6b9c409a6b49a797ccd66b105a112c83682fee6bfe4423d2baa633db758b052839eaa6b864035c6ee8008af9d856504a636ab7cb2176fe29733fba02f79a7f9843b2d166cb83dca58a4ac6df00926f59fe96ccc00d2ec05ec5e1f2b9e8e3d0b6e464abf16ccc4eee8c19377882e20bf4eaeb7a4167d083400da91c6a3a2d39021731b537e2c110f020401010101";
-// var privateKeyString = "3082052d305706092a864886f70d01050d304a302906092a864886f70d01050c301c0408e61d90ef9de0d35302020800300c06082a864886f70d02090500301d0609608648016503040116041037d58ad5d5ee1e91401c108a4627704e048204d03561e9aab76e5cc19d390d1c50597f4ddf1b21d437cc36c56c05a428133c56e5bb4d26fccfb4e7d78fc9d392b5ead3b60b6b4c5f8c23f2ba24c86c137233c273f693da4fcfc4193cd635e00c9f51387c44b63fa612238e1c7a4a7ce0c8fa6ade3844609ed917ac458eb175917c9d392509412cb1eb22856fc9596a53ed48082b6e50a853ffd1346ce2c8f928b2639e0101a890a3f4ae324143b804997377daae0bcf064ea451c4ecd85fead1d77e89993e01e94e17b1460457d51d7509a10308d07ca905903d3be7340ba4c618018994d585a71f34506069ba6fbc3e8bd1539812a8944062225b48ad64ccc5724415c16fcc5f8e3e14b9c81f5ed9b6a9a08799f30ffd12757cf006969bfdddb9c078a34121ed9043bbd59c643193cc22c7a1cc2ed18b438cac8b4b05072ca2cfa288378e3c4b304b44a906a2600aa5c277a5197c6f9cdacb36f72a668db187cd7ed8f5fd971fc5200a7b24a84ebcbd65c29621954e29e9b3b5b1bc186a43babf857ec70915ae23aa82f1d81e2b6437160616ff4facb9a6e7a3b8e2b8a29d6ff15318082fe2ba5906287079c51cf73cb8a2e5b365b4be19b92eabc85deed8bdd71872a0e43ab8c042b3d4fc053f0db05d83b9331acc8ce2e1469f7573f9987dcb4ca971eb52373807591344399ae5d4f98929b611b68057f15ad1dd1a4142d21bf04a64cf5f4e0bd25ceded28ac06729b86fb9164a197d08af0511f9d1b3b262b6d8a3873980a9f8207af6152aa73550bf2e0ffc3f6b5f34c9d488764815d2748ee9bc14113c928af193da63b2d3089ec30452ebc1494cc826acefba805f3676235f4d6d6fac5694ce6aa7b26ef511724aff388d0ee139b4e1868b4665cee632d050a316f9f8f569b0e8daf0d57f5a888084f1f7b744b55d6f6f6b6549d2cc1b3ccb0ebb267c763347a23ea8d1f048dbe0d61cdbdf38ddced5c7e7415a8b3ee0df96d2b9e8781b7af254cd4e1345450f154ee6ea8cdc70634222082444eeb4fa55e6df1bbce694091bb6a2c9dd201e0386e3573a563506e32fd593b824a0dfcbb4ad5b46c704a52c6e535fda8bb7475436d99f44d561e1c8d0f3f830d2da2efefe774a2de026df91e6d867fa9485979b60cc0f3de19b78f5dcc8d8f9ed2d48d7daec596360c2c79e612c3ab987aa65592c2935f2a7ece8b72e75d6e15182ff4e1dd83151fe0d1581cd806d7d0ead79c456fb21c1d38e9260c53b6f554b036560e95a69e0afe6b61f3a974b137d6abb9f2b81f04a4ec5af1ad29b3cfb920362f37b062e1947e8333f701833867bad0a59da92b55b4f35a87c648bead147d84ae485c718f17d416763f072604f52b499d1904ad55c59c27b704001f684b346953d275cfb1d2d1474f54d35278545f57ca0e49c7802f798a9c721485c532b1a693d4144d57054dab554cbc5b4046b969d88e50f0b078c35e3606788a3019fd627739597d9309daa19770c2415839d96f4ea8124b4fc8131ac0eb494282e087ed8921a6fdccf12882a5a537c9944188ae7fa8088a814e12997af1f0dddd7f256182da3dc81993a1110387d361c57e995edc91fc09e5b7b81b571124892ccf8b0d12439e6162fee0fa983f20396d6ca99b0b4c661c9bbd39a697e97faa3728ee3ad7bff931547a7daa4b8dd9ba7d6b9ae1ce3dd4d43e39ba8ad20cfa364a6b6a88a8ebd25d007b2d3120be28806474e3af8d80789a8e62613754cafdbde79f1fe289a0774fd3";
-
-// var publicKey = Buffer.from(publicKeyString, 'hex');
-// var privateKey = Buffer.from(privateKeyString, 'hex');
-
-// console.log(publicKey);
-// console.log(privateKey);
-
-
-// Calling generateKeyPair() method
-// with its parameters
-// var publicKeyHold;
-// var privateKeyHold;
-
-// crypto.generateKeyPair('rsa', {
-//  modulusLength: 2048,    // options
-//  publicKeyEncoding: {
-//	  type: 'spki',
-//      format: 'pem'
-//  },
-//  privateKeyEncoding: {
-//	  type: 'pkcs8',
-//      format: 'pem',
-//      cipher: 'aes-256-cbc',
-//      passphrase: 'ccapprotection'
-//  }
-// }, (err, publicKey, privateKey) => { // Callback function
-//       if(!err)
-//       {
-// Prints new asymmetric key pair
-//         console.log("Public Key is : ", publicKey);
-//         fs.writeFileSync("public_key", publicKey);
-//         console.log();
-//         console.log("Private Key is: ", privateKey);
-//         fs.writeFileSync("private_key", privateKey);
-//       }
-//       else
-//       {
-// Prints error
-//         console.log("Errr is: ", err);
-//       }
-// });
-
-
+const nodemailer = require('nodemailer');
+const Datastore = require('nedb');
 const database = new Datastore('database.db');
+const fs = require('fs');
 database.loadDatabase();
 
-// Function that gets data and shows it on html
-// async function getData(){
-//  const response = await fetch("/api");
-//  const data = await response.json;
+var stressOneCount = 0;
+var stressTwoCount = 0;
+var stressThreeCount = 0;
+var stressFourCount = 0;
+var stressFiveCount = 0;
+var stressSixCount = 0;
+var stressSevenCount = 0;
+var stressEightCount = 0;
+var stressNineCount = 0;
+var stressTenCount = 0;
+var struggleZeroCount = 0;
+var struggleOneCount = 0;
+var struggleTwoCount = 0;
+var struggleThreeCount = 0;
+var struggleFourCount = 0;
 
-//  for (item of data){
-//    const root = document.createAttribute("div");
-//    const stress = document.createAttribute("div");
+//covid
+var covid0123Count = 0;
+var covid123Count = 0;
+var covid023Count = 0;
+var covid013Count = 0;
+var covid012Count = 0;
+var covid23Count = 0;
+var covid13Count = 0;
+var covid12Count = 0;
+var covid03Count= 0;
+var covid02Count = 0;
+var covid01Count = 0;
+var covid0Count = 0;
+var covid1Count = 0;
+var covid2Count = 0;
+var covid3Count = 0;
 
-//    stress.textContent = `Stress Level: ${item.stress}`;
+//family
+var family0123Count = 0;
+var family123Count = 0;
+var family023Count = 0;
+var family013Count = 0;
+var family012Count = 0;
+var family23Count = 0;
+var family13Count = 0;
+var family12Count = 0;
+var family03Count= 0;
+var family02Count = 0;
+var family01Count = 0;
+var family0Count = 0;
+var family1Count = 0;
+var family2Count = 0;
+var family3Count = 0;
 
-//    root.append(stress);
-//    document.body.append(root);
-//  }
-// }
+
+//friend
+var friend0123Count = 0;
+var friend123Count = 0;
+var friend023Count = 0;
+var friend013Count = 0;
+var friend012Count = 0;
+var friend23Count = 0;
+var friend13Count = 0;
+var friend12Count = 0;
+var friend03Count= 0;
+var friend02Count = 0;
+var friend01Count = 0;
+var friend0Count = 0;
+var friend1Count = 0;
+var friend2Count = 0;
+var friend3Count = 0;
+
+//school
+var school0123Count = 0;
+var school123Count = 0;
+var school023Count = 0;
+var school013Count = 0;
+var school012Count = 0;
+var school23Count = 0;
+var school13Count = 0;
+var school12Count = 0;
+var school03Count= 0;
+var school02Count = 0;
+var school01Count = 0;
+var school0Count = 0;
+var school1Count = 0;
+var school2Count = 0;
+var school3Count = 0;
 
 
-// Querying Database based on stress levels
-//database.find({$not: {stress: '1'}}, (err, docs) => {
-//  if (err) {
-//    response.end();
-//    return;
-//  }
-//  console.log('Stress hashes :' + docs);
-//  const stressLevel = docs[0].var4;
-  // console.log(bcrypt.compareSync('10', stressLevel));
-//  console.log(docs[0].var4);
-//  console.log(bcrypt.compareSync('10', stressLevel));
-//  console.log(docs[0].var4);
+var interestYesCount = 0;
+var interestNoCount = 0;
+var householdYesCount = 0;
+var householdNoCount = 0;
+var statsYesCount = 0;
+var statsNoCount = 0;
+var csiYesCount = 0;
+var csiNoCount = 0;
+var peerYesCount = 0;
+var peerNoCount = 0;
+var socialYesCount = 0;
+var socialNoCount = 0;
+var techYesCount = 0;
+var techNoCount = 0;
+var tutorYesCount = 0;
+var tutorNoCount = 0;
+var distanceYesCount = 0;
+var distanceNoCount = 0;
+var transYesCount = 0;
+var transNoCount = 0;
+
+
+
+function appendToFile(content){
+	content = "\n" + content;
+	fs.appendFileSync('file.log', content, err => {
+  	if (err) {
+    		console.error(err)
+    		return
+ 	}
+  	//done!
+	})
+}
+function writeToFile(content){
+	
+        fs.writeFileSync('file.log', content, err => {
+        if (err) {
+                console.error(err)
+                return
+        }
+        //done!
+        })
+}
+
+
+
+
+
+
+
+
+
+
+database.find({$not: {stress: '1'}}, (err, docs) => {
+  if (err) {
+    response.end();
+    return;
+  }
+  //console.log('Stress hashes :' + docs);
+  //console.log(docs.length);
+  for(i = 0; i < docs.length; i++){
+	  const privateKey = fs.readFileSync('./private_key','utf8');
+	  //console.log(docs[i].var1);
+	  var stressDecrypt = JSON.parse(docs[i].var4); //done
+	  var struggleDecrypt = JSON.parse(docs[i].var5); //done
+	  var covidDecrypt = JSON.parse(docs[i].var6);
+	  var familyDecrypt = JSON.parse(docs[i].var7);
+	  var friendDecrypt = JSON.parse(docs[i].var8);
+	  var schoolDecrypt = JSON.parse(docs[i].var9);
+	  var interestDecrypt = JSON.parse(docs[i].var10);
+	  var householdDecrypt = JSON.parse(docs[i].var11);
+	  var statsDecrypt = JSON.parse(docs[i].var12);
+	  var csiDecrypt = JSON.parse(docs[i].var13);
+	  var peerDecrypt = JSON.parse(docs[i].var14);
+	  var socialDecrypt = JSON.parse(docs[i].var15);
+	  var techDecrypt = JSON.parse(docs[i].var16);
+	  var tutorDecrypt = JSON.parse(docs[i].var17);
+	  var distanceDecrypt = JSON.parse(docs[i].var18);
+	  var transDecrypt = JSON.parse(docs[i].var19);
+
+	  //appendToFile(Buffer.from(JSON.stringify(docs[i].var1)),"base64");
+	  //var thingDecrypt = Buffer.from(JSON.stringify(docs[i].var1), "base64");
+	  const decryptedStress = crypto.privateDecrypt(
+	              {
+	          key: privateKey,
+	  	  passphrase: 'ccapprotection',
+	     },
+	     Buffer.from(stressDecrypt, "base64")
+	  );
+	  const decryptedStruggle = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(struggleDecrypt, "base64")
+          );
+	  const decryptedCovid = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(covidDecrypt, "base64")
+          );
+	  const decryptedFamily = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(familyDecrypt, "base64")
+          );
+	  const decryptedFriend = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(friendDecrypt, "base64")
+          );
+	  const decryptedSchool = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(schoolDecrypt, "base64")
+          );
+	  const decryptedInterest = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(interestDecrypt, "base64")
+          );
+	  const decryptedHousehold = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(householdDecrypt, "base64")
+          );
+	  const decryptedStats = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(statsDecrypt, "base64")
+          );
+	  const decryptedCSI = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(csiDecrypt, "base64")
+          );
+	  const decryptedPeer = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(peerDecrypt, "base64")
+          );
+	  const decryptedSocial = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(socialDecrypt, "base64")
+          );
+	  const decryptedTech = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(techDecrypt, "base64")
+          );
+	  const decryptedTutor = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(tutorDecrypt, "base64")
+          );
+	  const decryptedDistance = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(distanceDecrypt, "base64")
+          );
+	  const decryptedTrans = crypto.privateDecrypt(
+                      {
+                  key: privateKey,
+                  passphrase: 'ccapprotection',
+             },
+             Buffer.from(transDecrypt, "base64")
+          );
+
+
+	  //appendToFile("decrypted data: ", decryptedStress.toString());
+	if(bcrypt.compareSync('1', decryptedStress.toString())){
+		stressOneCount++;
+	}
+	if(bcrypt.compareSync('2', decryptedStress.toString())){
+		stressTwoCount++;
+        }
+	if(bcrypt.compareSync('3', decryptedStress.toString())){
+		stressThreeCount++;
+        }
+	if(bcrypt.compareSync('4', decryptedStress.toString())){
+		stressFourCount++;
+        }
+	if(bcrypt.compareSync('5', decryptedStress.toString())){
+		stressFiveCount++;
+        }
+	if(bcrypt.compareSync('6', decryptedStress.toString())){
+		stressSixCount++;
+        }
+	if(bcrypt.compareSync('7', decryptedStress.toString())){
+		stressSevenCount++;
+        }
+	if(bcrypt.compareSync('8', decryptedStress.toString())){
+		stressEightCount++;
+        }
+	if(bcrypt.compareSync('9', decryptedStress.toString())){
+		stressNineCount++;
+        }
+	if(bcrypt.compareSync('10', decryptedStress.toString())){
+		stressTenCount++;
+        }
+	if(bcrypt.compareSync('0', decryptedStruggle.toString())){
+                struggleZeroCount++;
+        }
+	if(bcrypt.compareSync('1', decryptedStruggle.toString())){
+                struggleOneCount++;
+        }
+	if(bcrypt.compareSync('2', decryptedStruggle.toString())){
+                struggleTwoCount++;
+        }
+	if(bcrypt.compareSync('3', decryptedStruggle.toString())){
+                struggleThreeCount++;
+        }
+	if(bcrypt.compareSync('4', decryptedStruggle.toString())){
+                struggleFourCount++;
+        }
+
+	//covid
+	if(bcrypt.compareSync('0', decryptedCovid.toString())){
+                covid0Count++;
+        }
+        if(bcrypt.compareSync('1', decryptedCovid.toString())){
+                covid1Count++;
+        }
+        if(bcrypt.compareSync('2', decryptedCovid.toString())){
+                covid2Count++;
+        }
+        if(bcrypt.compareSync('3', decryptedCovid.toString())){
+                covid3Count++;
+        }
+	if(bcrypt.compareSync('01', decryptedCovid.toString())){
+                covid01Count++;
+        }
+        if(bcrypt.compareSync('02', decryptedCovid.toString())){
+                covid02Count++;
+        }
+        if(bcrypt.compareSync('03', decryptedCovid.toString())){
+                covid03Count++;
+        }
+        if(bcrypt.compareSync('12', decryptedCovid.toString())){
+                covid12Count++;
+        }
+        if(bcrypt.compareSync('13', decryptedCovid.toString())){
+                covid13Count++;
+        }
+	if(bcrypt.compareSync('23', decryptedCovid.toString())){
+                covid23Count++;
+        }
+        if(bcrypt.compareSync('012', decryptedCovid.toString())){
+                covid012Count++;
+        }
+        if(bcrypt.compareSync('013', decryptedCovid.toString())){
+                covid013Count++;
+        }
+        if(bcrypt.compareSync('023', decryptedCovid.toString())){
+                covid023Count++;
+        }
+        if(bcrypt.compareSync('123', decryptedCovid.toString())){
+                covid123Count++;
+        }
+	if(bcrypt.compareSync('0123', decryptedCovid.toString())){
+                covid0123Count++;
+        }
+
+	//family
+	if(bcrypt.compareSync('0', decryptedFamily.toString())){
+                family0Count++;
+        }
+        if(bcrypt.compareSync('1', decryptedFamily.toString())){
+                family1Count++;
+        }
+        if(bcrypt.compareSync('2', decryptedFamily.toString())){
+                family2Count++;
+        }
+        if(bcrypt.compareSync('3', decryptedFamily.toString())){
+                family3Count++;
+        }
+        if(bcrypt.compareSync('01', decryptedFamily.toString())){
+                family01Count++;
+        }
+        if(bcrypt.compareSync('02', decryptedFamily.toString())){
+                family02Count++;
+        }
+        if(bcrypt.compareSync('03', decryptedFamily.toString())){
+                family03Count++;
+        }
+        if(bcrypt.compareSync('12', decryptedFamily.toString())){
+                family12Count++;
+        }
+        if(bcrypt.compareSync('13', decryptedFamily.toString())){
+                family13Count++;
+        }
+        if(bcrypt.compareSync('23', decryptedFamily.toString())){
+                family23Count++;
+        }
+        if(bcrypt.compareSync('012', decryptedFamily.toString())){
+                family012Count++;
+        }
+        if(bcrypt.compareSync('013', decryptedFamily.toString())){
+                family013Count++;
+        }
+        if(bcrypt.compareSync('023', decryptedFamily.toString())){
+                family023Count++;
+        }
+        if(bcrypt.compareSync('123', decryptedFamily.toString())){
+                family123Count++;
+        }
+        if(bcrypt.compareSync('0123', decryptedFamily.toString())){
+                family0123Count++;
+        }
+
+	//friend
+	if(bcrypt.compareSync('0', decryptedFriend.toString())){
+                friend0Count++;
+        }
+        if(bcrypt.compareSync('1', decryptedFriend.toString())){
+                friend1Count++;
+        }
+        if(bcrypt.compareSync('2', decryptedFriend.toString())){
+                friend2Count++;
+        }
+        if(bcrypt.compareSync('3', decryptedFriend.toString())){
+                friend3Count++;
+        }
+        if(bcrypt.compareSync('01', decryptedFriend.toString())){
+                friend01Count++;
+        }
+        if(bcrypt.compareSync('02', decryptedFriend.toString())){
+                friend02Count++;
+        }
+        if(bcrypt.compareSync('03', decryptedFriend.toString())){
+                friend03Count++;
+        }
+        if(bcrypt.compareSync('12', decryptedFriend.toString())){
+                friend12Count++;
+        }
+        if(bcrypt.compareSync('13', decryptedFriend.toString())){
+                friend13Count++;
+        }
+        if(bcrypt.compareSync('23', decryptedFriend.toString())){
+                friend23Count++;
+        }
+        if(bcrypt.compareSync('012', decryptedFriend.toString())){
+                friend012Count++;
+        }
+        if(bcrypt.compareSync('013', decryptedFriend.toString())){
+                friend013Count++;
+        }
+        if(bcrypt.compareSync('023', decryptedFriend.toString())){
+                friend023Count++;
+        }
+        if(bcrypt.compareSync('123', decryptedFriend.toString())){
+                friend123Count++;
+        }
+        if(bcrypt.compareSync('0123', decryptedFriend.toString())){
+                friend0123Count++;
+        }
+
+	//school
+	if(bcrypt.compareSync('0', decryptedSchool.toString())){
+                school0Count++;
+        }
+        if(bcrypt.compareSync('1', decryptedSchool.toString())){
+                school1Count++;
+        }
+        if(bcrypt.compareSync('2', decryptedSchool.toString())){
+                school2Count++;
+        }
+        if(bcrypt.compareSync('3', decryptedSchool.toString())){
+                school3Count++;
+        }
+        if(bcrypt.compareSync('01', decryptedSchool.toString())){
+                school01Count++;
+        }
+        if(bcrypt.compareSync('02', decryptedSchool.toString())){
+                school02Count++;
+        }
+        if(bcrypt.compareSync('03', decryptedSchool.toString())){
+                school03Count++;
+        }
+        if(bcrypt.compareSync('12', decryptedSchool.toString())){
+                school12Count++;
+        }
+        if(bcrypt.compareSync('13', decryptedSchool.toString())){
+                school13Count++;
+        }
+        if(bcrypt.compareSync('23', decryptedSchool.toString())){
+                school23Count++;
+        }
+        if(bcrypt.compareSync('012', decryptedSchool.toString())){
+                school012Count++;
+        }
+        if(bcrypt.compareSync('013', decryptedSchool.toString())){
+                school013Count++;
+        }
+        if(bcrypt.compareSync('023', decryptedSchool.toString())){
+                school023Count++;
+        }
+        if(bcrypt.compareSync('123', decryptedSchool.toString())){
+                school123Count++;
+        }
+        if(bcrypt.compareSync('0123', decryptedSchool.toString())){
+                school0123Count++;
+        }
+
+
+
+	if(bcrypt.compareSync('Yes', decryptedInterest.toString())){
+                interestYesCount++;
+        }
+	if(bcrypt.compareSync('No', decryptedInterest.toString())){
+                interestNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedHousehold.toString())){
+                householdYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedHousehold.toString())){
+                householdNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedStats.toString())){
+                statsYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedStats.toString())){
+                statsNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedCSI.toString())){
+                csiYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedCSI.toString())){
+                csiNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedPeer.toString())){
+                peerYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedPeer.toString())){
+                peerNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedSocial.toString())){
+                socialYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedSocial.toString())){
+                socialNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedTech.toString())){
+                techYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedTech.toString())){
+                techNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedTutor.toString())){
+                tutorYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedTutor.toString())){
+                tutorNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedDistance.toString())){
+                distanceYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedDistance.toString())){
+                distanceNoCount++;
+        }
+	if(bcrypt.compareSync('Yes', decryptedTrans.toString())){
+                transYesCount++;
+        }
+        if(bcrypt.compareSync('No', decryptedTrans.toString())){
+                transNoCount++;
+        }
+
+
+  }
+
+
+
+  // appendToFile(bcrypt.compareSync('10', stressLevel));
+//  appendToFile(docs[0].var4);
+//  appendToFile(bcrypt.compareSync('10', stressLevel));
+//  appendToFile(docs[0].var4);
   //
   // const decryptedFirst = crypto.privateDecrypt(
   //		{
@@ -178,298 +605,140 @@ database.loadDatabase();
   //		encryptedFirst
   //	);
 
-  //	console.log("decrypted data: ", decryptedFirst.toString());
+  //	appendToFile("decrypted data: ", decryptedFirst.toString());
   //
-//});
-
-
-//database.find({stress: '10'}, (err, docs) => {
-//  if (err) {
-//    response.end();
-//    return;
-//  }
-//  console.log('Stress 10 :' + docs);
-//});
-//database.find({stress: {$in: ['7', '8', '9']}}, (err, docs) => {
-//  if (err) {
-//    response.end();
-//    return;
-//  }
-//  console.log('Stress 7 to 9 :' + docs);
-//});
-//database.find({stress: {$in: ['4', '5', '6']}}, (err, docs) => {
-//  if (err) {
-//    response.end();
-//    return;
-//  }
-//  console.log('Stress 4 to 6 :' + docs);
-//});
-//database.find({stress: {$in: ['1', '2', '3']}}, (err, docs) => {
-//  if (err) {
-//    response.end();
-//    return;
-//  }
-//  console.log('Stress 1 to 3 :' + docs);
-//});
-
-const transporter = nodemailer.createTransport({
-  name: 'ethereal.email',
-  host: 'smtp.ethereal.email',
-  port: 587,
-  auth: {
-    user: 'elody81@ethereal.email',
-    pass: 'pvCK7C9PvyG4ePWFHm',
-  },
-});
-
-const mailOptions = {
-  from: 'elody81@ethereal.email',
-  to: 'elody81@ethereal.email',
-  subject: 'Sending Email using Node.js',
-  html: '<h1>Welcome</h1><p>That was easy!</p>',
-};
-
-transporter.sendMail(mailOptions, function(error, info) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
-app.use(express.static('public'));
-//sapp.use(express.json({limit: '5 mb'}));
-//app.use(bodyParser.urlencoded({extended: false}));
-//app.use(bodyParser.json());
-app.use('/', router);
-//app.use(bodyParser.json({ limit: '1000000000000mb' }));
-//app.use(bodyParser.urlencoded({ extended: true, limit: '1000000000000mb' }));
-
-//Joi Schema Validation
-app.post('/', function(req, res) {
-  const schema = Joi.object().keys({
-    firstNameAns: Joi.string()
-      .alphanum()
-      .min(1)
-      .max(10)
-      .required(),
-
-    lastNameAns: Joi.string()
-      .alphanum()
-      .min(1)
-      .max(10)
-      .required(),
-
-    idAns: Joi.number()
-      .integer()
-      .min(0)
-      .max(1000000000)
-      .required(),
-    
-    stressAns: Joi.number()
-      .integer()
-      .min(0)
-      .max(10)
-      .required(),
-
-    struggleAns: Joi.number()
-      .integer()
-      .min(0)
-      .max(3)
-      .required(),
-
-    covidAns: Joi.string()
-      .alphanum()
-      .required(),
-
-    familyAns: Joi.string()
-      .alphanum()
-      .required(),
-
-    schoolAns: Joi.string()
-      .alphanum()
-      .required(),
-
-    friendAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    schoolAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    interestProtectAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    householdCleanAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    statsAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    interestProtectAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    householdCleanAns: Joi.string()
-    .alphanum()
-    .required(),
-
-    csiAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    transAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    peerAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    socialHelpAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    techSupportAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    tutorAns:  Joi.string()
-    .alphanum()
-    .required(),
-
-    distanceFocusAns:  Joi.string()
-    .alphanum()
-    .required()
-
-  })
-    .with('firstName',['lastName','id']);
-
-  /*Validation of Schema Inputs
-  try{
-    const value = await schmea.validateAsync(req.body);
-  }
-  catch(error){
-    console.log(error);
-  }
-  const {error,value} = schema.validate(req.body);
-  */
   
 
-  if(typeof(error) != "undefined"){
-	  console.log("RIP");
-  }else{
-	  console.log('I got a useable request!');
-	  const post_body = (req.body);
-	    res.send(post_body);
-	    console.log(post_body);
-        const publicKey = fs.readFileSync('./public_key', 'utf8');
-        var eFirstName = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.firstNameAns)));
-        var eLastName = crypto.publicEncrypt(publicKey,Buffer.from(escapeHTML(post_body.lastNameAns)) );
-        var eID = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.idAns)));
-        var eStress = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.stressAns)), 10));
-        var eStruggle = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.struggleAns)), 10));
-        var eCovid = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.covidAns)), 10));
-        var eFamily = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.familyAns)), 10));
-        var eFriend = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.friendAns)),10));
-        var eSchool = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.schoolAns)),10));
-        var eInterestProtect =crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.interestProtectAns)),10)) ;
-        var eHouseholdClean = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.householdCleanAns)), 10));
-        var eStats = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.statsAns)), 10));
-        var eCSI = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.csiAns)), 10));
-        var ePeer = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.peerAns)), 10));
-        var eSocialHelp = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.socialHelpAns)), 10));
-        var eTechSupport = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.techSupportAns)),10));
-        var eTutor = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.tutorAns)), 10));
-
-        var eDistance = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.distanceFocusAns)), 10));
-	console.log("raw encrypted: " + eFirstName);
-	console.log("type: " + typeof(eFirstName));
-	eFirstName = JSON.stringify(eFirstName);
-	eLastName = JSON.stringify(eLastName);
-	eID = JSON.stringify(eID);
-	eStress = JSON.stringify(eStress);
-	eStruggle = JSON.stringify(eStruggle);
-	eCovid = JSON.stringify(eCovid);
-	eFamily = JSON.stringify(eFamily);
-	eFriend = JSON.stringify(eFriend);
-	eSchool = JSON.stringify(eSchool);
-	eInterestProtect = JSON.stringify(eInterestProtect);
-	eHouseholdClean = JSON.stringify(eHouseholdClean);
-	eStats = JSON.stringify(eStats);
-	eCSI = JSON.stringify(eCSI);
-	ePeer = JSON.stringify(ePeer);
-	eSocialHelp = JSON.stringify(eSocialHelp);
-	eTechSupport = JSON.stringify(eTechSupport);
-	eTutor = JSON.stringify(eTutor);
-	eDistance = JSON.stringify(eDistance);
-
-        const userData = {
-	      var1: eFirstName,
-	      var2: eLastName,
-	      var3: eID,
-	      var4: eStress,
-          	var5: eStruggle,
-          var6: eCovid,
-          var7: eFamily,
-          var8: eFriend,
-          var9: eSchool,
-          var10: eInterestProtect,
-          var11: eHouseholdClean,
-          var12: eStats,
-          var13: eCSI,
-          var14: ePeer,
-          var15: eSocialHelp,
-          var16: eTechSupport,
-          var17: eTutor,
-          var18: eDistance
-	    };
-
-
-	console.log("Encrypted data " + eFirstName);
-	eFirstName = JSON.parse(eFirstName);
-
-	    const privateKey = fs.readFileSync('./private_key','utf8');
-
-		const decryptedFirst = crypto.privateDecrypt(
-		            {
-		        key: privateKey,
-				passphrase: 'ccapprotection',
-		   },
-		   Buffer.from(eFirstName, "base64")
-		);
-
-console.log("decrypted data: ", decryptedFirst.toString());
 
 
 
 
 
+  writeToFile("Number of users with stress level of 1: " + stressOneCount);
+  appendToFile("Number of users with stress level of 2: " + stressTwoCount);
+  appendToFile("Number of users with stress level of 3: " + stressThreeCount);
+  appendToFile("Number of users with stress level of 4: " + stressFourCount);
+  appendToFile("Number of users with stress level of 5: " + stressFiveCount);
+  appendToFile("Number of users with stress level of 6: " + stressSixCount);
+  appendToFile("Number of users with stress level of 7: " + stressSevenCount);
+  appendToFile("Number of users with stress level of 8:" + stressEightCount);
+  appendToFile("Number of users with stress level of 9: " + stressNineCount);
+  appendToFile("Number of users with stress levle of 10: " + stressTenCount);
+  appendToFile("Number of users whose main source of struggles is COVID-19: " + struggleZeroCount);
+  appendToFile("Number of users whose main source of struggles is Family Issues: " + struggleOneCount);
+  appendToFile("Number of users whose main source of struggles is Friendship Problems: " + struggleTwoCount);
+  appendToFile("Number of users whose main source of struggles is Remote Learning: " + struggleThreeCount);
+  appendToFile("Number of users whose main source of struggles is Overall Social-Emotional Wellness: " + struggleFourCount);
+  appendToFile("Number of users who are experiencing stress from fear of contracting COVID-19, from worry about dying, from fear for a family member/friend, and from a parent/caregiver who has lost a job: " + covid0123Count);
+  appendToFile("Number of users who are experiencing stress from worrying about dying, from fear for a family member/friend, and whose parent/caregiver had lost a job: " + covid123Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting COVID-19, from fear for a family member/friend, and from a parent/caregiver losing a job: " + covid023Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting COVID-19, from worry about dying, from a parent/caregiver losing a job: " + covid013Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting COVID-19, from worry about dying, from fear for a family member/friend: " + covid012Count);
+  appendToFile("Number of users who are experiencing stress from fear for a family member/friend, from a parent/caregiver losing a job: " + covid23Count);
+  appendToFile("Number of users who are experiencing stress from worry about dying, from a parent/caregiver losing a job: " + covid13Count);
+  appendToFile("Number of users who are experiencing stress from worry about dying, from fear for a family member/friend: " + covid12Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting COVID-19, from a parent/caregiver losing a job: " + covid03Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting COVID-19, from fear for a family member/friend: " + covid02Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting it and from worry about dying: " + covid01Count);
+  appendToFile("Number of users who are experiencing stress from fear of contracting it: " + covid0Count);
+  appendToFile("Number of users who are experiencing stress from worry about dying: " + covid1Count);
+  appendToFile("Number of users who are experiencing stress from fear for a family member/friend: " + covid2Count);
+  appendToFile("Number of users who are experiencing stress from a parent/caregiver losing a job: " + covid3Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, moving, illness/death, and financial issues: " + family0123Count);
+  appendToFile("Number of users who are experiencing stress from moving, illness/death, financial issues: " + family123Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, illness/death, financial issues: " + family023Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, moving, financial issues: " + family013Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, moving, illness or death: " + family012Count);
+  appendToFile("Number of users who are experiencing stress from illness/death, financial issues: " + family23Count);
+  appendToFile("Number of users who are experiencing stress from moving, financial issues: " + family13Count);
+  appendToFile("Number of users who are experiencing stress from moving, illness/death: " + family12Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, financial issues: " + family03Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, illness/death: " + family02Count);
+  appendToFile("Number of users who are experiencing stress from separation/divorce, moving: " + family01Count);
+  appendToFile("Number of users who are experiencing stress from separation or divorce: " + family0Count);
+  appendToFile("Number of users who are experiencing stress from moving: " + family1Count);
+  appendToFile("Number of users who are experiencing stress from illness/death: " + family2Count);
+  appendToFile("Number of users who are experiencing stress from financial issues: " + family3Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, friend communication difficulties, nervousness in relation to making new friends, staying in touch online: " + friend0123Count);
+  appendToFile("Number of users who are experiencing stress from friend communication difficulties, nervousness in relation to making new friends, staying in touch online: " + friend123Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, nervousness in relation to making new friends, staying in touch online: " + friend023Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, friend communication difficulties, staying in touch online: " + friend013Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, friend communication difficulties, and nervousness in relation to making new friends: " + friend012Count);
+  appendToFile("Number of users who are experiencing stress from nervousness in relation to making new friends, staying in touch online: " + friend23Count);
+  appendToFile("Number of users who are experiencing stress from friend communication difficulties, staying in touch online: " + friend13Count);
+  appendToFile("Number of users who are experiencing stress from friend communication difficulties, nervousness in relation to making new friends: " + friend12Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, staying in touch online: " + friend03Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, nervousness in relation to making new friends: " + friend02Count);
+  appendToFile("Number of users who are experiencing stress from friend conflict, friend communication difficulties: " + friend01Count);
+  appendToFile("Number of users who are experiencing stress from conflict: " + friend0Count);
+  appendToFile("Number of users who are experiencing stress from communication difficulties: " + friend1Count);
+  appendToFile("Number of users who are experiencing stress from nervousness in relation to making new friends: " + friend2Count);
+  appendToFile("Number of users who are experiencing stress from staying in touch online: " + friend3Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, lack of access to academic help, class difficulty, home distractions : " + school0123Count);
+  appendToFile("Number of users who are experiencing stress from lack of access to academic help, class difficulty, home distractions :  " + school123Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, class difficulty, home distractions : " + school023Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, lack of access to academic help, home distractions : " + school013Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, lack of access to academic help, class difficulty: " + school012Count);
+  appendToFile("Number of users who are experiencing stress from class difficulty, home distractions : " + school23Count);
+  appendToFile("Number of users who are experiencing stress from lack of access to academic help, home distractions : " + school13Count);
+  appendToFile("Number of users who are experiencing stress from lack of access to academic help, class difficulty:" + school12Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, home distractions : " + school03Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, class difficulty" + school02Count);
+  appendToFile("Number of users who are experiencing stress from internet stability/lack of tech access, lack of access to academic help" + school01Count);
+  appendToFile("Number of users who are experiencing stress from internet stability and lack of access to technology: " + school0Count);
+  appendToFile("Number of users who are experiencing stress from lack accessibility to academic help: " + school1Count);
+  appendToFile("Number of users who are experiencing stress from difficulty of classes: " + school2Count);
+  appendToFile("Number of users who are experiencing stress from distractions at home: " + school3Count);
+  appendToFile("Number of users reading about how to protect yourself from COVID-19: " + interestYesCount);
+  appendToFile("Number of users not reading about how to protect yourself from COVID-19: " + interestNoCount);
+  appendToFile("Number of users learning about how to keep your household clean and safe: " + householdYesCount);
+  appendToFile("Number of users not learning about how to keep your household clean and safe: " + householdNoCount);
+  appendToFile("Number of users reading about coronavirus statistics: " + statsYesCount);
+  appendToFile("Number of users not reading about coronavirus statistics: " + statsNoCount);
+  appendToFile("Number of users accessing CSI: " + csiYesCount);
+  appendToFile("Number of users not accessing CSI: " + csiNoCount);
+  appendToFile("Number of users accessing Peer Counseling: " + peerYesCount);
+  appendToFile("Number of users not accessing Peer Counseling: " + peerNoCount);
+  appendToFile("Number of users learning about the social help link: " + socialYesCount);
+  appendToFile("Number of users not learning about the social help link: " + socialNoCount);
+  appendToFile("Number of users accessing the CUSD Tech Support Link: " + techYesCount);
+  appendToFile("Number of users not accessing the CUSD Tech Support Link: " + techNoCount);
+  appendToFile("Number of users using the free online tutoring option: " + tutorYesCount);
+  appendToFile("Number of users not using the free online tutoring option: " + tutorNoCount);
+  appendToFile("Number of users learning about how to stay focused during distance learning: " + distanceYesCount);
+  appendToFile("Number of users not learning about how to stay focused during distanc learning: " + distanceNoCount);
+  appendToFile("Number of users looking at transition program contact: " + transYesCount);
+  appendToFile("Number of users not looking at transition program contact: " + transNoCount);
 
 
-	    //const eFirstName = escapeHTML(post_body.firstName);
-	    //const eLastName = escapeHTML(post_body.lastName);
-	    //const eID = escapeHTML(post_body.id);
-	    //const eStress = escapeHTML(post_body.stress);
-	    //const eStressHash = bcrypt.hashSync(eStress.toString(), 10);
-	    //console.log('First name is ' + eFirstName);
 
-	    //const encryptedFirst = crypto.publicEncrypt(publicKey, Buffer.from(eFirstName));
-	    //const encryptedLast = crypto.publicEncrypt(publicKey, Buffer.from(eLastName));
-	    //const encryptedID = crypto.publicEncrypt(publicKey, Buffer.from(eID));
-	    //const encryptedStressHash = crypto.publicEncrypt(publicKey, Buffer.from(eStressHash));
-
-	    console.log(userData);
-	    //console.log('Stress');
-	    //console.log(userData.var3);
-	    database.insert(userData);
-  }
 });
 
-app.get('/about', function(req, res) {
-  res.sendFile('/public/about_us.html', {root: __dirname});
-});
-app.listen(3000, () => console.log('listening at 3000'));
+
+
+
+//const decryptedFirst = crypto.privateDecrypt(
+//            {
+//        key: privateKey,
+//		passphrase: 'ccapprotection',
+//   },
+   //Buffer.from("PIZZA", "base64")
+//);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
