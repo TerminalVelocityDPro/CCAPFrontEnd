@@ -264,7 +264,7 @@ app.post('/', function(req, res) {
       .min(0)
       .max(1000000000)
       .required(),
-    
+
     stressAns: Joi.number()
       .integer()
       .min(0)
@@ -364,45 +364,24 @@ app.post('/', function(req, res) {
 	    res.send(post_body);
 	    console.log(post_body);
         const publicKey = fs.readFileSync('./public_key', 'utf8');
-        var eFirstName = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.firstNameAns)));
-        var eLastName = crypto.publicEncrypt(publicKey,Buffer.from(escapeHTML(post_body.lastNameAns)) );
-        var eID = crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.idAns)));
-        var eStress = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.stressAns)), 10));
-        var eStruggle = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.struggleAns)), 10));
-        var eCovid = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.covidAns)), 10));
-        var eFamily = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.familyAns)), 10));
-        var eFriend = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.friendAns)),10));
-        var eSchool = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.schoolAns)),10));
-        var eInterestProtect =crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.interestProtectAns)),10)) ;
-        var eHouseholdClean = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.householdCleanAns)), 10));
-        var eStats = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.statsAns)), 10));
-        var eCSI = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.csiAns)), 10));
-        var ePeer = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.peerAns)), 10));
-        var eSocialHelp = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.socialHelpAns)), 10));
-        var eTechSupport = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.techSupportAns)),10));
-        var eTutor = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.tutorAns)), 10));
-
-        var eDistance = crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.distanceFocusAns)), 10));
-	console.log("raw encrypted: " + eFirstName);
-	console.log("type: " + typeof(eFirstName));
-	eFirstName = JSON.stringify(eFirstName);
-	eLastName = JSON.stringify(eLastName);
-	eID = JSON.stringify(eID);
-	eStress = JSON.stringify(eStress);
-	eStruggle = JSON.stringify(eStruggle);
-	eCovid = JSON.stringify(eCovid);
-	eFamily = JSON.stringify(eFamily);
-	eFriend = JSON.stringify(eFriend);
-	eSchool = JSON.stringify(eSchool);
-	eInterestProtect = JSON.stringify(eInterestProtect);
-	eHouseholdClean = JSON.stringify(eHouseholdClean);
-	eStats = JSON.stringify(eStats);
-	eCSI = JSON.stringify(eCSI);
-	ePeer = JSON.stringify(ePeer);
-	eSocialHelp = JSON.stringify(eSocialHelp);
-	eTechSupport = JSON.stringify(eTechSupport);
-	eTutor = JSON.stringify(eTutor);
-	eDistance = JSON.stringify(eDistance);
+        const eFirstName = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.firstNameAns))));
+        const eLastName = JSON.stringify(crypto.publicEncrypt(publicKey,Buffer.from(escapeHTML(post_body.lastNameAns)) ));
+        const eID = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(escapeHTML(post_body.idAns))));
+        const eStress = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.stressAns)), 10)));
+        const eStruggle = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.struggleAns)), 10)));
+        const eCovid = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.covidAns)), 10)));
+        const eFamily = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.familyAns)), 10)));
+        const eFriend = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.friendAns)),10)));
+        const eSchool = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.schoolAns)),10)));
+        const eInterestProtect =JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.interestProtectAns)),10))) ;
+        const eHouseholdClean = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.householdCleanAns)), 10)));
+        const eStats = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.statsAns)), 10)));
+        const eCSI = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.csiAns)), 10)));
+        const ePeer = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.peerAns)), 10)));
+        const eSocialHelp = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.socialHelpAns)), 10)));
+        const eTechSupport = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.techSupportAns)),10)));
+        const eTutor = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.tutorAns)), 10)));
+        const eDistance = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.distanceFocusAns)), 10)));
 
         const userData = {
 	      var1: eFirstName,
@@ -426,10 +405,7 @@ app.post('/', function(req, res) {
 	    };
 
 
-	console.log("Encrypted data " + eFirstName);
-	eFirstName = JSON.parse(eFirstName);
 
-	    
 
 
 
