@@ -57,24 +57,24 @@ app.use(function(err, req, res, next) {
 //);
 
 
-//app.use(
-// helmet.contentSecurityPolicy({
-//   directives: {
-//      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-//      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
-//      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
-//      imgSrc: ["'self'", "data:"],
-//      upgradeInsecureRequests: [],
-//    },
-//  })
-//);
-
-
 app.use(
-  helmet({
-    contentSecurityPolicy: false,
+ helmet.contentSecurityPolicy({
+   directives: {
+      defaultSrc: ["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+      scriptSrc: ["'self'", `'unsafe-inline'`, "d3js.org/d3.v4.min.js", "unpkg.com/axios/dist/axios.min.js", "https://code.jquery.com/jquery-3.5.1.slim.min.js", "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"],
+      styleSrc:["'self'", `'unsafe-inline'`, "https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"],
+      imgSrc: ["'self'", "data:"],
+      upgradeInsecureRequests: [],
+    },
   })
 );
+
+
+//app.use(
+//  helmet({
+//    contentSecurityPolicy: false,
+//  })
+//);
 
 
 
