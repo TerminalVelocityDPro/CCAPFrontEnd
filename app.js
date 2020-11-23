@@ -346,18 +346,15 @@ app.post('/', function(req, res) {
     .required()
 
   })
-    .with('firstName',['lastName','id']);
+    .with('firstNameAns',['lastNameAns','idAns']);
 
-  /*Validation of Schema Inputs
-  try{
-    const value = await schmea.validateAsync(req.body);
-  }
-  catch(error){
-    console.log(error);
-  }
-  const {error,value} = schema.validate(req.body);
-  */
-  
+  //Validation of Schema Inputs
+  const validateData = function (data){
+    Joi.assert(req.body,schema);
+    console.log('Validation Success!');
+  };
+
+  validateData(res);
 
   if(typeof(error) != "undefined"){
 	  console.log("RIP");
