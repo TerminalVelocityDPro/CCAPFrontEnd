@@ -66,7 +66,7 @@ var interestProtect;
 var householdClean;
 var stats;
 var csi;
-var trans;
+var transition;
 var peer;
 var socialHelp;
 var techSupport;
@@ -93,7 +93,7 @@ function postingMethod(){
 	  householdCleanAns: householdClean,
 	  statsAns: stats,
 	  csiAns: csi,
-	  transAns: trans,
+	  transAns: transition,
 	  peerAns: peer,
 	  socialHelpAns: socialHelp,
 	  techSupportAns: techSupport,
