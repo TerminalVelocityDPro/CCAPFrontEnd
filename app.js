@@ -429,18 +429,7 @@ app.post('/', function(req, res) {
 	console.log("Encrypted data " + eFirstName);
 	eFirstName = JSON.parse(eFirstName);
 
-	    const privateKey = fs.readFileSync('./private_key','utf8');
-
-		const decryptedFirst = crypto.privateDecrypt(
-		            {
-		        key: privateKey,
-				passphrase: 'ccapprotection',
-		   },
-		   Buffer.from(eFirstName, "base64")
-		);
-
-console.log("decrypted data: ", decryptedFirst.toString());
-
+	    
 
 
 
