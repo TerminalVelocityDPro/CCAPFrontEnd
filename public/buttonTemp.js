@@ -253,13 +253,13 @@ function appendLast(num){
 		appendStuff();
 	}
 	if(num == 111){	
-		trans = "Yes";
+		transition = "Yes";
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(eleventhResource);
 		appendStuff();
 	}
 	if(num == 112){
-		trans = "No";
+		transition = "No";
 		appendStuff();
 	}
 	if(num == 121){
