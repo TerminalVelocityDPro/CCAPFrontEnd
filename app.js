@@ -354,7 +354,7 @@ app.post('/', function(req, res) {
     console.log('Validation Success!');
   };
 
-  validateData(res);
+  validateData(req);
 
   if(typeof(error) != "undefined"){
 	  console.log("RIP");
