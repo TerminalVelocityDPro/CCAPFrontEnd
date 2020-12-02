@@ -212,30 +212,30 @@ database.loadDatabase();
 //  console.log('Stress 1 to 3 :' + docs);
 //});
 
-const transporter = nodemailer.createTransport({
-  name: 'ethereal.email',
-  host: 'smtp.ethereal.email',
-  port: 587,
-  auth: {
-    user: 'elody81@ethereal.email',
-    pass: 'pvCK7C9PvyG4ePWFHm',
-  },
-});
+//const transporter = nodemailer.createTransport({
+//  name: 'ethereal.email',
+//  host: 'smtp.ethereal.email',
+//  port: 587,
+//  auth: {
+//    user: 'elody81@ethereal.email',
+//    pass: 'pvCK7C9PvyG4ePWFHm',
+//  },
+//});
 
-const mailOptions = {
-  from: 'elody81@ethereal.email',
-  to: 'elody81@ethereal.email',
-  subject: 'Sending Email using Node.js',
-  html: '<h1>Welcome</h1><p>That was easy!</p>',
-};
+//const mailOptions = {
+//  from: 'elody81@ethereal.email',
+//  to: 'elody81@ethereal.email',
+//  subject: 'Sending Email using Node.js',
+//  html: '<h1>Welcome</h1><p>That was easy!</p>',
+//};
 
-transporter.sendMail(mailOptions, function(error, info) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
+//transporter.sendMail(mailOptions, function(error, info) {
+//  if (error) {
+//    console.log(error);
+//  } else {
+//    console.log('Email sent: ' + info.response);
+//  }
+//});
 app.use(express.static('public'));
 //sapp.use(express.json({limit: '5 mb'}));
 //app.use(bodyParser.urlencoded({extended: false}));
