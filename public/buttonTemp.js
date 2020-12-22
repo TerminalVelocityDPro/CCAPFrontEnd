@@ -76,15 +76,13 @@ var distanceFocus;
 
 
 function postingMethod(){
-	axios({
-  method: 'post',
-  url: '/',
-  data: {
-      firstNameAns: firstName,
-      lastNameAns: lastName,
-      idAns: id,
-      stressAns: stress,
-	  struggleAns: struggle,
+	const url = 'control.php';
+	var data = {
+		firstNameAns: firstName,
+        lastNameAns: lastName,
+        idAns: id,
+        stressAns: stress,
+	    struggleAns: struggle,
 	  covidAns: covid,
 	  familyAns: family,
 	  friendAns: friend,
@@ -99,10 +97,49 @@ function postingMethod(){
 	  techSupportAns: techSupport,
 	  tutorAns: tutor,
 	  distanceFocusAns: distanceFocus  
-  }
-});
+	};
+	
+	//["Deepro", "Pasha", "150079759", "Stressed Out"];
+
+	var jsonData = JSON.stringify(data);
+
+	fetch(url, {
+		method: 'POST',
+		body: jsonData
+	}).then((response) => {
+		console.log(response);
+	}
+	);
+	//axios({
+  //method: 'post',
+  //url: '/',
+  //data: {
+   //   firstNameAns: firstName,
+   //   lastNameAns: lastName,
+   //   idAns: id,
+   //   stressAns: stress,
+//	  struggleAns: struggle,
+//	  covidAns: covid,
+//	  familyAns: family,
+//	  friendAns: friend,
+//	  schoolAns: school,
+//	  interestProtectAns: interestProtect,
+//	  householdCleanAns: householdClean,
+//	  statsAns: stats,
+//	  csiAns: csi,
+//	  transAns: transition,
+//	  peerAns: peer,
+//	  socialHelpAns: socialHelp,
+//	  techSupportAns: techSupport,
+//	  tutorAns: tutor,
+//	  distanceFocusAns: distanceFocus  
+  //}
+//});
 
 }
+
+
+
 
 
 
@@ -320,6 +357,7 @@ function appendLast(num){
 
 
 function appendStuff(num){
+	
 	if(num != null){
 		ques.push(num);
 	}
