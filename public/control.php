@@ -73,26 +73,53 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     print_r($stmt);
     $stmt->bind_param("ssissssssssssssssss", $eFirstName, $eLastName, $eID, $eStress, $eStruggle, $eCOVID, $eFamily, $eFriend, $eSchool, $eInterestProtect, $eHouseholdClean, $eStats, $eCSI, $eTrans, $ePeer, $eSocialHelp, $eTechSupport, $eTutor, $eDistance);
     //$stmt->bind_param('sss',$eFirstName, $eLastName, $eID);
-    $eFirstName = $array['firstNameAns'];
-    $eLastName = $array['lastNameAns'];
-    $eID = $array['idAns'];
-    $eStress = $array['stressAns'];
-    $eStruggle = $array['struggleAns'];
-    $eCOVID = $array['covidAns'];
-    $eFamily = $array['familyAns'];
-    $eFriend = $array['friendAns'];
-    $eSchool = $array['schoolAns'];
-    $eInterestProtect = $array['interestProtectAns'];
-    $eHouseholdClean = $array['householdCleanAns'];
-    $eStats = $array['statsAns'];
-    $eCSI = $array['csiAns'];
-    $eTrans = $array['transAns'];
-    $ePeer = $array['peerAns'];
-    $eSocialHelp = $array['socialHelpAns'];
-    $eTechSupport = $array['techSupportAns'];
-    $eTutor = $array['tutorAns'];
-    $eDistance = $array['distanceFocusAns'];
+    $firstNameBool = 0;
+    $lastNameBool = 0;
+    $idBool = 0;
+
+    if(preg_match("/^[a-zA-Z.-]{1,10}/", $array['firstNameAns'])){
+         print_r("THE FIRST NAME IS FINE");
+         $firstNameBool = 1;
+     }else{
+         print_r("THIS FIRST NAME IS GARBAGE");
+    }
+
+    if(preg_match("/^[a-zA-Z.-]{1,10}/", $array['lastNameAns'])){
+        print_r("THE LAST NAME IS FINE");
+        $lastNameBool = 1;
+    }else{
+        print_r("THIS LAST NAME IS GARBAGE");
+    }
+
+    if(preg_match("/^[0-9]{9}/", $array['idAns'])){
+        print_r("THE ID IS FINE");
+        $idBool = 1;
+    }else{
+        print_r("THIS ID IS GARBAGE");
+    }
+
+    if($firstNameBool == 1 && $lastNameBool == 1 && $idBool == 1){
+    $eFirstName = htmlspecialchars($array['firstNameAns'], ENT_QUOTES);
+    $eLastName = htmlspecialchars($array['lastNameAns'], ENT_QUOTES);
+    $eID = htmlspecialchars($array['idAns'], ENT_QUOTES);
+    $eStress = htmlspecialchars($array['stressAns'], ENT_QUOTES);
+    $eStruggle = htmlspecialchars($array['struggleAns'], ENT_QUOTES);
+    $eCOVID = htmlspecialchars($array['covidAns'], ENT_QUOTES);
+    $eFamily = htmlspecialchars($array['familyAns'], ENT_QUOTES);
+    $eFriend = htmlspecialchars($array['friendAns'], ENT_QUOTES);
+    $eSchool = htmlspecialchars($array['schoolAns'], ENT_QUOTES);
+    $eInterestProtect = htmlspecialchars($array['interestProtectAns'], ENT_QUOTES);
+    $eHouseholdClean = htmlspecialchars($array['householdCleanAns'], ENT_QUOTES);
+    $eStats = htmlspecialchars($array['statsAns'], ENT_QUOTES);
+    $eCSI = htmlspecialchars($array['csiAns'], ENT_QUOTES);
+    $eTrans = htmlspecialchars($array['transAns'], ENT_QUOTES);
+    $ePeer = htmlspecialchars($array['peerAns'], ENT_QUOTES);
+    $eSocialHelp = htmlspecialchars($array['socialHelpAns'], ENT_QUOTES);
+    $eTechSupport = htmlspecialchars($array['techSupportAns'], ENT_QUOTES);
+    $eTutor = htmlspecialchars($array['tutorAns'], ENT_QUOTES);
+    $eDistance = htmlspecialchars($array['distanceFocusAns'], ENT_QUOTES);
     $stmt->execute();
+    }
 }
 
 ?>
