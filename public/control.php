@@ -1,8 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ccapDB";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "ccapDB";
+
+include_once("db.php");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $rawData = file_get_contents("php://input");
@@ -10,30 +12,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $array = json_decode($rawData, true);
     print_r($array);
     //print_r($array['firstNameAns']);
+    //SELECT AES_DECRYPT(`eFirstName`, UNHEX(SHA2('ccap password', 512))) FROM `myusers`;
     try{
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
         $stmt = $conn->prepare("INSERT INTO MyUsers (eFirstName, eLastName, eID, eStress, eStruggle, eCOVID, eFamily, eFriend, eSchool, eInterestProtect, eHouseholdClean, eStats, eCSI, eTrans, ePeer, eSocialHelp, eTechSupport, eTutor, eDistance) 
-        VALUES (AES_ENCRYPT(:eFirstName, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eLastName, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eID, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eStress, UNHEX(SHA2('ccap password', 512))),
-        AES_ENCRYPT(:eStruggle, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eCOVID, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eFamily, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eFriend, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eSchool, UNHEX(SHA2('ccap password', 512))),
-        AES_ENCRYPT(:eInterestProtect, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eHouseholdClean, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eStats, UNHEX(SHA2('ccap password', 512))),
-        AES_ENCRYPT(:eCSI, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eTrans, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:ePeer, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eSocialHelp, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eTechSupport, UNHEX(SHA2('ccap password', 512))), 
-        AES_ENCRYPT(:eTutor, UNHEX(SHA2('ccap password', 512))),
-        AES_ENCRYPT(:eDistance, UNHEX(SHA2('ccap password', 512))))");
+        VALUES (AES_ENCRYPT(:eFirstName, :keyPhrase), AES_ENCRYPT(:eLastName, :keyPhrase), AES_ENCRYPT(:eID, :keyPhrase),
+        :eStress,
+        :eStruggle,
+        :eCOVID,
+        :eFamily,
+        :eFriend,
+        :eSchool,
+        :eInterestProtect,
+        :eHouseholdClean,
+        :eStats,
+        :eCSI,
+        :eTrans,
+        :ePeer,
+        :eSocialHelp,
+        :eTechSupport,
+        :eTutor,
+        :eDistance)");
+        $stmt->bindParam(':keyPhrase', $keyPhrase);
         $stmt->bindParam(':eFirstName', $eFirstName);
         $stmt->bindParam(':eLastName', $eLastName);
         $stmt->bindParam(':eID', $eID);
@@ -58,27 +60,28 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $idBool = 0;
     
         if(preg_match("/^[a-zA-Z.-]{1,10}/", $array['firstNameAns'])){
-             print_r("THE FIRST NAME IS FINE");
+             //print_r("THE FIRST NAME IS FINE");
              $firstNameBool = 1;
          }else{
-             print_r("THIS FIRST NAME IS GARBAGE");
+             //print_r("THIS FIRST NAME IS GARBAGE");
         }
     
         if(preg_match("/^[a-zA-Z.-]{1,10}/", $array['lastNameAns'])){
-            print_r("THE LAST NAME IS FINE");
+            //print_r("THE LAST NAME IS FINE");
             $lastNameBool = 1;
         }else{
-            print_r("THIS LAST NAME IS GARBAGE");
+            //print_r("THIS LAST NAME IS GARBAGE");
         }
     
         if(preg_match("/^[0-9]{9}/", $array['idAns'])){
-            print_r("THE ID IS FINE");
+            //print_r("THE ID IS FINE");
             $idBool = 1;
         }else{
-            print_r("THIS ID IS GARBAGE");
+            //print_r("THIS ID IS GARBAGE");
         }
     
         if($firstNameBool == 1 && $lastNameBool == 1 && $idBool == 1){
+        $keyPhrase = $ekey;
         $eFirstName = htmlspecialchars($array['firstNameAns'], ENT_QUOTES);
         $eLastName = htmlspecialchars($array['lastNameAns'], ENT_QUOTES);
         $eID = htmlspecialchars($array['idAns'], ENT_QUOTES);

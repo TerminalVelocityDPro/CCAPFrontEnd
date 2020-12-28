@@ -33,26 +33,27 @@ if($conn->connect_error){
 // const eTutor = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.tutorAns)), 10)));
 // const eDistance = JSON.stringify(crypto.publicEncrypt(publicKey, Buffer.from(bcrypt.hashSync(escapeHTML(post_body.distanceFocusAns)), 10)));
 $sql = "CREATE TABLE myUsers (
-    eFirstName VARCHAR(30) NOT NULL,
-    eLastName VARCHAR(30) NOT NULL,
-    eID VARCHAR(30) NOT NULL,
-    eStress VARCHAR(30) NOT NULL,
-    eStruggle VARCHAR(30) NOT NULL,
-    eCovid VARCHAR(30) NOT NULL,
-    eFamily VARCHAR(30) NOT NULL,
-    eFriend VARCHAR(30) NOT NULL,
-    eSchool VARCHAR(30) NOT NULL,
-    eInterestProtect VARCHAR(30) NOT NULL,
-    eHouseholdClean VARCHAR(30) NOT NULL,
-    eStats VARCHAR(30) NOT NULL,
-    eCSI VARCHAR(30) NOT NULL,
-    eTrans VARCHAR(30) NOT NULL,
-    ePeer VARCHAR(30) NOT NULL,
-    eSocialHelp VARCHAR(30) NOT NULL,
-    eTechSupport VARCHAR(30) NOT NULL,
-    eTutor VARCHAR(30) NOT NULL,
-    eDistance VARCHAR(30) NOT NULL,
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+    id int(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE KEY,
+    eFirstName blob,
+    eLastName blob,
+    eID blob,
+    eStress VARCHAR(45) NOT NULL,
+    eStruggle VARCHAR(45) NOT NULL,
+    eCovid VARCHAR(45) NOT NULL,
+    eFamily VARCHAR(45) NOT NULL,
+    eFriend VARCHAR(45) NOT NULL,
+    eSchool VARCHAR(45) NOT NULL,
+    eInterestProtect VARCHAR(45) NOT NULL,
+    eHouseholdClean VARCHAR(45) NOT NULL,
+    eStats VARCHAR(45) NOT NULL,
+    eCSI VARCHAR(45) NOT NULL,
+    eTrans VARCHAR(45) NOT NULL,
+    ePeer VARCHAR(45) NOT NULL,
+    eSocialHelp VARCHAR(45) NOT NULL,
+    eTechSupport VARCHAR(45) NOT NULL,
+    eTutor VARCHAR(45) NOT NULL,
+    eDistance VARCHAR(45) NOT NULL,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
 
