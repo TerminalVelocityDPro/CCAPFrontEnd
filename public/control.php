@@ -6,6 +6,7 @@
 
 include_once("db.php");
 
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $rawData = file_get_contents("php://input");
     //print_r($rawData);
@@ -14,8 +15,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     //print_r($array['firstNameAns']);
     //SELECT AES_DECRYPT(`eFirstName`, UNHEX(SHA2('ccap password', 512))) FROM `myusers`;
     try{
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
         echo "Connected successfully";
         $stmt = $conn->prepare("INSERT INTO MyUsers (eFirstName, eLastName, eID, eStress, eStruggle, eCOVID, eFamily, eFriend, eSchool, eInterestProtect, eHouseholdClean, eStats, eCSI, eTrans, ePeer, eSocialHelp, eTechSupport, eTutor, eDistance) 
         VALUES (AES_ENCRYPT(:eFirstName, :keyPhrase), AES_ENCRYPT(:eLastName, :keyPhrase), AES_ENCRYPT(:eID, :keyPhrase),
