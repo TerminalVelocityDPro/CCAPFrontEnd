@@ -59,26 +59,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $lastNameBool = 0;
         $idBool = 0;
     
-        if(preg_match("/^[a-zA-Z.-]{1,10}/", $array['firstNameAns'])){
-             //print_r("THE FIRST NAME IS FINE");
-             $firstNameBool = 1;
-         }else{
-             //print_r("THIS FIRST NAME IS GARBAGE");
-        }
-    
-        if(preg_match("/^[a-zA-Z.-]{1,10}/", $array['lastNameAns'])){
-            //print_r("THE LAST NAME IS FINE");
-            $lastNameBool = 1;
-        }else{
-            //print_r("THIS LAST NAME IS GARBAGE");
-        }
-    
-        if(preg_match("/^[0-9]{9}/", $array['idAns'])){
-            //print_r("THE ID IS FINE");
-            $idBool = 1;
-        }else{
-            //print_r("THIS ID IS GARBAGE");
-        }
+
     
         if($firstNameBool == 1 && $lastNameBool == 1 && $idBool == 1){
         $keyPhrase = $ekey;

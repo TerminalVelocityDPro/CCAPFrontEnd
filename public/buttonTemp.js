@@ -73,10 +73,56 @@ var techSupport;
 var tutor;
 var distanceFocus;
 
+function allLetter(inputtxt){
+	var letters = /^[A-Za-z]+$/;
+	if(inputtxt.match(letters)){
+		//alert('correct');
+		return true;
+	}else{
+		//alert('Please input alphabet characters only');
+		return false;
+	}
+}
+
+function idLength(inputtxt){
+	var letters = /^[0-9]{9}/;
+	if(inputtxt.match(letters)){
+		//alert('correct');
+		return true;
+	}else{
+		//alert('Please input alphabet characters only');
+		return false;
+	}
+}
+
+
+
+
 
 
 function postingMethod(){
-	const url = 'control.php';
+	var firstNameCheck = allLetter(firstName);
+	var lastNameCheck = allLetter(lastName);
+	var idCheck = idLength(id);
+	//const url = 'control.php';
+	// var myRe = /^[a-zA-Z.-]/;
+	// var myReID = /^[0-9]{9}/;
+	// var firstNameCheck = firstName.matchAll(myRe);
+	// //var firstNameCheck = myRe.exec(firstName);
+	// var lastNameCheck = myRe.exec(lastName);
+	// var idCheck = myRe.exec(id);
+	// console.log(firstNameCheck);
+	//console.log(lastNameCheck);
+	// console.log("******REGEX CHECK******");
+	// console.log("FIRST NAME CHECK");
+	//console.log(firstNameCheck);
+	// console.log("LAST NAME CHECK");
+	// console.log(lastNameCheck);
+	// console.log("ID CHECK");
+	// console.log(idCheck);
+	// console.log("******REGEX CHECK******");
+	if(firstNameCheck && lastNameCheck && idCheck){
+		const url = 'control.php';
 	var data = {
 		firstNameAns: firstName,
         lastNameAns: lastName,
@@ -110,6 +156,10 @@ function postingMethod(){
 		console.log(response);
 	}
 	);
+
+	}
+
+	
 	//axios({
   //method: 'post',
   //url: '/',
