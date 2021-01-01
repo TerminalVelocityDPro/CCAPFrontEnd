@@ -55,13 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $stmt->bindParam(':eTechSupport', $eTechSupport);
         $stmt->bindParam(':eTutor', $eTutor);
         $stmt->bindParam(':eDistance', $eDistance);
-        //$firstNameBool = 0;
-        //$lastNameBool = 0;
-        //$idBool = 0;
-    
 
-    
-        //if($firstNameBool == 1 && $lastNameBool == 1 && $idBool == 1){
         $keyPhrase = $ekey;
         $eFirstName = htmlspecialchars($array['firstNameAns'], ENT_QUOTES);
         $eLastName = htmlspecialchars($array['lastNameAns'], ENT_QUOTES);
@@ -83,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $eTutor = htmlspecialchars($array['tutorAns'], ENT_QUOTES);
         $eDistance = htmlspecialchars($array['distanceFocusAns'], ENT_QUOTES);
         $stmt->execute();
-        //}
+        
     }catch(PDOException $e){
         echo "Connection failed: ". $e->getMessage();
     }
