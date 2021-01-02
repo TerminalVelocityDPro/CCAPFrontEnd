@@ -8,8 +8,8 @@ var firstQuestionText = "<div class = 'col-1' style='height:40px'></div> <div cl
 var firstQuestionChoices = "<div class = 'col-2' style=''></div><div class = 'col-2' style=''></div><div class = 'col-7 user-bubble text-white' style='' id='bubbleAnswer'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button0' onclick='appendStuff(1)'>1 - I'm functioning well both at home and at school</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(2)'>2</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button2' onclick='appendStuff(3)'>3</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button3' onclick='appendStuff(4)'>4</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button4' onclick='appendStuff(5)'>5 - I'm able to do most tasks but have lost motivation.</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(6)'>6</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(7)'>7</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(8)'>8</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(9)'>9</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(10)'>10 - I'm not functioning well (not motivated at all/self-isolating/loss of enjoyment in most things)</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div></div><div class = 'col-1' style=''></div>";
 var stressGenResponse = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 speech-bubble text-white' style=''>Here are some resources that may help with this stress: </div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var stress12Response = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-6 border border-primary rounded text-black text-center' style=''><div class='text-black'>These are some potential mental health apps that can help you manage your stress:</div> <a href='https://www.calm.com/' target='_blank'>Calm</a>, <a href='https://depressionpedia.com/mobile-apps/breathe2relax/#:~:text=%20%20%201%20Description.%20Breathe2Relax%20is%20a,giving%20into%20your%20emotions%20rather%20than...%20More%20' target='_blank'>Breathe2Relax</a>, <a href='https://www.dailyburst.com/' target='_blank'>Daily Burst</a>, <a href='https://www.thinkup.me/' target='_blank'>ThinkUp</a>, <a href='https://www.sanvello.com/' target='_blank'>Sanvello.</a></div> <div class = 'col-3' style='height:40px'></div>";
-var stress345Response = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-6 border border-primary rounded text-black text-center' style=''>Here is a link to contact peer counseling: <br><a href='mailto:michellemiller@cusd.com' target='_blank'>michellemiller@cusd.com</a><br> Here is a link to contact student services: <br><a href='mailto:tomwright@cusd.com' target='_blank'>tomwright@cusd.com</a><br> Here is a link to contact the nurse: <br><a href='mailto:lorettarochanewman@cusd.com' target='_blank'>lorettarocha newman@cusd.com</a><br> Here is a link to contact the counselours: <br><a href='mailto:garyomi@cusd.com' target='_blank'>garyomi@cusd.com </a><br> They can really help you out!</div>  <div class = 'col-3' style='height:40px'></div>";
-var stress678Response = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-6 border border-primary rounded text-black text-center' style=''>Here is a link to contact CSI: <br><a href='https://docs.google.com/forms/d/e/1FAIpQLSffLdku0_Jcw-JRmvJaLqfMGofQq4tXUPOmaJ-nuQ2pmZ00Yw/viewform' target='_blank'>CSI</a><br> Here is a link to contact the transition team: <br><a href='mailto:rkevinmiller@cusd.com ' target='_blank'>kevinmiller@cusd.com </a><br> Here is a link to contact school psychologists: <br><a href='mailto:denisesegal@cusd.com,hollyensign@cusd.com' target='_blank'>Denise Segal & Holly Ensign</a></div> <div class = 'col-3' style='height:40px'></div>";
+var stress345Response = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-6 border border-primary rounded text-black text-center' style=''>Here is a link to contact peer counseling: <br><a href='mailto:michellemiller@cusd.com' target='_blank'>michellemiller<br>@cusd.com</a><br> Here is a link to contact student services: <br><a href='mailto:tomwright@cusd.com' target='_blank'>tomwright<br>@cusd.com</a><br> Here is a link to contact the nurse: <br><a href='mailto:lorettarochanewman@cusd.com' target='_blank'>lorettarocha newman@cusd.com</a><br> Here is a link to contact the counselours: <br><a href='mailto:garyomi@cusd.com' target='_blank'>garyomi<br>@cusd.com </a><br> They can really help you out!</div>  <div class = 'col-3' style='height:40px'></div>";
+var stress678Response = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-6 border border-primary rounded text-black text-center' style=''>Here is a link to contact CSI: <br><a href='https://docs.google.com/forms/d/e/1FAIpQLSffLdku0_Jcw-JRmvJaLqfMGofQq4tXUPOmaJ-nuQ2pmZ00Yw/viewform' target='_blank'>CSI</a><br> Here is a link to contact the transition team: <br><a href='mailto:rkevinmiller@cusd.com ' target='_blank'>kevinmiller<br>@cusd.com </a><br> Here is a link to contact school psychologists: <br><a href='mailto:denisesegal@cusd.com,hollyensign@cusd.com' target='_blank'>Denise Segal & Holly Ensign</a></div> <div class = 'col-3' style='height:40px'></div>";
 var stress910Response = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-6 border border-primary rounded text-black text-center' style=''>Sending an email to Ms. Barrett, she'll contact you through CUSD student email. Here is a link to a social-emotional scanner: <br><a href='https://docs.google.com/forms/d/e/1FAIpQLSc28mvH8Zyvf_Jk_dURzILSMuNZb3iD1j0hPPnQb1rv4zI_LQ/viewform?usp=sf_link' target='_blank'>Social Emotional Scanner</a></div> <div class = 'col-3' style='height:40px'></div>";
 var secondQuestionText = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 speech-bubble text-white' style=''>What is the main source of your struggles?</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var secondQuestionChoices = "<div class = 'col-2' style=''></div><div class = 'col-4' style=''></div><div class = 'col-5 user-bubble text-white' style='' id='bubbleAnswer'><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button0' onclick='appendStuff(0)'>COVID-19</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button1' onclick='appendStuff(1)'>Family Issues</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button2' onclick='appendStuff(2)'>Friendship Problems</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button3' onclick='appendStuff(3)'>Remote Learning</button><div class='row'><div class = 'col-12' style = 'height:5px'></div></div><button class= 'btn btn-light' id='button4' onclick='appendStuff(4)'>Overall Social-Emotional Wellness</button></div><div class = 'col-1' style=''></div>";
@@ -45,7 +45,7 @@ var seventhResource = "<div class = 'col-1' style='height:40px'></div> <div clas
 var eighthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to learn about<a href='https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/disinfecting-your-home.html' target='_blank'> staying clean and safe. </a></div><div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var ninthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to learn about<a href='https://www.worldometers.info/coronavirus/' target='_blank'> coronavirus statistics.</a></div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var tenthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to contact <a href='mailto:lauraquall@cusd.com' target='_blank'>CSI.</a></div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
-var eleventhResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to contact <a href='mailto:kevinmiller@cusd.com' target='_blank'>the transition program.</a></div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";;
+var eleventhResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to contact <a href='mailto:kevinmiller<br>@cusd.com' target='_blank'>the transition program.</a></div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";;
 var twelfthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to contact <a href='mailto:michellemiller@cusd.com' target='_blank'>peer counseling.</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var thirteenthResource = "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to get <a href='https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/personal-social-activities.html' target='_blank'>social help.</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
 var fourteenthResource= "<div class = 'col-1' style='height:40px'></div> <div class = 'col-4 border border-primary rounded text-black text-center' style=''>Here is a link to contact <a href='https://www.cusd.com/TechnologyHelpforStudents.aspx#additionalAssistance' target='_blank'>CUSD Tech Support.</div> <div class = 'col-2' style='height:40px'></div> <div class = 'col-3' style='height:40px'></div>";
@@ -72,6 +72,7 @@ var socialHelp;
 var techSupport;
 var tutor;
 var distanceFocus;
+var emailTime = 0
 
 function allLetter(inputtxt){
 	var letters = /^[A-Za-z]+$/;
@@ -104,47 +105,53 @@ function postingMethod(){
 	var firstNameCheck = allLetter(firstName);
 	var lastNameCheck = allLetter(lastName);
 	var idCheck = idLength(id);
-	//const url = 'control.php';
-	// var myRe = /^[a-zA-Z.-]/;
-	// var myReID = /^[0-9]{9}/;
-	// var firstNameCheck = firstName.matchAll(myRe);
-	// //var firstNameCheck = myRe.exec(firstName);
-	// var lastNameCheck = myRe.exec(lastName);
-	// var idCheck = myRe.exec(id);
-	// console.log(firstNameCheck);
-	//console.log(lastNameCheck);
-	// console.log("******REGEX CHECK******");
-	// console.log("FIRST NAME CHECK");
-	//console.log(firstNameCheck);
-	// console.log("LAST NAME CHECK");
-	// console.log(lastNameCheck);
-	// console.log("ID CHECK");
-	// console.log(idCheck);
-	// console.log("******REGEX CHECK******");
 	if(firstNameCheck && lastNameCheck && idCheck){
 		const url = 'control.php';
-	var data = {
-		firstNameAns: firstName,
-        lastNameAns: lastName,
-        idAns: id,
-        stressAns: stress,
-	    struggleAns: struggle,
-	  covidAns: covid,
-	  familyAns: family,
-	  friendAns: friend,
-	  schoolAns: school,
-	  interestProtectAns: interestProtect,
-	  householdCleanAns: householdClean,
-	  statsAns: stats,
-	  csiAns: csi,
-	  transAns: transition,
-	  peerAns: peer,
-	  socialHelpAns: socialHelp,
-	  techSupportAns: techSupport,
-	  tutorAns: tutor,
-	  distanceFocusAns: distanceFocus  
-	};
-	
+		if(emailTime == 1){
+			var data = {
+			firstNameAns: firstName,
+			lastNameAns: lastName,
+			idAns: id,
+			stressAns: stress,
+			struggleAns: "EMAIL",
+			covidAns: "EMAIL",
+			familyAns: "EMAIL",
+			friendAns: "EMAIL",
+			schoolAns: "EMAIL",
+			interestProtectAns: "EMAIL",
+			householdCleanAns: "EMAIL",
+			statsAns: "EMAIL",
+			csiAns: "EMAIL",
+			transAns: "EMAIL",
+			peerAns: "EMAIL",
+			socialHelpAns: "EMAIL",
+			techSupportAns: "EMAIL",
+			tutorAns: "EMAIL",
+			distanceFocusAns: "EMAIL"  
+			};
+		}else{
+			var data = {
+			firstNameAns: firstName,
+			lastNameAns: lastName,
+			idAns: id,
+			stressAns: stress,
+			struggleAns: struggle,
+			covidAns: covid,
+			familyAns: family,
+			friendAns: friend,
+			schoolAns: school,
+			interestProtectAns: interestProtect,
+			householdCleanAns: householdClean,
+			statsAns: stats,
+			csiAns: csi,
+			transAns: transition,
+			peerAns: peer,
+			socialHelpAns: socialHelp,
+			techSupportAns: techSupport,
+			tutorAns: tutor,
+			distanceFocusAns: distanceFocus  
+			};
+		}
 	//["Deepro", "Pasha", "150079759", "Stressed Out"];
 
 	var jsonData = JSON.stringify(data);
@@ -157,9 +164,7 @@ function postingMethod(){
 	}
 	);
 
-	}
-
-	
+	}	
 	//axios({
   //method: 'post',
   //url: '/',
@@ -481,6 +486,9 @@ function appendStuff(num){
 		if(ques[2] == 9 || ques[2] == 10){
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 			d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(stress910Response);
+			emailTime = 1;
+			postingMethod();
+			emailTime = 0;
 		}
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").append("div").attr("class", "col-12 bg-white").style("height", "10px");
 		d3.select("body").select("#mainContainer").select("#rowContainingSurveyInfoButtons").select("#survey").append("div").attr("class", "row").html(thanks);
