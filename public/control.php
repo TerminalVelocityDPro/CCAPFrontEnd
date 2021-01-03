@@ -4,6 +4,10 @@
 // $password = "";
 // $dbname = "ccapDB";
 
+
+
+
+
 include_once("db.php");
 
 
@@ -14,8 +18,37 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     print_r($array);
     //print_r($array['firstNameAns']);
     //SELECT AES_DECRYPT(`eFirstName`, UNHEX(SHA2('ccap password', 512))) FROM `myusers`;
+    if($array['stressAns'] == '9' || $array['stressAns'] == 10){
+        print_r('STRESS HIGH');
+        //$to = 'juliebarrett@cusd.com';
+        $to = 'barnapa@yahoo.com';
+        $subject = 'CCAP';
+        $message = $array['firstNameAns']." ".$array['lastNameAns']." of ID ".$array['idAns']." has rated a 9 on the stress scale";
+        print_r($message);
+        $headers = 'From: ccap@company.com';
+        if(mail($to, $subject, $message, $headers)){
+            print_r('Your mail has been sent successfully.');
+        } else{
+            print_r('Unable to send email. Please try again.');
+        }
+    }
+    //print_r("Stress Answer: ".$array['stressAns']);
+
+
+
+
+//     $to = 'maryjane@email.com';
+// $subject = 'Marriage Proposal';
+// $message = 'Hi Jane, will you marry me?'; 
+// $from = 'peterparker@email.com';
+ 
+// // Sending email
+// if(mail($to, $subject, $message)){
+//     echo 'Your mail has been sent successfully.';
+// } else{
+//     echo 'Unable to send email. Please try again.';
+// }
     try{
-        
         echo "Connected successfully";
         $stmt = $conn->prepare("INSERT INTO MyUsers (eFirstName, eLastName, eID, eStress, eStruggle, eCOVID, eFamily, eFriend, eSchool, eInterestProtect, eHouseholdClean, eStats, eCSI, eTrans, ePeer, eSocialHelp, eTechSupport, eTutor, eDistance) 
         VALUES (AES_ENCRYPT(:eFirstName, :keyPhrase), AES_ENCRYPT(:eLastName, :keyPhrase), AES_ENCRYPT(:eID, :keyPhrase),
