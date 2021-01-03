@@ -12,11 +12,10 @@ try {
   foreach($result as $row){
       echo $row['eFirstName'].'<br>';
   }
-
-  
 } catch(PDOException $e) {
   echo "Error: " . $e->getMessage();
 }
+
 $conn = null;
 
 ?>
