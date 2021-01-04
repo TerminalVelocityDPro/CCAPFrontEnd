@@ -20,8 +20,6 @@ $allTechSupport = [];
 $allTutor = [];
 $allDistance = [];
 
-
-
 try {  
   $stmt = $conn->prepare("SELECT id, eStress, eStruggle, eCovid, eFamily, eFriend, eSchool, eInterestProtect, eHouseholdClean, eStats, eCSI, eTrans, ePeer, eSocialHelp, eTechSupport, eTutor, eDistance FROM myusers");
   $stmt->execute();
@@ -70,6 +68,11 @@ try {
 }
 
 $conn = null;
+
+
+
+
+
 
 
 echo json_encode($all);
