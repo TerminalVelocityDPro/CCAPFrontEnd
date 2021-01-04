@@ -2,30 +2,35 @@
 
 include_once("db.php");
 
-$allFirstNames = [];
-$allLastNames = [];
-$allIDs = [];
+$allID = [];
+$allStress = [];
 
-
-
-
+//https://stackoverflow.com/questions/23740548/how-do-i-pass-variables-and-data-from-php-to-javascript
 
 
 try {
   
-  $stmt = $conn->prepare("SELECT id, eFirstName, eLastName FROM myusers");
+  $stmt = $conn->prepare("SELECT id, eStress, eStruggle, eCovid, eFamily, eFriend, eSchool, eInterestProtect, eHouseholdClean, eStats, eCSI, eTrans, ePeer, eSocialHelp, eTechSupport, eTutor, eDistance FROM myusers");
   $stmt->execute();
-
 
   $result = $stmt->fetchAll();
   foreach($result as $row){
-      echo $row['eFirstName'].'<br>';
+    array_push($allID, $row['id']);
+    array_push($allStress, $row['eStress']);
+      //echo json_encode($row['eFirstName'].'<br>');
   }
 
 } catch(PDOException $e) {
-  echo "Error: " . $e->getMessage();
+  //echo "Error: " . $e->getMessage();
 }
 
 $conn = null;
+
+//print_r($allStress)
+//echo $allID;
+
+
+
+//echo json_encode(42);
 
 ?>
