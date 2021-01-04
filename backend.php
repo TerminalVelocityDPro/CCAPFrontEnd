@@ -72,7 +72,7 @@ try {
 $conn = null;
 
 
-echo $all;
+echo json_encode($all);
 //echo $allID;
 
 
