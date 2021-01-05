@@ -105,3 +105,11 @@ interface SchoolCnts extends Record<string, any> {
   accessibility: number;
   distractions: number;
 }
+
+/**
+ * Metadata that enables the site to function properly
+ * @param {number} selected - The currently selected tab of CCAP data.
+ */
+export interface Meta extends Record<string, any> {
+  selected: number;
+}

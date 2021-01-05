@@ -28,9 +28,6 @@
   <div
     class="flex p-6 m-4 max-w-full bg-white rounded-xl shadow-md items-center space-x-4 dark:bg-neutral-gray-800 dark:shadow-none"
   ></div>
-  <div
-    class="flex p-6 m-4 max-w-full bg-white rounded-xl shadow-md items-center space-x-4 dark:bg-neutral-gray-800 dark:shadow-none"
-  ></div>
 </template>
 
 <script lang="ts">
