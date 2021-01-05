@@ -27,19 +27,41 @@
   </div>
   <div
     class="flex p-6 m-4 max-w-full bg-white rounded-xl shadow-md items-center space-x-4 dark:bg-neutral-gray-800 dark:shadow-none"
-  ></div>
+  >
+    <covid-info v-if="metaState.selected === 0"></covid-info>
+    <family-info v-if="metaState.selected === 1"></family-info>
+    <friends-info v-if="metaState.selected === 2"></friends-info>
+    <learning-info v-if="metaState.selected === 3"></learning-info>
+    <overall-info v-if="metaState.selected === 4"></overall-info>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import CovidInfo from "./components/CovidInfo.vue";
+import FamilyInfo from "./components/FamilyInfo.vue";
+import FriendsInfo from "./components/FriendsInfo.vue";
+import LearningInfo from "./components/LearningInfo.vue";
+import OverallInfo from "./components/OverallInfo.vue";
 import StressGraph from "./components/StressGraph.vue";
 import StruggleGraph from "./components/StruggleGraph.vue";
+import { metaStore } from "./store/MetaStore";
 
 export default defineComponent({
   name: "App",
   components: {
     "stress-graph": StressGraph,
-    "struggle-graph": StruggleGraph
+    "struggle-graph": StruggleGraph,
+    "covid-info": CovidInfo,
+    "family-info": FamilyInfo,
+    "friends-info": FriendsInfo,
+    "learning-info": LearningInfo,
+    "overall-info": OverallInfo
+  },
+  setup() {
+    return {
+      metaState: metaStore.getState()
+    };
   }
 });
 </script>
