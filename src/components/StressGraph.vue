@@ -1,5 +1,5 @@
 <template>
-  <div class="chart-container h-40 w-full">
+  <div class="chart-container">
     <canvas id="stress-graph"></canvas>
   </div>
 </template>
