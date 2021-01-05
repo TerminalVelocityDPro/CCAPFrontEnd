@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { Data } from "./interfaces";
+import { dataStore } from "./store/DataStore";
 import fetch from "node-fetch";
 import App from "./App.vue";
 
@@ -57,8 +58,11 @@ const getData = async () => {
     counselingCnt: 10,
     transitionCnt: 15
   };
+
+  dataStore.update(body);
 };
 
 getData();
 
+// Create and mount app based on App class (App.vue)
 createApp(App).mount("#app");
