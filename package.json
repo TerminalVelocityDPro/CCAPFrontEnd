@@ -31,6 +31,7 @@
     "prettier": "^1.19.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "tslog": "^3.0.5",
     "typescript": "~3.9.3"
   },
   "gitHooks": {
