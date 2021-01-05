@@ -15,11 +15,11 @@ export default defineComponent({
   setup() {
     const dataState = dataStore.getState();
     const ctx = "stress-graph";
-    let myPieChart: Chart;
+    let pieChart: Chart;
 
     onMounted(() => {
       if (ctx !== null) {
-        myPieChart = new Chart(ctx, {
+        pieChart = new Chart(ctx, {
           type: "bar",
           plugins: [ChartDataLabels],
           data: {
@@ -27,10 +27,7 @@ export default defineComponent({
             datasets: [
               {
                 data: dataState.stressPercents,
-                backgroundColor: "#063C84",
-                hoverBackgroundColor: "#052d61",
-                borderColor: "#063C84",
-                borderWidth: 1
+                backgroundColor: "#063C84"
               }
             ]
           },

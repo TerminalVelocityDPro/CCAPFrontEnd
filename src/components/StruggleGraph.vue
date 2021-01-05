@@ -7,6 +7,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import { dataStore } from "../store/DataStore";
+import { metaStore } from "../store/MetaStore";
 import Chart from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
@@ -14,6 +15,7 @@ export default defineComponent({
   name: "StruggleGraph",
   setup() {
     const dataState = dataStore.getState();
+    const metaState = metaStore.getState();
     const ctx = "struggle-graph";
     let myPieChart: Chart;
 
@@ -27,10 +29,11 @@ export default defineComponent({
             datasets: [
               {
                 data: Object.values(dataState.struggleCnts),
-                backgroundColor: "#063C84",
-                hoverBackgroundColor: "#052d61",
-                borderColor: "#063C84",
-                borderWidth: 1
+                backgroundColor: context => {
+                  return context.dataIndex === metaState.selected
+                    ? "#E1081B"
+                    : "#063C84";
+                }
               }
             ]
           },
