@@ -6,8 +6,9 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import Chart from "chart.js";
 import { dataStore } from "../store/DataStore";
+import Chart from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 export default defineComponent({
   name: "StressGraph",
@@ -20,13 +21,14 @@ export default defineComponent({
       if (ctx !== null) {
         myPieChart = new Chart(ctx, {
           type: "bar",
+          plugins: [ChartDataLabels],
           data: {
             labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             datasets: [
               {
                 data: dataState.stressPercents,
-                backgroundColor: "#063C8480",
-                hoverBackgroundColor: "#063C8499",
+                backgroundColor: "#063C84",
+                hoverBackgroundColor: "#052d61",
                 borderColor: "#063C84",
                 borderWidth: 1
               }
@@ -58,6 +60,19 @@ export default defineComponent({
                   }
                 }
               ]
+            },
+            tooltips: {
+              enabled: false
+            },
+            plugins: {
+              datalabels: {
+                anchor: "end",
+                align: "start",
+                color: "#FFF",
+                formatter: function(value, context) {
+                  return value + "%";
+                }
+              }
             }
           }
         });
