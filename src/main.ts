@@ -16,7 +16,7 @@ const getData = async () => {
   // Temporary Filler Data
   const body: Data = {
     totalCnt: 10,
-    stressPercents: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+    stressPercents: [10, 10, 10, 10, 50, 10, 10, 10, 10, 10],
     struggleCnts: {
       covid: 20,
       family: 20,

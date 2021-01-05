@@ -11,8 +11,17 @@
   <div
     class="flex flex-row p-2 m-4 max-w-full bg-white rounded-xl shadow-md items-center space-x-4 dark:bg-neutral-gray-800 dark:shadow-none"
   >
-    <div class="w-6/12"></div>
-    <div class="w-6/12"></div>
+    <div class="w-6/12">
+      <h1 class="font-sans text-black text-2xl text-center dark:text-gray-50">
+        Stress Level
+      </h1>
+      <stress-graph class="mx-auto mt-5" />
+    </div>
+    <div class="w-6/12">
+      <h1 class="font-sans text-black text-2xl text-center dark:text-gray-50">
+        Cause of Stress
+      </h1>
+    </div>
   </div>
   <div
     class="flex p-6 m-4 max-w-full bg-white rounded-xl shadow-md items-center space-x-4 dark:bg-neutral-gray-800 dark:shadow-none"
@@ -24,10 +33,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import StressGraph from "./components/StressGraph.vue";
 
 export default defineComponent({
   name: "App",
-  components: {}
+  components: {
+    "stress-graph": StressGraph
+  }
 });
 </script>
 
