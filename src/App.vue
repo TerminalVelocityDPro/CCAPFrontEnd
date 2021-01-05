@@ -17,6 +17,7 @@
       </h1>
       <stress-graph class="mx-auto h-40 w-full mt-5" />
     </div>
+    <div class="w-px h-44 border-l border-gray-400 dark:border-gray-600"></div>
     <div class="w-6/12">
       <h1 class="font-sans text-black text-2xl text-center dark:text-gray-50">
         Cause of Stress

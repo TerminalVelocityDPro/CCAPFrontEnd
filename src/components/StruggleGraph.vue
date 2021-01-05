@@ -56,7 +56,8 @@ export default defineComponent({
               xAxes: [
                 {
                   gridLines: {
-                    display: false
+                    display: false,
+                    color: "#4B5563"
                   }
                 }
               ]
