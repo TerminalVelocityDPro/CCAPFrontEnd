@@ -17,11 +17,11 @@ export default defineComponent({
     const dataState = dataStore.getState();
     const metaState = metaStore.getState();
     const ctx = "struggle-graph";
-    let myPieChart: Chart;
+    let barGraph: Chart;
 
     onMounted(() => {
       if (ctx !== null) {
-        myPieChart = new Chart(ctx, {
+        barGraph = new Chart(ctx, {
           type: "bar",
           plugins: [ChartDataLabels],
           data: {
@@ -77,6 +77,11 @@ export default defineComponent({
                   return value + " students";
                 }
               }
+            },
+            onClick: evt => {
+              const element: Array<any> = barGraph.getElementAtEvent(evt);
+              metaStore.update(element[0]._index);
+              barGraph.update();
             }
           }
         });

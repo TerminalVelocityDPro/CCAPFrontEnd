@@ -15,11 +15,11 @@ export default defineComponent({
   setup() {
     const dataState = dataStore.getState();
     const ctx = "stress-graph";
-    let pieChart: Chart;
+    let barGraph: Chart;
 
     onMounted(() => {
       if (ctx !== null) {
-        pieChart = new Chart(ctx, {
+        barGraph = new Chart(ctx, {
           type: "bar",
           plugins: [ChartDataLabels],
           data: {
