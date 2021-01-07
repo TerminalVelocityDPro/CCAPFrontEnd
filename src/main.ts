@@ -8,12 +8,53 @@ import App from "./App.vue";
 const getData = async () => {
   // Commented Out since PHP doesn't work while serving.
 
+  
+  //JONAH IS THIS THE SAME AS THE JS SCRIPT I HAD BEFORE --> GET REQUEST?
   // const data = await fetch("http://localhost/backend.php", { method: "GET" });
   // const body: Data = await data.json();
 
   // console.log(body);
+ 
+      //he's a great boi
+  
+
+
+
+  // fetch('backend.php', {
+  //   method: 'get',
+  //     }).then(function(response) {
+  //         if (response.status >= 200 && response.status < 300) {
+  //             return response.json()
+  //             //return response;
+  //         }
+  //         throw new Error(response.statusText)
+  //     })
+  //     .then(function(response) {
+  //         console.log(response);
+  //     })
+
+
+
+
+
+
+
 
   // Temporary Filler Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const body: Data = {
     totalCnt: 10,
     stressPercents: [4, 6, 10, 12, 18, 18, 12, 10, 6, 4],
