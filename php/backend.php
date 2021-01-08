@@ -472,72 +472,72 @@ foreach($allCSI as $csi){
 $peerYesCount = 0;
 $peerNoCount = 0;
 
-foreach($allPeer as $house){
-  if($house == "Yes"){
-    $houseYesCount++;
+foreach($allPeer as $peer){
+  if($peer == "Yes"){
+    $peerYesCount++;
   }
-  if($house == "No"){
-    $houseNoCount++;
+  if($peer == "No"){
+    $peerNoCount++;
   }
 }
 
 $socialYesCount = 0;
 $socialNoCount = 0;
 
-foreach($allSocialHelp as $house){
-  if($house == "Yes"){
-    $houseYesCount++;
+foreach($allSocialHelp as $social){
+  if($social == "Yes"){
+    $socialYesCount++;
   }
-  if($house == "No"){
-    $houseNoCount++;
+  if($social == "No"){
+    $socialNoCount++;
   }
 }
 
 $techYesCount = 0;
 $techNoCount = 0;
 
-foreach($allTechSupport as $house){
-  if($house == "Yes"){
-    $houseYesCount++;
+foreach($allTechSupport as $tech){
+  if($tech == "Yes"){
+    $techYesCount++;
   }
-  if($house == "No"){
-    $houseNoCount++;
+  if($tech == "No"){
+    $techNoCount++;
   }
 }
 
 $tutorYesCount = 0;
 $tutorNoCount = 0;
 
-foreach($allTutor as $house){
-  if($house == "Yes"){
-    $houseYesCount++;
+foreach($allTutor as $tutor){
+  if($tutor == "Yes"){
+    $tutorYesCount++;
   }
-  if($house == "No"){
-    $houseNoCount++;
+  if($tutor == "No"){
+    $tutorNoCount++;
   }
 }
 
 $distanceYesCount = 0;
 $distanceNoCount = 0;
 
-foreach($allDistance as $house){
-  if($house == "Yes"){
-    $houseYesCount++;
+foreach($allDistance as $distance){
+  if($distance == "Yes"){
+    $distanceYesCount++;
   }
-  if($house == "No"){
-    $houseNoCount++;
+  if($distance == "No"){
+    $distanceNoCount++;
   }
 }
 
 $transYesCount = 0;
 $transNoCount = 0;
 
-foreach($allTrans as $house){
-  if($house == "Yes"){
-    $houseYesCount++;
+foreach($allTrans as $trans){
+  if($trans == "Yes"){
+    $transYesCount++;
   }
-  if($house == "No"){
-    $houseNoCount++;
+  if($trans == "No"){
+    $transNoCount++;
   }
 }
 
