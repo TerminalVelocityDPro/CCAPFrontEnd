@@ -91,11 +91,74 @@ $stress9Count = 0;
 $stress9Percent = 0;
 $stress10Count = 0;
 $stress10Percent = 0;
+
+foreach($allStress as $stress){
+  if($stress == 1){
+    $stress1Count++;
+  }
+  if($stress == 2){
+    $stress2Count++;
+  }
+  if($stress == 3){
+    $stress3Count++;
+  }
+  if($stress == 4){
+    $stress4Count++;
+  }
+  if($stress == 5){
+    $stress5Count++;
+  }
+  if($stress == 6){
+    $stress6Count++;
+  }
+  if($stress == 7){
+    $stress7Count++;
+  }
+  if($stress == 8){
+    $stress8Count++;
+  }
+  if($stress == 9){
+    $stress9Count++;
+  }
+  if($stress == 10){
+    $stress10Count++;
+  }
+}
+
+$stress1Percent = ($stress1Count/$count)*100;
+$stress2Percent = ($stress2Count/$count)*100;
+$stress3Percent = ($stress3Count/$count)*100;
+$stress4Percent = ($stress4Count/$count)*100;
+$stress5Percent = ($stress5Count/$count)*100;
+$stress6Percent = ($stress6Count/$count)*100;
+$stress7Percent = ($stress7Count/$count)*100;
+$stress8Percent = ($stress8Count/$count)*100;
+$stress9Percent = ($stress9Count/$count)*100;
+$stress10Percent = ($stress10Count/$count)*100;
+
 $struggleIsCovid = 0;
 $struggleIsFamily = 0;
 $struggleIsFriendship = 0;
 $struggleIsRemote = 0;
 $struggleIsOverall = 0;
+
+foreach($allStruggle as $struggle){
+  if($struggle == 0){
+    $struggleIsCovid++;
+  }
+  if($struggle == 1){
+    $struggleIsFamily++;
+  }
+  if($struggle == 2){
+    $struggleIsFriendship++;
+  }
+  if($struggle == 3){
+    $struggleIsRemote++;
+  }
+  if($struggle == 4){
+    $struggleIsOverall++;
+  }
+}
 
 //covid
 $covid0123Count = 0;
@@ -114,6 +177,54 @@ $covid1Count = 0;
 $covid2Count = 0;
 $covid3Count = 0;
 
+foreach($allCovid as $covid){
+  if($covid == "0123"){ //prolly test this one day
+    $covid0123Count++;
+  }
+  if($covid == "123"){
+    $covid123Count++;
+  }
+  if($covid == "023"){
+    $covid023Count++;
+  }
+  if($covid == "013"){
+    $covid013Count++;
+  }
+  if($covid == "012"){
+    $covid012Count++;
+  }
+  if($covid == "23"){
+    $covid23Count++;
+  }
+  if($covid == "13"){
+    $covid13Count++;
+  }
+  if($covid == "12"){
+    $covid12Count++;
+  }
+  if($covid == "03"){
+    $covid03Count++;
+  }
+  if($covid == "02"){
+    $covid02Count++;
+  }
+  if($covid == "01"){
+    $covid01Count++;
+  }
+  if($covid == "0"){
+    $covid0Count++;
+  }
+  if($covid == "1"){
+    $covid1Count++;
+  }
+  if($covid == "2"){
+    $covid2Count++;
+  }
+  if($covid == "3"){
+    $covid3Count++;
+  }
+}
+
 //family
 $family0123Count = 0;
 $family123Count = 0;
@@ -131,6 +242,53 @@ $family1Count = 0;
 $family2Count = 0;
 $family3Count = 0;
 
+foreach($allFamily as $family){
+  if($family == "0123"){ //prolly test this one day
+    $family0123Count++;
+  }
+  if($family == "123"){
+    $family123Count++;
+  }
+  if($family == "023"){
+    $family023Count++;
+  }
+  if($family == "013"){
+    $family013Count++;
+  }
+  if($family == "012"){
+    $family012Count++;
+  }
+  if($family == "23"){
+    $family23Count++;
+  }
+  if($family == "13"){
+    $family13Count++;
+  }
+  if($family == "12"){
+    $family12Count++;
+  }
+  if($family == "03"){
+    $family03Count++;
+  }
+  if($family == "02"){
+    $family02Count++;
+  }
+  if($family == "01"){
+    $family01Count++;
+  }
+  if($family == "0"){
+    $family0Count++;
+  }
+  if($family == "1"){
+    $family1Count++;
+  }
+  if($family == "2"){
+    $family2Count++;
+  }
+  if($family == "3"){
+    $family3Count++;
+  }
+}
 
 //friend
 $friend0123Count = 0;
@@ -149,6 +307,54 @@ $friend1Count = 0;
 $friend2Count = 0;
 $friend3Count = 0;
 
+foreach($allFriend as $friend){
+  if($friend == "0123"){ //prolly test this one day
+    $friend0123Count++;
+  }
+  if($friend == "123"){
+    $friend123Count++;
+  }
+  if($friend == "023"){
+    $friend023Count++;
+  }
+  if($friend == "013"){
+    $friend013Count++;
+  }
+  if($friend == "012"){
+    $friend012Count++;
+  }
+  if($friend == "23"){
+    $friend23Count++;
+  }
+  if($friend == "13"){
+    $friend13Count++;
+  }
+  if($friend == "12"){
+    $friend12Count++;
+  }
+  if($friend == "03"){
+    $friend03Count++;
+  }
+  if($friend == "02"){
+    $friend02Count++;
+  }
+  if($friend == "01"){
+    $friend01Count++;
+  }
+  if($friend == "0"){
+    $friend0Count++;
+  }
+  if($friend == "1"){
+    $friend1Count++;
+  }
+  if($friend == "2"){
+    $friend2Count++;
+  }
+  if($friend == "3"){
+    $friend3Count++;
+  }
+}
+
 //school
 $school0123Count = 0;
 $school123Count = 0;
@@ -166,27 +372,175 @@ $school1Count = 0;
 $school2Count = 0;
 $school3Count = 0;
 
+foreach($allSchool as $school){
+  if($school == "0123"){ //prolly test this one day
+    $school0123Count++;
+  }
+  if($school == "123"){
+    $school123Count++;
+  }
+  if($school == "023"){
+    $school023Count++;
+  }
+  if($school == "013"){
+    $school013Count++;
+  }
+  if($school == "012"){
+    $school012Count++;
+  }
+  if($school == "23"){
+    $school23Count++;
+  }
+  if($school == "13"){
+    $school13Count++;
+  }
+  if($school == "12"){
+    $school12Count++;
+  }
+  if($school == "03"){
+    $school03Count++;
+  }
+  if($school == "02"){
+    $school02Count++;
+  }
+  if($school == "01"){
+    $school01Count++;
+  }
+  if($school == "0"){
+    $school0Count++;
+  }
+  if($school == "1"){
+    $school1Count++;
+  }
+  if($school == "2"){
+    $school2Count++;
+  }
+  if($school == "3"){
+    $school3Count++;
+  }
+}
+
 
 $interestYesCount = 0;
 $interestNoCount = 0;
+
+foreach($allInterestProtect as $interest){
+  if($interest == "Yes"){
+    $interestYesCount++;
+  }
+  if($interest == "No"){
+    $interestNoCount++;
+  }
+}
+
 $householdYesCount = 0;
 $householdNoCount = 0;
+
+foreach($allHouseholdClean as $house){
+  if($house == "Yes"){
+    $householdYesCount++;
+  }
+  if($house == "No"){
+    $householdNoCount++;
+  }
+}
+
 $statsYesCount = 0;
 $statsNoCount = 0;
+
+foreach($allStats as $stats){
+  if($stats == "Yes"){
+    $statsYesCount++;
+  }
+  if($stats == "No"){
+    $statsNoCount++;
+  }
+}
+
 $csiYesCount = 0;
 $csiNoCount = 0;
+
+foreach($allCSI as $csi){
+  if($csi == "Yes"){
+    $csiYesCount++;
+  }
+  if($csi == "No"){
+    $csiNoCount++;
+  }
+}
+
 $peerYesCount = 0;
 $peerNoCount = 0;
+
+foreach($allPeer as $house){
+  if($house == "Yes"){
+    $houseYesCount++;
+  }
+  if($house == "No"){
+    $houseNoCount++;
+  }
+}
+
 $socialYesCount = 0;
 $socialNoCount = 0;
+
+foreach($allSocialHelp as $house){
+  if($house == "Yes"){
+    $houseYesCount++;
+  }
+  if($house == "No"){
+    $houseNoCount++;
+  }
+}
+
 $techYesCount = 0;
 $techNoCount = 0;
+
+foreach($allTechSupport as $house){
+  if($house == "Yes"){
+    $houseYesCount++;
+  }
+  if($house == "No"){
+    $houseNoCount++;
+  }
+}
+
 $tutorYesCount = 0;
 $tutorNoCount = 0;
+
+foreach($allTutor as $house){
+  if($house == "Yes"){
+    $houseYesCount++;
+  }
+  if($house == "No"){
+    $houseNoCount++;
+  }
+}
+
 $distanceYesCount = 0;
 $distanceNoCount = 0;
+
+foreach($allDistance as $house){
+  if($house == "Yes"){
+    $houseYesCount++;
+  }
+  if($house == "No"){
+    $houseNoCount++;
+  }
+}
+
 $transYesCount = 0;
 $transNoCount = 0;
+
+foreach($allTrans as $house){
+  if($house == "Yes"){
+    $houseYesCount++;
+  }
+  if($house == "No"){
+    $houseNoCount++;
+  }
+}
+
 
 // writeToFile("Number of users with stress level of 1: " + stressOneCount);
 // appendToFile("Number of users with stress level of 2: " + stressTwoCount);
